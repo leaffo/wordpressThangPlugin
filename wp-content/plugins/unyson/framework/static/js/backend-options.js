@@ -2,7 +2,7 @@
  * Included on pages where backend options are rendered
  */
 
-var fwBackendOptions = {
+var slzBackendOptions = {
 	/**
 	 * @deprecated Tabs are lazy loaded https://github.com/ThemeFuse/Unyson/issues/1174
 	 */
@@ -10,14 +10,14 @@ var fwBackendOptions = {
 };
 
 jQuery(document).ready(function($){
-	var localized = _fw_backend_options_localized;
+	var localized = _slz_backend_options_localized;
 
 	/**
 	 * Functions
 	 */
 	{
 		/**
-		 * Make fw-postbox to close/open on click
+		 * Make slz-postbox to close/open on click
 		 *
 		 * (fork from /wp-admin/js/postbox.js)
 		 */
@@ -25,15 +25,15 @@ jQuery(document).ready(function($){
 			/** Remove events added by /wp-admin/js/postbox.js */
 			$boxes.find('h2, h3, .handlediv').off('click.postboxes');
 
-			var eventNamespace = '.fw-backend-postboxes';
+			var eventNamespace = '.slz-backend-postboxes';
 
 			// make postboxes to close/open on click
 			$boxes
 				.off('click'+ eventNamespace) // remove already attached, just to be sure, prevent multiple execution
 				.on('click'+ eventNamespace, '> .hndle, > .handlediv', function(e){
-					var $box = $(this).closest('.fw-postbox');
+					var $box = $(this).closest('.slz-postbox');
 
-					if ($box.parent().is('.fw-backend-postboxes') && !$box.siblings().length) {
+					if ($box.parent().is('.slz-backend-postboxes') && !$box.siblings().length) {
 						// Do not close if only one box https://github.com/ThemeFuse/Unyson/issues/1094
 						$box.removeClass('closed');
 					} else {
@@ -42,8 +42,8 @@ jQuery(document).ready(function($){
 
 					var isClosed = $box.hasClass('closed');
 
-					$box.trigger('fw:box:'+ (isClosed ? 'close' : 'open'));
-					$box.trigger('fw:box:toggle-closed', {isClosed: isClosed});
+					$box.trigger('slz:box:'+ (isClosed ? 'close' : 'open'));
+					$box.trigger('slz:box:toggle-closed', {isClosed: isClosed});
 				});
 		}
 
@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
 				var $this = $(this);
 
 				if (!$.trim($this.html()).length) {
-					$this.closest('.postbox').addClass('fw-postbox-without-name');
+					$this.closest('.postbox').addClass('slz-postbox-without-name');
 				}
 			});
 		}
@@ -61,25 +61,25 @@ jQuery(document).ready(function($){
 
 	/** Init tabs */
 	(function(){
-		var htmlAttrName = 'data-fw-tab-html',
+		var htmlAttrName = 'data-slz-tab-html',
 			initTab = function($tab) {
 				var html;
 
 				if (html = $tab.attr(htmlAttrName)) {
-					fwEvents.trigger('fw:options:init', {
+					slzEvents.trigger('slz:options:init', {
 						$elements: $tab.removeAttr(htmlAttrName).html(html),
 						/**
 						 * Sometimes we want to perform some action just when
 						 * lazy tabs are rendered. It's important in those cases
-						 * to distinguish regular fw:options:init events from
+						 * to distinguish regular slz:options:init events from
 						 * the ones that will render tabs. Passing by this little
-						 * detail may break some widgets because fw:options:init
+						 * detail may break some widgets because slz:options:init
 						 * event may be fired even when tabs are not yet rendered.
 						 *
 						 * That's how you can be sure that you'll run a piece
 						 * of code just when tabs will be arround 100%.
 						 *
-						 * fwEvents.on('fw:options:init', function (data) {
+						 * slzEvents.on('slz:options:init', function (data) {
 						 *   if (! data.lazyTabsUpdated) {
 						 *     return;
 						 *   }
@@ -93,7 +93,7 @@ jQuery(document).ready(function($){
 				}
 			},
 			initAllTabs = function ($el) {
-				var selector = '.fw-options-tab[' + htmlAttrName + ']', $tabs;
+				var selector = '.slz-options-tab[' + htmlAttrName + ']', $tabs;
 
 				// fixes https://github.com/ThemeFuse/Unyson/issues/1634
 				$el.each(function(){
@@ -108,12 +108,12 @@ jQuery(document).ready(function($){
 				}
 			};
 
-		fwEvents.on('fw:options:init:tabs', function (data) {
+		slzEvents.on('slz:options:init:tabs', function (data) {
 			initAllTabs(data.$elements);
 		});
 
-		fwEvents.on('fw:options:init', function (data) {
-			var $tabs = data.$elements.find('.fw-options-tabs-wrapper:not(.initialized)');
+		slzEvents.on('slz:options:init', function (data) {
+			var $tabs = data.$elements.find('.slz-options-tabs-wrapper:not(.initialized)');
 
 			if (localized.lazy_tabs) {
 				$tabs.tabs({
@@ -122,33 +122,28 @@ jQuery(document).ready(function($){
 					},
 					activate: function (event, ui) {
 						initTab(ui.newPanel);
-						ui.newPanel.closest('.fw-options-tabs-contents')[0].scrollTop = 0
 					}
 				});
 
 				$tabs
 					.closest('form')
-					.off('submit.fw-tabs')
-					.on('submit.fw-tabs', function () {
+					.off('submit.slz-tabs')
+					.on('submit.slz-tabs', function () {
 						if (!$(this).hasClass('prevent-all-tabs-init')) {
 							// All options needs to be present in html to be sent in POST on submit
 							initAllTabs($(this));
 						}
 					});
 			} else {
-				$tabs.tabs({
-					activate: function (event, ui) {
-						ui.newPanel.closest('.fw-options-tabs-contents')[0].scrollTop = 0
-					}
-				});
+				$tabs.tabs();
 			}
 
 			$tabs.each(function () {
 				var $this = $(this);
 
-				if (!$this.parent().closest('.fw-options-tabs-wrapper').length) {
+				if (!$this.parent().closest('.slz-options-tabs-wrapper').length) {
 					// add special class to first level tabs
-					$this.addClass('fw-options-tabs-first-level');
+					$this.addClass('slz-options-tabs-first-level');
 				}
 			});
 
@@ -157,11 +152,11 @@ jQuery(document).ready(function($){
 	})();
 
 	/** Init boxes */
-	fwEvents.on('fw:options:init', function (data) {
-		var $boxes = data.$elements.find('.fw-postbox:not(.initialized)');
+	slzEvents.on('slz:options:init', function (data) {
+		var $boxes = data.$elements.find('.slz-postbox:not(.initialized)');
 
 		hideBoxEmptyTitles(
-			$boxes.filter('.fw-backend-postboxes > .fw-postbox')
+			$boxes.filter('.slz-backend-postboxes > .slz-postbox')
 		);
 
 		addPostboxToggles($boxes);
@@ -170,41 +165,41 @@ jQuery(document).ready(function($){
 		 * leave open only first boxes
 		 */
 		$boxes
-			.filter('.fw-backend-postboxes > .fw-postbox:not(.fw-postbox-without-name):not(:first-child):not(.prevent-auto-close)')
+			.filter('.slz-backend-postboxes > .slz-postbox:not(.slz-postbox-without-name):not(:first-child):not(.prevent-auto-close)')
 			.addClass('closed');
 
 		$boxes.addClass('initialized');
 
 		// trigger on box custom event for others to do something after box initialized
-		$boxes.trigger('fw-options-box:initialized');
+		$boxes.trigger('slz-options-box:initialized');
 	});
 
 	/** Init options */
-	fwEvents.on('fw:options:init', function (data) {
-		data.$elements.find('.fw-backend-option:not(.initialized)')
+	slzEvents.on('slz:options:init', function (data) {
+		data.$elements.find('.slz-backend-option:not(.initialized)')
 			// do nothing, just a the initialized class to make the fadeIn css animation effect
 			.addClass('initialized');
 	});
 
 	/** Fixes */
-	fwEvents.on('fw:options:init', function (data) {
+	slzEvents.on('slz:options:init', function (data) {
 		{
-			var eventNamespace = '.fw-backend-postboxes';
+			var eventNamespace = '.slz-backend-postboxes';
 
-			data.$elements.find('.postbox:not(.fw-postbox) .fw-option')
-				.closest('.postbox:not(.fw-postbox)')
+			data.$elements.find('.postbox:not(.slz-postbox) .slz-option')
+				.closest('.postbox:not(.slz-postbox)')
 
 				/**
 				 * Add special class to first level postboxes that contains framework options (on post edit page)
 				 */
-				.addClass('postbox-with-fw-options')
+				.addClass('postbox-with-slz-options')
 
 				/**
 				 * Prevent event to be propagated to first level WordPress sortable (on edit post page)
 				 * If not prevented, boxes within options can be dragged out of parent box to first level boxes
 				 */
 				.off('mousedown'+ eventNamespace) // remove already attached (happens when this script is executed multiple times on the same elements)
-				.on('mousedown'+ eventNamespace, '.fw-postbox > .hndle, .fw-postbox > .handlediv', function(e){
+				.on('mousedown'+ eventNamespace, '.slz-postbox > .hndle, .slz-postbox > .handlediv', function(e){
 					e.stopPropagation();
 				});
 		}
@@ -215,9 +210,9 @@ jQuery(document).ready(function($){
 		 */
 		{
 			var $sortables = data.$elements
-				.find('.postbox:not(.fw-postbox) .fw-postbox, .fw-options-tabs-wrapper .fw-postbox')
-				.closest('.fw-backend-postboxes')
-				.not('.fw-sortable-disabled');
+				.find('.postbox:not(.slz-postbox) .slz-postbox, .slz-options-tabs-wrapper .slz-postbox')
+				.closest('.slz-backend-postboxes')
+				.not('.slz-sortable-disabled');
 
 			$sortables.each(function(){
 				try {
@@ -227,17 +222,17 @@ jQuery(document).ready(function($){
 				}
 			});
 
-			$sortables.addClass('fw-sortable-disabled');
+			$sortables.addClass('slz-sortable-disabled');
 		}
 
 		/** hide bottom border from last option inside box */
 		{
-			data.$elements.find('.postbox-with-fw-options > .inside, .fw-postbox > .inside')
-				.append('<div class="fw-backend-options-last-border-hider"></div>');
+			data.$elements.find('.postbox-with-slz-options > .inside, .slz-postbox > .inside')
+				.append('<div class="slz-backend-options-last-border-hider"></div>');
 		}
 
 		hideBoxEmptyTitles(
-			data.$elements.find('.postbox-with-fw-options')
+			data.$elements.find('.postbox-with-slz-options')
 		);
 	});
 
@@ -245,14 +240,15 @@ jQuery(document).ready(function($){
 	 * Help tips (i)
 	 */
 	(function(){
-		fwEvents.on('fw:options:init', function (data) {
-			var $helps = data.$elements.find('.fw-option-help:not(.initialized)');
+		slzEvents.on('slz:options:init', function (data) {
+			var $helps = data.$elements.find('.slz-option-help:not(.initialized)');
 
-			fw.qtip($helps);
+			slz.qtip($helps);
 
 			$helps.addClass('initialized');
-		});
+            slzEvents.trigger('slz:options:loaded');
+        });
 	})();
 
-	$('#side-sortables').addClass('fw-force-xs');
+	$('#side-sortables').addClass('slz-force-xs');
 });

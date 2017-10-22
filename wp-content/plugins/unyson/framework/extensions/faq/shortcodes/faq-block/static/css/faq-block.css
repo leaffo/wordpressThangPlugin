@@ -1,0 +1,69 @@
+/*====================================
+=            SC Faq Block            =
+====================================*/
+.sc-faq-block {
+  padding: 75px 0 0 0;
+}
+
+.sc-faq-block + .sc-faq-block {
+  padding: 0;
+}
+
+.sc-faq-block .block-title,
+.sc-faq-block .faq-list li,
+.sc-faq-block .btn-readmore {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #28313b;
+}
+
+.sc-faq-block .block-title {
+  font-size: 28px;
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid #dadfea;
+}
+
+.sc-faq-block .faq-list {
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.sc-faq-block .faq-list li {
+  list-style-type: none;
+  line-height: 2;
+}
+
+.sc-faq-block .faq-list li a {
+  font-size: 14px;
+}
+
+.sc-faq-block .faq-list li a .icon {
+  width: 20px;
+  height: 20px;
+  color: #6f6e72;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.sc-faq-block .faq-list li a:hover, .sc-faq-block .faq-list li a:focus {
+  color: #8dd64f;
+}
+
+.sc-faq-block .faq-list li a:hover .icon, .sc-faq-block .faq-list li a:focus .icon {
+  color: #8dd64f;
+}
+
+.sc-faq-block .btn-readmore {
+  color: #8dd64f;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.sc-faq-block .btn-readmore:hover, .sc-faq-block .btn-readmore:focus {
+  border-bottom: 1px solid;
+}
+
+/*=====  End of SC Faq Block  ======*/

@@ -1,13 +1,13 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
 $cfg = array();
 
 $cfg['page_builder'] = array(
-	'title'       => __( 'Contact form', 'fw' ),
-	'description' => __( 'Add a Contact Form', 'fw' ),
-	'tab'         => __( 'Content Elements', 'fw' ),
+	'title'       => __( 'Contact form', 'slz' ),
+	'description' => __( 'Build contact forms', 'slz' ),
+	'tab'         => __( 'Content Elements', 'slz' ),
 	'popup_size'  => 'large',
 	'type'        => 'special'
 );

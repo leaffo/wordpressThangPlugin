@@ -1,15 +1,17 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die( 'Forbidden' );
+}
 
-$shortcodes_extension = fw_ext('shortcodes');
-wp_enqueue_script(
-	'fw-shortcode-accordion',
-	$shortcodes_extension->get_declared_URI('/shortcodes/accordion/static/js/scripts.js'),
-	array('jquery-ui-accordion'),
-	false,
-	true
-);
-wp_enqueue_style(
-	'fw-shortcode-accordion',
-	$shortcodes_extension->get_declared_URI('/shortcodes/accordion/static/css/styles.css')
-);
+$ext = slz_ext( 'shortcodes' )->get_shortcode('accordion');
+$ext_instance = slz()->extensions->get( 'shortcodes' );
 
+if ( !is_admin() ) {
+
+    $ext->wp_enqueue_script(
+		'slz-extension-'. $ext_instance->get_name() .'-accordion',
+		$ext->locate_URI( '/static/js/accordion.js' ),
+		array( 'jquery' ),
+		slz()->manifest->get_version(),
+		true
+	);
+}

@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) { die( 'Forbidden' ); }
+<?php if ( ! defined( 'ABSPATH' ) ) { die( 'Forbidden' ); }
 
 /**
  * @var string $id
@@ -15,13 +15,13 @@
 	);
 }
 
-$color_regex = '/^#([a-f0-9]{3}){1,2}$/i';
+$color_regex = '/^#[a-f0-9]{6}$/i';
 
 ?>
-<div <?php echo fw_attr_to_html($div_attr) ?> >
+<div <?php echo slz_attr_to_html($div_attr) ?> >
 	<div class="primary-color">
 		<?php
-		echo fw()->backend->option_type( 'color-picker' )->render(
+		echo slz()->backend->option_type( 'color-picker' )->render(
 			'primary',
 			array(
 				'type'  => 'color-picker',
@@ -42,11 +42,11 @@ $color_regex = '/^#([a-f0-9]{3}){1,2}$/i';
 		);
 		?>
 	</div>
-	<?php if ( isset( $option['value']['secondary'] ) ): ?>
-		<div class="delimiter"><?php echo __( 'to', 'fw' ) ?></div>
+	<?php if ( ! empty( $option['value']['secondary'] ) ): ?>
+		<div class="delimiter"><?php echo __( 'to', 'slz' ) ?></div>
 		<div class="secondary-color">
 			<?php
-			echo fw()->backend->option_type( 'color-picker' )->render(
+			echo slz()->backend->option_type( 'color-picker' )->render(
 				'secondary',
 				array(
 					'type'  => 'color-picker',

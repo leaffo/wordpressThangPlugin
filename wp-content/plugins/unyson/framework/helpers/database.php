@@ -1,26 +1,26 @@
-<?php if ( ! defined( 'FW' ) ) {
-	die( 'Forbidden' );
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 // Theme Settings Options
-class FW_Db_Options_Model_Settings extends FW_Db_Options_Model {
+class SLZ_Db_Options_Model_Settings extends SLZ_Db_Options_Model {
 	protected function get_id() {
 		return 'settings';
 	}
 
 	protected function get_options($item_id, array $extra_data = array()) {
-		return fw()->theme->get_settings_options();
+		return slz()->theme->get_settings_options();
 	}
 
 	protected function get_values($item_id, array $extra_data = array()) {
-		return FW_WP_Option::get('fw_theme_settings_options:'. fw()->theme->manifest->get_id(), null, array());
+		return SLZ_WP_Option::get('slz_theme_settings_options:'. slz()->theme->manifest->get_id(), null, array());
 	}
 
 	protected function set_values($item_id, $values, array $extra_data = array()) {
-		FW_WP_Option::set('fw_theme_settings_options:' . fw()->theme->manifest->get_id(), null, $values);
+		SLZ_WP_Option::set('slz_theme_settings_options:' . slz()->theme->manifest->get_id(), null, $values);
 	}
 
-	protected function get_fw_storage_params($item_id, array $extra_data = array()) {
+	protected function get_slz_storage_params($item_id, array $extra_data = array()) {
 		return array(
 			'settings' => true
 		);
@@ -30,7 +30,7 @@ class FW_Db_Options_Model_Settings extends FW_Db_Options_Model {
 		/**
 		 * @since 2.6.0
 		 */
-		do_action('fw_settings_options_update', array(
+		do_action('slz_settings_options_update', array(
 			/**
 			 * Option id
 			 * First level multi-key
@@ -61,8 +61,8 @@ class FW_Db_Options_Model_Settings extends FW_Db_Options_Model {
 		 *
 		 * @return mixed|null
 		 */
-		function fw_get_db_settings_option( $option_id = null, $default_value = null, $get_original_value = null ) {
-			return FW_Db_Options_Model_Settings::_get_instance('settings')->get(null, $option_id, $default_value);
+		function slz_get_db_settings_option( $option_id = null, $default_value = null, $get_original_value = null ) {
+			return SLZ_Db_Options_Model_Settings::_get_instance('settings')->get(null, $option_id, $default_value);
 		}
 
 		/**
@@ -71,21 +71,21 @@ class FW_Db_Options_Model_Settings extends FW_Db_Options_Model {
 		 * @param null $option_id Specific option id (accepts multikey). null - all options
 		 * @param mixed $value
 		 */
-		function fw_set_db_settings_option( $option_id = null, $value ) {
-			FW_Db_Options_Model_Settings::_get_instance('settings')->set(null, $option_id, $value);
+		function slz_set_db_settings_option( $option_id = null, $value ) {
+			SLZ_Db_Options_Model_Settings::_get_instance('settings')->set(null, $option_id, $value);
 		}
 	}
 }
-new FW_Db_Options_Model_Settings();
+new SLZ_Db_Options_Model_Settings();
 
 // Post Options
-class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
+class SLZ_Db_Options_Model_Post extends SLZ_Db_Options_Model {
 	protected function get_id() {
 		return 'post';
 	}
 
 	private function get_cache_key($key, $item_id = null, array $extra_data = array()) {
-		return 'fw-options-model:'. $this->get_id() .'/'. $key;
+		return 'slz-options-model:'. $this->get_id() .'/'. $key;
 	}
 
 	private function get_post_id($post_id) {
@@ -93,8 +93,8 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 
 		try {
 			// Prevent too often execution of wp_get_post_autosave() because it does WP Query
-			return FW_Cache::get($cache_key = $this->get_cache_key('id/'. $post_id));
-		} catch (FW_Cache_Not_Found_Exception $e) {
+			return SLZ_Cache::get($cache_key = $this->get_cache_key('id/'. $post_id));
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
 			if ( ! $post_id ) {
 				/** @var WP_Post $post */
 				global $post;
@@ -117,7 +117,7 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 				}
 			}
 
-			FW_Cache::set($cache_key, $post_id);
+			SLZ_Cache::set($cache_key, $post_id);
 
 			return $post_id;
 		}
@@ -127,9 +127,9 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 		$post_id = $this->get_post_id($post_id);
 
 		try {
-			return FW_Cache::get($cache_key = $this->get_cache_key('type/'. $post_id));
-		} catch (FW_Cache_Not_Found_Exception $e) {
-			FW_Cache::set(
+			return SLZ_Cache::get($cache_key = $this->get_cache_key('type/'. $post_id));
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
+			SLZ_Cache::set(
 				$cache_key,
 				$post_type = get_post_type(
 					($post_revision_id = wp_is_post_revision($post_id)) ? $post_revision_id : $post_id
@@ -143,39 +143,38 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 	protected function get_options($item_id, array $extra_data = array()) {
 		$post_type = $this->get_post_type($item_id);
 
-		if (apply_filters('fw_get_db_post_option:fw-storage-enabled',
+		if (apply_filters('slz_get_db_post_option:slz-storage-enabled',
 			/**
-			 * Slider extension has too many fw_get_db_post_option()
+			 * Slider extension has too many slz_get_db_post_option()
 			 * inside post options altering filter and it creates recursive mess.
 			 * add_filter() was added in Slider extension
 			 * but this hardcode can be replaced with `true`
 			 * only after all users will install new version 1.1.15.
 			 */
-			$post_type !== 'fw-slider',
+			$post_type !== 'slz-slider',
 			$post_type
 		)) {
-			return fw()->theme->get_post_options( $post_type );
+			return slz()->theme->get_post_options( $post_type );
 		} else {
 			return array();
 		}
 	}
 
 	protected function get_values($item_id, array $extra_data = array()) {
-		return FW_WP_Meta::get( 'post', $this->get_post_id($item_id), 'fw_options', array() );
+		return SLZ_WP_Meta::get( 'post', $this->get_post_id($item_id), 'slz_options', array() );
 	}
 
 	protected function set_values($item_id, $values, array $extra_data = array()) {
-		FW_WP_Meta::set( 'post', $this->get_post_id($item_id), 'fw_options', $values );
+		SLZ_WP_Meta::set( 'post', $this->get_post_id($item_id), 'slz_options', $values );
 	}
 
-	protected function get_fw_storage_params($item_id, array $extra_data = array()) {
+	protected function get_slz_storage_params($item_id, array $extra_data = array()) {
 		return array( 'post-id' => $this->get_post_id($item_id) );
 	}
 
 	protected function _get_cache_key($key, $item_id, array $extra_data = array()) {
 		if ($key === 'options') {
-			// Cache options grouped by post-type, not by post id
-			return ($post_type = $this->get_post_type($item_id)) ? $post_type : '?';
+			return $this->get_post_type($item_id); // Cache options grouped by post-type, not by post id
 		} else {
 			return $this->get_post_id($item_id);
 		}
@@ -185,12 +184,12 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 		/**
 		 * @deprecated
 		 */
-		fw()->backend->_sync_post_separate_meta($post_id);
+		slz()->backend->_sync_post_separate_meta($post_id);
 
 		/**
 		 * @since 2.2.8
 		 */
-		do_action('fw_post_options_update',
+		do_action('slz_post_options_update',
 			$post_id,
 			/**
 			 * Option id
@@ -224,8 +223,8 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 		 *
 		 * @return mixed|null
 		 */
-		function fw_get_db_post_option($post_id = null, $option_id = null, $default_value = null, $get_original_value = null) {
-			return FW_Db_Options_Model::_get_instance('post')->get(intval($post_id), $option_id, $default_value);
+		function slz_get_db_post_option($post_id = null, $option_id = null, $default_value = null, $get_original_value = null) {
+			return SLZ_Db_Options_Model::_get_instance('post')->get(intval($post_id), $option_id, $default_value);
 		}
 
 		/**
@@ -235,17 +234,17 @@ class FW_Db_Options_Model_Post extends FW_Db_Options_Model {
 		 * @param string|null $option_id Specific option id (accepts multikey). null - all options
 		 * @param $value
 		 */
-		function fw_set_db_post_option( $post_id = null, $option_id = null, $value ) {
-			FW_Db_Options_Model::_get_instance('post')->set(intval($post_id), $option_id, $value);
+		function slz_set_db_post_option( $post_id = null, $option_id = null, $value ) {
+			SLZ_Db_Options_Model::_get_instance('post')->set(intval($post_id), $option_id, $value);
 		}
 
-		// todo: add_action() to clear the FW_Cache
+		// todo: add_action() to clear the SLZ_Cache
 	}
 }
-new FW_Db_Options_Model_Post();
+new SLZ_Db_Options_Model_Post();
 
 // Term Options
-class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
+class SLZ_Db_Options_Model_Term extends SLZ_Db_Options_Model {
 	protected function get_id() {
 		return 'term';
 	}
@@ -253,20 +252,20 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 	protected function get_values($item_id, array $extra_data = array()) {
 		self::migrate($item_id);
 
-		return (array)get_term_meta( $item_id, 'fw_options', true);
+		return (array)get_term_meta( $item_id, 'slz_options', true);
 	}
 
 	protected function set_values($item_id, $values, array $extra_data = array()) {
 		self::migrate($item_id);
 
-		update_term_meta($item_id, 'fw_options', $values);
+		update_term_meta($item_id, 'slz_options', $values);
 	}
 
 	protected function get_options($item_id, array $extra_data = array()) {
-		return fw()->theme->get_taxonomy_options($extra_data['taxonomy']);
+		return slz()->theme->get_taxonomy_options($extra_data['taxonomy']);
 	}
 
-	protected function get_fw_storage_params($item_id, array $extra_data = array()) {
+	protected function get_slz_storage_params($item_id, array $extra_data = array()) {
 		return array(
 			'term-id' => $item_id,
 			'taxonomy' => $extra_data['taxonomy'],
@@ -295,7 +294,7 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 			/** @var WPDB $wpdb */
 			global $wpdb;
 
-			$table_name = $wpdb->get_results( "show tables like '{$wpdb->prefix}fw_termmeta'", ARRAY_A );
+			$table_name = $wpdb->get_results( "show tables like '{$wpdb->prefix}slz_termmeta'", ARRAY_A );
 			$table_name = $table_name ? array_pop($table_name[0]) : false;
 
 			if ( $table_name && ! $wpdb->get_results( "SELECT 1 FROM `{$table_name}` LIMIT 1" ) ) {
@@ -318,14 +317,14 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 	}
 
 	/**
-	 * When a term is deleted, delete its meta from old fw_termmeta table
+	 * When a term is deleted, delete its meta from old slz_termmeta table
 	 *
 	 * @param mixed $term_id
 	 *
 	 * @return void
 	 * @internal
 	 */
-	public static function _action_fw_delete_term( $term_id ) {
+	public static function _action_slz_delete_term( $term_id ) {
 		if ( ! ( $table_name = self::get_old_table_name() ) ) {
 			return;
 		}
@@ -339,7 +338,7 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 		/** @var WPDB $wpdb */
 		global $wpdb;
 
-		$wpdb->delete( $table_name, array( 'fw_term_id' => $term_id ), array( '%d' ) );
+		$wpdb->delete( $table_name, array( 'slz_term_id' => $term_id ), array( '%d' ) );
 	}
 
 	/**
@@ -355,15 +354,15 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 			( $old_table_name = self::get_old_table_name() )
 			&&
 			( $value = $wpdb->get_col( $wpdb->prepare(
-				"SELECT meta_value FROM `{$old_table_name}` WHERE fw_term_id = %d AND meta_key = 'fw_options' LIMIT 1",
+				"SELECT meta_value FROM `{$old_table_name}` WHERE slz_term_id = %d AND meta_key = 'slz_options' LIMIT 1",
 				$term_id
 			) ) )
 			&&
 			( $value = unserialize( $value[0] ) )
 		) {
-			$wpdb->delete( $old_table_name, array( 'fw_term_id' => $term_id ), array( '%d' ) );
+			$wpdb->delete( $old_table_name, array( 'slz_term_id' => $term_id ), array( '%d' ) );
 
-			update_term_meta( $term_id, 'fw_options', $value );
+			update_term_meta( $term_id, 'slz_options', $value );
 
 			return true;
 		} else {
@@ -375,7 +374,7 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 		/**
 		 * @since 2.6.0
 		 */
-		do_action('fw_term_options_update', array(
+		do_action('slz_term_options_update', array(
 			'term_id' => $item_id,
 			'taxonomy' => $extra_data['taxonomy'],
 			/**
@@ -410,12 +409,12 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 		 *
 		 * @return mixed|null
 		 */
-		function fw_get_db_term_option( $term_id, $taxonomy, $option_id = null, $default_value = null, $get_original_value = null ) {
+		function slz_get_db_term_option( $term_id, $taxonomy, $option_id = null, $default_value = null, $get_original_value = null ) {
 			if ( ! taxonomy_exists( $taxonomy ) ) {
 				return null;
 			}
 
-			return FW_Db_Options_Model::_get_instance('term')->get(intval($term_id), $option_id, $default_value, array(
+			return SLZ_Db_Options_Model::_get_instance('term')->get(intval($term_id), $option_id, $default_value, array(
 				'taxonomy' => $taxonomy
 			));
 		}
@@ -430,41 +429,41 @@ class FW_Db_Options_Model_Term extends FW_Db_Options_Model {
 		 *
 		 * @return null
 		 */
-		function fw_set_db_term_option( $term_id, $taxonomy, $option_id = null, $value ) {
+		function slz_set_db_term_option( $term_id, $taxonomy, $option_id = null, $value ) {
 			if ( ! taxonomy_exists( $taxonomy ) ) {
 				return null;
 			}
 
-			FW_Db_Options_Model::_get_instance('term')->set(intval($term_id), $option_id, $value, array(
+			SLZ_Db_Options_Model::_get_instance('term')->set(intval($term_id), $option_id, $value, array(
 				'taxonomy' => $taxonomy
 			));
 		}
 
 		add_action( 'switch_blog', array( __CLASS__, '_action_switch_blog' ) );
-		add_action( 'delete_term', array( __CLASS__, '_action_fw_delete_term' ) );
+		add_action( 'delete_term', array( __CLASS__, '_action_slz_delete_term' ) );
 	}
 }
-new FW_Db_Options_Model_Term();
+new SLZ_Db_Options_Model_Term();
 
 // Extensions Settings Options
-class FW_Db_Options_Model_Extension extends FW_Db_Options_Model {
+class SLZ_Db_Options_Model_Extension extends SLZ_Db_Options_Model {
 	protected function get_id() {
 		return 'extension';
 	}
 
 	protected function get_values($item_id, array $extra_data = array()) {
-		return FW_WP_Option::get( 'fw_ext_settings_options:' . $item_id, null, array() );
+		return SLZ_WP_Option::get( 'slz_ext_settings_options:' . $item_id, null, array() );
 	}
 
 	protected function set_values($item_id, $values, array $extra_data = array()) {
-		FW_WP_Option::set( 'fw_ext_settings_options:' . $item_id, null, $values );
+		SLZ_WP_Option::set( 'slz_ext_settings_options:' . $item_id, null, $values );
 	}
 
 	protected function get_options($item_id, array $extra_data = array()) {
-		return fw_ext($item_id)->get_settings_options();
+		return slz_ext($item_id)->get_settings_options();
 	}
 
-	protected function get_fw_storage_params($item_id, array $extra_data = array()) {
+	protected function get_slz_storage_params($item_id, array $extra_data = array()) {
 		return array(
 			'extension' => $item_id,
 		);
@@ -481,13 +480,13 @@ class FW_Db_Options_Model_Extension extends FW_Db_Options_Model {
 		 *
 		 * @return mixed|null
 		 */
-		function fw_get_db_ext_settings_option( $extension_name, $option_id = null, $default_value = null, $get_original_value = null ) {
-			if ( ! ( $extension = fw_ext( $extension_name ) ) ) {
+		function slz_get_db_ext_settings_option( $extension_name, $option_id = null, $default_value = null, $get_original_value = null ) {
+			if ( ! ( $extension = slz_ext( $extension_name ) ) ) {
 				trigger_error( 'Invalid extension: ' . $extension_name, E_USER_WARNING );
 				return null;
 			}
 
-			return FW_Db_Options_Model::_get_instance('extension')->get($extension_name, $option_id, $default_value);
+			return SLZ_Db_Options_Model::_get_instance('extension')->get($extension_name, $option_id, $default_value);
 		}
 
 		/**
@@ -497,38 +496,38 @@ class FW_Db_Options_Model_Extension extends FW_Db_Options_Model {
 		 * @param string|null $option_id
 		 * @param mixed $value
 		 */
-		function fw_set_db_ext_settings_option( $extension_name, $option_id = null, $value ) {
-			if ( ! fw_ext( $extension_name ) ) {
+		function slz_set_db_ext_settings_option( $extension_name, $option_id = null, $value ) {
+			if ( ! slz_ext( $extension_name ) ) {
 				trigger_error( 'Invalid extension: ' . $extension_name, E_USER_WARNING );
 
 				return;
 			}
 
-			FW_Db_Options_Model::_get_instance('extension')->set($extension_name, $option_id, $value);
+			SLZ_Db_Options_Model::_get_instance('extension')->set($extension_name, $option_id, $value);
 		}
 	}
 }
-new FW_Db_Options_Model_Extension();
+new SLZ_Db_Options_Model_Extension();
 
 // Customizer Options
-class FW_Db_Options_Model_Customizer extends FW_Db_Options_Model {
+class SLZ_Db_Options_Model_Customizer extends SLZ_Db_Options_Model {
 	protected function get_id() {
 		return 'customizer';
 	}
 
 	protected function get_values($item_id, array $extra_data = array()) {
-		return get_theme_mod('fw_options', array());
+		return get_theme_mod('slz_options', array());
 	}
 
 	protected function set_values($item_id, $values, array $extra_data = array()) {
-		set_theme_mod('fw_options', $values);
+		set_theme_mod('slz_options', $values);
 	}
 
 	protected function get_options($item_id, array $extra_data = array()) {
-		return fw()->theme->get_customizer_options();
+		return slz()->theme->get_customizer_options();
 	}
 
-	protected function get_fw_storage_params($item_id, array $extra_data = array()) {
+	protected function get_slz_storage_params($item_id, array $extra_data = array()) {
 		return array(
 			'customizer' => true
 		);
@@ -538,7 +537,7 @@ class FW_Db_Options_Model_Customizer extends FW_Db_Options_Model {
 		/**
 		 * @since 2.6.0
 		 */
-		do_action('fw_customizer_options_update', array(
+		do_action('slz_customizer_options_update', array(
 			/**
 			 * Option id
 			 * First level multi-key
@@ -563,7 +562,7 @@ class FW_Db_Options_Model_Customizer extends FW_Db_Options_Model {
 	 * @internal
 	 */
 	public function _reset_cache() {
-		FW_Cache::del($this->get_main_cache_key());
+		SLZ_Cache::del($this->get_main_cache_key());
 	}
 
 	protected function _init() {
@@ -575,8 +574,8 @@ class FW_Db_Options_Model_Customizer extends FW_Db_Options_Model {
 		 *
 		 * @return mixed|null
 		 */
-		function fw_get_db_customizer_option( $option_id = null, $default_value = null ) {
-			return FW_Db_Options_Model::_get_instance('customizer')->get(null, $option_id, $default_value);
+		function slz_get_db_customizer_option( $option_id = null, $default_value = null ) {
+			return SLZ_Db_Options_Model::_get_instance('customizer')->get(null, $option_id, $default_value);
 		}
 
 		/**
@@ -585,8 +584,8 @@ class FW_Db_Options_Model_Customizer extends FW_Db_Options_Model {
 		 * @param null $option_id Specific option id (accepts multikey). null - all options
 		 * @param mixed $value
 		 */
-		function fw_set_db_customizer_option( $option_id = null, $value ) {
-			FW_Db_Options_Model::_get_instance('customizer')->set(null, $option_id, $value);
+		function slz_set_db_customizer_option( $option_id = null, $value ) {
+			SLZ_Db_Options_Model::_get_instance('customizer')->set(null, $option_id, $value);
 		}
 
 		// Fixes https://github.com/ThemeFuse/Unyson/issues/2053
@@ -595,7 +594,7 @@ class FW_Db_Options_Model_Customizer extends FW_Db_Options_Model {
 		);
 	}
 }
-new FW_Db_Options_Model_Customizer();
+new SLZ_Db_Options_Model_Customizer();
 
 {
 	/**
@@ -610,19 +609,19 @@ new FW_Db_Options_Model_Customizer();
 	 *
 	 * @return mixed|null
 	 */
-	function fw_get_db_extension_user_data( $user_id, $extension_name, $keys = null ) {
-		if ( ! fw()->extensions->get( $extension_name ) ) {
+	function slz_get_db_extension_user_data( $user_id, $extension_name, $keys = null ) {
+		if ( ! slz()->extensions->get( $extension_name ) ) {
 			trigger_error( 'Invalid extension: ' . $extension_name, E_USER_WARNING );
 
 			return null;
 		}
-		$data = get_user_meta( $user_id, 'fw_data', true );
+		$data = get_user_meta( $user_id, 'slz_data', true );
 
 		if ( is_null( $keys ) ) {
-			return fw_akg( $extension_name, $data );
+			return slz_akg( $extension_name, $data );
 		}
 
-		return fw_akg( $extension_name . '/' . $keys, $data );
+		return slz_akg( $extension_name . '/' . $keys, $data );
 	}
 
 	/**
@@ -635,22 +634,21 @@ new FW_Db_Options_Model_Customizer();
 	 *
 	 * @return bool|int
 	 */
-	function fw_set_db_extension_user_data( $user_id, $extension_name, $value, $keys = null ) {
-		if ( ! fw()->extensions->get( $extension_name ) ) {
+	function slz_set_db_extension_user_data( $user_id, $extension_name, $value, $keys = null ) {
+		if ( ! slz()->extensions->get( $extension_name ) ) {
 			trigger_error( 'Invalid extension: ' . $extension_name, E_USER_WARNING );
 
 			return false;
 		}
-
-		$data = get_user_meta( $user_id, 'fw_data', true );
+		$data                    = get_user_meta( $user_id, 'slz_data', true );
 
 		if ( $keys == null ) {
-			fw_aks( $extension_name, $value, $data );
+			slz_aks( $extension_name, $value, $data );
 		} else {
-			fw_aks( $extension_name . '/' . $keys, $value, $data );
+			slz_aks( $extension_name . '/' . $keys, $value, $data );
 		}
 
-		return fw_update_user_meta( $user_id, 'fw_data', $data );
+		return slz_update_user_meta( $user_id, 'slz_data', $data );
 	}
 }
 
@@ -672,8 +670,8 @@ new FW_Db_Options_Model_Customizer();
 	 *
 	 * @return mixed|null
 	 */
-	function fw_get_db_extension_data( $extension_name, $multi_key = null, $default_value = null, $get_original_value = null ) {
-		if ( ! fw()->extensions->get( $extension_name ) ) {
+	function slz_get_db_extension_data( $extension_name, $multi_key = null, $default_value = null, $get_original_value = null ) {
+		if ( ! slz()->extensions->get( $extension_name ) ) {
 			trigger_error( 'Invalid extension: ' . $extension_name, E_USER_WARNING );
 
 			return null;
@@ -685,7 +683,7 @@ new FW_Db_Options_Model_Customizer();
 			$multi_key = $extension_name;
 		}
 
-		return FW_WP_Option::get( 'fw_extensions', $multi_key, $default_value, $get_original_value );
+		return SLZ_WP_Option::get( 'slz_extensions', $multi_key, $default_value, $get_original_value );
 	}
 
 	/**
@@ -695,8 +693,8 @@ new FW_Db_Options_Model_Customizer();
 	 * @param string|null $multi_key The key of the data you want to set. null - all data
 	 * @param mixed $value
 	 */
-	function fw_set_db_extension_data( $extension_name, $multi_key = null, $value ) {
-		if ( ! fw()->extensions->get( $extension_name ) ) {
+	function slz_set_db_extension_data( $extension_name, $multi_key = null, $value ) {
+		if ( ! slz()->extensions->get( $extension_name ) ) {
 			trigger_error( 'Invalid extension: ' . $extension_name, E_USER_WARNING );
 
 			return;
@@ -708,6 +706,6 @@ new FW_Db_Options_Model_Customizer();
 			$multi_key = $extension_name;
 		}
 
-		FW_WP_Option::set( 'fw_extensions', $multi_key, $value );
+		SLZ_WP_Option::set( 'slz_extensions', $multi_key, $value );
 	}
 }

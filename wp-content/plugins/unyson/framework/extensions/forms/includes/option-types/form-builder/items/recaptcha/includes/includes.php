@@ -1,10 +1,10 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
 $dir = dirname( __FILE__ );
 
-fw_include_file_isolated(  $dir . '/option-type-recaptcha/class-fw-option-type-recaptcha.php' );
+slz_include_file_isolated(  $dir . '/option-type-recaptcha/class-slz-option-type-recaptcha.php' );
 
 foreach ( array(
 	'ReCaptcha'                  => 'ReCaptcha',
@@ -16,6 +16,6 @@ foreach ( array(
 	'ReCaptchaSocketPost'        => 'RequestMethod/SocketPost',
 ) as $classname => $location ) {
 	if ( ! class_exists( $classname ) ) {
-		fw_include_file_isolated( $dir . '/ReCaptcha/' . $location . '.php' );
+		slz_include_file_isolated( $dir . '/ReCaptcha/' . $location . '.php' );
 	}
 }

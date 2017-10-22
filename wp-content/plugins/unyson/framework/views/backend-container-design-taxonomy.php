@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var string $type
  * @var string $html
@@ -8,11 +10,11 @@
 	$classes = array(
 		'option' => array(
 			'form-field',
-			'fw-backend-container',
-			'fw-backend-container-type-'. $type
+			'slz-backend-container',
+			'slz-backend-container-type-'. $type
 		),
 		'content' => array(
-			'fw-backend-container-content',
+			'slz-backend-container-content',
 		),
 	);
 

@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var string $id
  * @var  array $option
@@ -7,9 +9,7 @@
 
 {
 	if (!isset($option['label'])) {
-		$option['label'] = fw()->backend->option_type($option['type'])->_default_label(
-			$id, $option
-		);
+		$option['label'] = slz_id_to_title($id);
 	}
 
 	if (!isset($option['desc'])) {
@@ -48,25 +48,23 @@
 {
 	$classes = array(
 		'option' => array(
-			'fw-backend-option',
-			'fw-backend-option-design-customizer',
-			'fw-backend-option-type-'. $option['type'],
-			'fw-row',
-			'fw-clearfix',
+			'slz-backend-option',
+			'slz-backend-option-design-customizer',
+			'slz-backend-option-type-'. $option['type'],
+			'slz-row'
 		),
 		'label' => array(
-			'fw-backend-option-label',
-			'responsive' => 'fw-col-xs-12',
+			'slz-backend-option-label',
+			'responsive' => 'slz-col-xs-12',
 		),
 		'input' => array(
-			'fw-backend-option-input',
-			'fw-backend-option-input-type-'. $option['type'],
-			'fw-clearfix',
-			'responsive' => 'fw-col-xs-12',
+			'slz-backend-option-input',
+			'slz-backend-option-input-type-'. $option['type'],
+			'responsive' => 'slz-col-xs-12',
 		),
 		'desc' => array(
-			'fw-backend-option-desc',
-			'responsive' => 'fw-col-xs-12',
+			'slz-backend-option-desc',
+			'responsive' => 'slz-col-xs-12',
 		),
 	);
 
@@ -77,17 +75,17 @@
 		}
 
 		if ($option['label'] === false) {
-			$classes['label']['hidden'] = 'fw-hidden';
+			$classes['label']['hidden'] = 'slz-hidden';
 			unset($classes['label']['responsive']);
 
-			$classes['input']['responsive'] = 'fw-col-xs-12';
-			$classes['desc']['responsive']  = 'fw-col-xs-12';
+			$classes['input']['responsive'] = 'slz-col-xs-12';
+			$classes['desc']['responsive']  = 'slz-col-xs-12';
 		}
 	}
 
 	/** Additional classes for input div */
 	{
-		$width_type = fw()->backend->option_type($option['type'])->_get_backend_width_type();
+		$width_type = slz()->backend->option_type($option['type'])->_get_backend_width_type();
 
 		if (!in_array($width_type, array('auto', 'fixed', 'full'))) {
 			$width_type = 'auto';
@@ -102,25 +100,29 @@
 	unset($key, $_classes);
 }
 ?>
-<div class="<?php echo esc_attr($classes['option']) ?>" id="fw-backend-option-<?php echo esc_attr($data['id_prefix'] . $id) ?>">
+<div class="<?php echo esc_attr($classes['option']) ?>" id="slz-backend-option-<?php echo esc_attr($data['id_prefix'] . $id) ?>">
 	<?php if ($option['label'] !== false): ?>
 		<div class="<?php echo esc_attr($classes['label']) ?>">
-			<div class="fw-inner fw-clearfix">
-				<label for="<?php echo esc_attr($data['id_prefix']) . esc_attr($id) ?>"><span class="customize-control-title"><?php echo fw_htmlspecialchars($option['label']) ?></span></label>
-				<?php if ($help): ?><div class="fw-option-help fw-option-help-in-label <?php echo esc_attr($help['class']) ?>" title="<?php echo esc_attr($help['html']) ?>"></div><?php endif; ?>
+			<div class="slz-inner">
+				<label for="<?php echo esc_attr($data['id_prefix']) . esc_attr($id) ?>"><span class="customize-control-title"><?php echo slz_htmlspecialchars($option['label']) ?></span></label>
+				<?php if ($help): ?><div class="slz-option-help slz-option-help-in-label <?php echo esc_attr($help['class']) ?>" title="<?php echo esc_attr($help['html']) ?>"></div><?php endif; ?>
+				<div class="slz-clear"></div>
 			</div>
 		</div>
 	<?php endif; ?>
 	<?php if ($option['desc']): ?>
 		<div class="<?php echo esc_attr($classes['desc']) ?>">
-			<div class="fw-inner"><span class="description customize-control-description"><?php echo ($option['desc'] ? $option['desc'] : '') ?></span></div>
+			<div class="slz-inner"><span class="description customize-control-description"><?php echo ($option['desc'] ? $option['desc'] : '') ?></span></div>
 		</div>
 	<?php endif; ?>
 	<div class="<?php echo esc_attr($classes['input']) ?>">
-		<div class="fw-inner fw-pull-<?php echo is_rtl() ? 'right' : 'left'; ?> fw-clearfix">
-			<div class="fw-inner-option">
-				<?php echo fw()->backend->option_type($option['type'])->render($id, $option, $data) ?>
+		<div class="slz-inner slz-pull-<?php echo is_rtl() ? 'right' : 'left'; ?>">
+			<div class="slz-inner-option">
+				<?php echo slz()->backend->option_type($option['type'])->render($id, $option, $data) ?>
 			</div>
+			<div class="slz-clear"></div>
 		</div>
+		<div class="slz-clear"></div>
 	</div>
+	<div class="slz-clear"></div>
 </div>

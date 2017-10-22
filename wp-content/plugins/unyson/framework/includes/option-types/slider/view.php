@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 /**
@@ -23,6 +23,6 @@
 }
 
 ?>
-<div <?php echo fw_attr_to_html( $wrapper_attr ); ?>>
-	<input class="fw-irs-range-slider" type="text" <?php echo fw_attr_to_html( $input_attr ); ?>/>
+<div <?php echo slz_attr_to_html( $wrapper_attr ); ?>>
+	<input class="slz-irs-range-slider" type="text" <?php echo slz_attr_to_html( $input_attr ); ?>/>
 </div>

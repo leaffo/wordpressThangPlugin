@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
@@ -10,6 +10,6 @@
  *
  * @return mixed
  */
-function fw_ext_contact_forms_get_option( $form_id, $multikey = null ) {
-	return fw_ext( 'contact-forms' )->get_option( $form_id, $multikey );
+function slz_ext_contact_forms_get_option( $form_id, $multikey = null ) {
+	return slz_ext( 'contact-forms' )->get_option( $form_id, $multikey );
 }

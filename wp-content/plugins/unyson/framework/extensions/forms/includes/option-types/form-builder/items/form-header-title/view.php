@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 /**
@@ -10,7 +10,7 @@ if ( empty( $title ) ) {
 	return;
 }
 ?>
-<div class="<?php echo fw_ext_builder_get_item_width('form-builder', '1_1/frontend_class') ?> form-builder-item">
+<div class="<?php echo slz_ext_builder_get_item_width('form-builder', '1_1/frontend_class') ?> form-builder-item">
 	<div class="header title">
 		<h2><?php echo $title; ?></h2>
 		<?php if ( ! empty( $subtitle ) ) : ?>

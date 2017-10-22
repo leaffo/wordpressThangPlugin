@@ -1,17 +1,17 @@
-(function($, fwe){
+(function($, slze){
 
 	//waiting for datetime-picker init
 	$(document).ready(function(){
 		var init = function(){
 			var $dateTimeRange = $(this),
-				$dateTimeFirstWrapper = $dateTimeRange.find('.fw-option-type-datetime-picker:first'),
-				$dateTimeLastWrapper = $dateTimeRange.find('.fw-option-type-datetime-picker:last'),
+				$dateTimeFirstWrapper = $dateTimeRange.find('.slz-option-type-datetime-picker:first'),
+				$dateTimeLastWrapper = $dateTimeRange.find('.slz-option-type-datetime-picker:last'),
 				$dateTimeFirstInput = $dateTimeFirstWrapper.find('input'),
 				$dateTimeLastInput = $dateTimeLastWrapper.find('input'),
 				dateTimeFirstPicker = $dateTimeFirstInput.data('xdsoft_datetimepicker'),
 				dateTimeLastPicker = $dateTimeLastInput.data('xdsoft_datetimepicker');
 
-			fwe.trigger('fw:options:datetime-range:before-init', {el: $dateTimeRange} );
+			slze.trigger('slz:options:datetime-range:before-init', {el: $dateTimeRange} );
 
 			var dateMomentFormat = 'YYYY/MM/DD';
 
@@ -155,18 +155,11 @@
 				setMaxTimeLimit();
 
 				//$dateTimeFirstInput.data('xdsoft_datetimepicker',dateTimeFirstPicker );
-				//fwe.trigger('fw:datetime-range:first:open', { dateTimePicker: dateTimeFirstPicker, dateTimeInput: $dateTimeFirstInput }); ????
+				//slze.trigger('slz:datetime-range:first:open', { dateTimePicker: dateTimeFirstPicker, dateTimeInput: $dateTimeFirstInput }); ????
 			});
 
-			$dateTimeFirstInput.on('change', function () {
-				setMaxTimeLimit();
-				triggerChangeFor(this);
-			});
-
-			$dateTimeLastInput.on('change', function () {
-				setMinTimeLimit();
-				triggerChangeFor(this);
-			});
+			$dateTimeFirstInput.on('change', setMaxTimeLimit );
+			$dateTimeLastInput.on('change', setMinTimeLimit );
 
 			dateTimeLastPicker.on('open.xdsoft', function(e){
 				var firstInputMomentFormat = $dateTimeFirstInput.data('moment-format'),
@@ -262,50 +255,17 @@
 				setMinTimeLimit();
 
 				//$dateTimeLastInput.data('xdsoft_datetimepicker', dateTimeLastPicker);
-				//fwe.trigger('fw:datetime-range:last:open', { dateTimePicker: dateTimeLastPicker, dateTimeInput: $dateTimeLastInput }); ????
+				//slze.trigger('slz:datetime-range:last:open', { dateTimePicker: dateTimeLastPicker, dateTimeInput: $dateTimeLastInput }); ????
 			});
 		}
 
-		fwe.on('fw:options:init', function(data) {
+		slze.on('slz:options:init', function(data) {
 			data.$elements
-				.find('.fw-option-type-datetime-range:not(.fw-option-initialized)').each(init)
-				.addClass('fw-option-initialized');
+				.find('.slz-option-type-datetime-range:not(.slz-option-initialized)').each(init)
+				.addClass('slz-option-initialized');
 		});
-
-		fw.options.register('datetime-range', {
-			startListeningForChanges: $.noop,
-			getValue: function (optionDescriptor) {
-				return {
-					value: getValueForEl(optionDescriptor.el),
-					optionDescriptor: optionDescriptor
-				};
-			}
-		});
-
-		function triggerChangeFor ($container) {
-			$container = $($container).closest(
-				'[data-fw-option-type="datetime-range"]'
-			);
-
-			fw.options.trigger.changeForEl($container, {
-				value: getValueForEl($container)
-			});
-		}
-
-		function getValueForEl (el) {
-			return {
-				from: $(el).find(
-					'[data-fw-option-id="from"] input'
-				).val(),
-
-				to: $(el).find(
-					'[data-fw-option-id="to"] input'
-				).val()
-			}
-		}
-
 
 	});
 
-})(jQuery, fwEvents);
+})(jQuery, slzEvents);
 

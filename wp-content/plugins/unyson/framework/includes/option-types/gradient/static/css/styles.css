@@ -1,21 +1,21 @@
-.fw-backend-option-input-type-gradient .fw-option-help-in-input {
+.slz-backend-option-input-type-gradient .slz-option-help-in-input {
 	top: 4px !important;
 }
 
-.fw-option-type-gradient .primary-color {
+.slz-option-type-gradient .primary-color {
 	display: inline-block;
 }
 
-.fw-option-type-gradient .secondary-color {
+.slz-option-type-gradient .secondary-color {
 	display: inline-block;
 }
 
-.fw-option-type-gradient .delimiter {
+.slz-option-type-gradient .delimiter {
 	display: inline-block;
 	padding: 0 4px;
 }
 
-#side-sortables .fw-option-type-gradient .secondary-color,
-#side-sortables .fw-option-type-gradient .primary-color {
+#side-sortables .slz-option-type-gradient .secondary-color,
+#side-sortables .slz-option-type-gradient .primary-color {
 	width: inherit !important;
 }

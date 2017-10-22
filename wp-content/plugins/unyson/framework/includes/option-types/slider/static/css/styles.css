@@ -1,16 +1,16 @@
-.fw-option-type-slider.short-slider {
+.slz-option-type-slider.short-slider {
 	max-width: 280px;
 }
 
-.fw-option-type-slider .irs {
+.slz-option-type-slider .irs {
 	height: 30px;
 }
 
-.fw-option-type-slider .irs-with-grid {
+.slz-option-type-slider .irs-with-grid {
 	height: 40px;
 }
 
-.fw-option-type-slider .irs-line {
+.slz-option-type-slider .irs-line {
 	height: 5px;
 	top: 5px;
 	background: #ffffff;
@@ -22,19 +22,19 @@
 	-webkit-border-radius: 16px;
 }
 
-.fw-option-type-slider .irs-line-left {
+.slz-option-type-slider .irs-line-left {
 	height: 8px;
 }
 
-.fw-option-type-slider .irs-line-mid {
+.slz-option-type-slider .irs-line-mid {
 	height: 8px;
 }
 
-.fw-option-type-slider .irs-line-right {
+.slz-option-type-slider .irs-line-right {
 	height: 8px;
 }
 
-.fw-option-type-slider .irs-bar {
+.slz-option-type-slider .irs-bar {
 	height: 7px;
 	top: 5px;
 	background: #d9ecf4;
@@ -46,11 +46,11 @@
 	-webkit-border-radius: 16px 0 0 16px;
 }
 
-.fw-option-type-slider .irs-bar-edge {
+.slz-option-type-slider .irs-bar-edge {
 	visibility: hidden;
 }
 
-.fw-option-type-slider .irs-shadow {
+.slz-option-type-slider .irs-shadow {
 	height: 2px;
 	top: 38px;
 	background: #000;
@@ -60,23 +60,23 @@
 	-webkit-border-radius: 5px;
 }
 
-.fw-option-type-slider .lt-ie9 .irs-shadow {
+.slz-option-type-slider .lt-ie9 .irs-shadow {
 	filter: alpha(opacity=30);
 }
 
-.fw-option-type-slider #irs-active-slider, .fw-option-type-slider .irs-slider:hover {
+.slz-option-type-slider #irs-active-slider, .slz-option-type-slider .irs-slider:hover {
 	background: #00709f;
 }
 
-.fw-option-type-slider .irs-min, .fw-option-type-slider .irs-max {
+.slz-option-type-slider .irs-min, .slz-option-type-slider .irs-max {
 	display: none;
 }
 
-.fw-option-type-slider .lt-ie9 .irs-min, .fw-option-type-slider .lt-ie9 .irs-max {
+.slz-option-type-slider .lt-ie9 .irs-min, .slz-option-type-slider .lt-ie9 .irs-max {
 	background: #ccc;
 }
 
-.fw-option-type-slider .irs-from, .fw-option-type-slider .irs-to, .fw-option-type-slider .irs-single {
+.slz-option-type-slider .irs-from, .slz-option-type-slider .irs-to, .slz-option-type-slider .irs-single {
 	top: 0;
 	border: none;
 	border-radius: 10px;
@@ -94,26 +94,26 @@
 	z-index: 2;
 }
 
-.fw-option-type-slider .lt-ie9 .irs-from, .fw-option-type-slider .lt-ie9 .irs-to, .fw-option-type-slider .lt-ie9 .irs-single {
+.slz-option-type-slider .lt-ie9 .irs-from, .slz-option-type-slider .lt-ie9 .irs-to, .slz-option-type-slider .lt-ie9 .irs-single {
 	background: #999;
 }
 
-.fw-option-type-slider .irs-grid {
+.slz-option-type-slider .irs-grid {
 	height: 19px;
 }
 
-.fw-option-type-slider .irs-grid-pol {
+.slz-option-type-slider .irs-grid-pol {
 	opacity: 0.5;
 	background: #428bca;
 }
 
-.fw-option-type-slider .irs-grid-pol.small {
+.slz-option-type-slider .irs-grid-pol.small {
 	background: #999;
 }
 
-.fw-option-type-slider .irs-grid-text {
+.slz-option-type-slider .irs-grid-text {
 	color: #99a4ac;
 }
 
-.fw-option-type-slider .irs-disabled {
+.slz-option-type-slider .irs-disabled {
 }

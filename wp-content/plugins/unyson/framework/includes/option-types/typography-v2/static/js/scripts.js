@@ -1,8 +1,8 @@
-/*global fw_typography_v2_fonts, jQuery, _ */
+/*global slz_typography_v2_fonts, jQuery, _ */
 ( function ($) {
 	$(document).ready(function () {
-		var optionTypeClass = '.fw-option-type-typography-v2',
-			googleFonts = fw_typography_v2_fonts['google'],
+		var optionTypeClass = '.slz-option-type-typography-v2',
+			googleFonts = slz_typography_v2_fonts['google'],
 			/**
 			 * [ {'value': 'Font Family', 'text': 'Font Family'} ]
 			 */
@@ -16,7 +16,7 @@
 					fontsOptions = [];
 					fontsOptionsHTML = {};
 
-					_.each(fw_typography_v2_fonts['standard'], function (item) {
+					_.each(slz_typography_v2_fonts['standard'], function (item) {
 						fontsOptionsHTML[item] = '<option value="' + item + '">' + item + '</option>';
 						fontsOptions.push({
 							value: item,
@@ -81,14 +81,14 @@
 				"47": "?"
 			};
 
-		fwEvents.on('fw:options:init', function (data) {
+		slzEvents.on('slz:options:init', function (data) {
 			data.$elements.find(optionTypeClass +':not(.initialized)').each(function(){
 				var $option = $(this);
 
 				$option.find([
-					'.fw-option-typography-v2-option .fw-option-typography-v2-option-size-input',
-					'.fw-option-typography-v2-option .fw-option-typography-v2-option-line-height-input',
-					'.fw-option-typography-v2-option .fw-option-typography-v2-option-letter-spacing-input'
+					'.slz-option-typography-v2-option .slz-option-typography-v2-option-size-input',
+					'.slz-option-typography-v2-option .slz-option-typography-v2-option-line-height-input',
+					'.slz-option-typography-v2-option .slz-option-typography-v2-option-letter-spacing-input'
 				].join(', ')).keydown(function (e) {
 					// Allow: backspace, delete, tab, escape, enter and .
 					if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -112,20 +112,24 @@
 				});
 
 				{
-					var $fontFamilySelect = $option.find('.fw-option-typography-v2-option-family select[data-type="family"]');
+					var $fontFamilySelect = $option.find('.slz-option-typography-v2-option-family select[data-type="family"]');
 
 					$fontFamilySelect
 						.html(getFontsOptionHTML($fontFamilySelect.attr('data-value')))
 						.selectize({
 							onChange: function (selected) {
-								var results = $.grep(googleFonts['items'], function (font) { return font['family'] === selected; }),
-									$variations = $option.find('.fw-option-typography-v2-option-variation'),
-									$subsets = $option.find('.fw-option-typography-v2-option-subset'),
-									$style = $option.find('.fw-option-typography-v2-option-style'),
-									$weight = $option.find('.fw-option-typography-v2-option-weight');
+								var results = $.grep(googleFonts['items'], function (font) {
+									return font['family'] === selected;
+								});
+								var $variations = this.$dropdown.closest(optionTypeClass).find('.slz-option-typography-v2-option-variation');
+								var $subsets = this.$dropdown.closest(optionTypeClass).find('.slz-option-typography-v2-option-subset');
+
+								var $style = this.$dropdown.closest(optionTypeClass).find('.slz-option-typography-v2-option-style');
+								var $weight = this.$dropdown.closest(optionTypeClass).find('.slz-option-typography-v2-option-weight');
 
 								if (results.length === 1) {
-									var variations = '', subsets = '';
+									var variations = '';
+									var subsets = '';
 									_.each(results[0]['variants'], function (variation) {
 										variations += '<option value="' + variation + '">' + variation + '</option>';
 									});
@@ -148,16 +152,16 @@
 									$subsets.hide();
 								}
 
-								this.$wrapper.find('input[type="text"]').attr('data-fw-pressed-backspace', 'false');
+								this.$wrapper.find('input[type="text"]').attr('data-slz-pressed-backspace', 'false');
 							},
 							onInitialize: function () {
 								var self = this;
-								this.$wrapper.find('input[type="text"]').attr('data-fw-pressed-backspace', 'false');
+								this.$wrapper.find('input[type="text"]').attr('data-slz-pressed-backspace', 'false');
 								this.$wrapper.find('input[type="text"]').on('keydown', function (e) {
 									if (e.keyCode === 40) {
-										$(this).attr('data-fw-pressed-backspace', 'true');
+										$(this).attr('data-slz-pressed-backspace', 'true');
 									} else {
-										if ($(this).attr('data-fw-pressed-backspace') == 'false') {
+										if ($(this).attr('data-slz-pressed-backspace') == 'false') {
 
 											self.clear(true);
 
@@ -176,7 +180,7 @@
 											}
 											$(this).val(c);
 
-											$(this).attr('data-fw-pressed-backspace', 'true');
+											$(this).attr('data-slz-pressed-backspace', 'true');
 										}
 									}
 								});

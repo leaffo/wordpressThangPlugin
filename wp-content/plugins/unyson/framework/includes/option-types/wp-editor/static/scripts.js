@@ -1,61 +1,37 @@
-(function ($, fwe) {
-	var activeVisualMode = {},
-		/**
-		 * Quick Tags
-		 * http://stackoverflow.com/a/21519323/1794248
-		 */
-		qTagsInit = function (id, $option, $wrap, $textarea, editor) {
-			if (!tinyMCEPreInit.qtInit[ id ]) {
-				return;
-			}
-
-			new QTags( tinyMCEPreInit.qtInit[ id ] );
-
-			QTags._buttonsInit();
-
-			if ($wrap.hasClass('html-active')) { // fixes glitch on init
-				$wrap.find('.switch-html:first').trigger('click');
-			}
-
-			var visualMode = (typeof activeVisualMode[ id ] != 'undefined')
-				? activeVisualMode[ id ]
-				: (
-					(typeof $option.attr('data-mode') != 'undefined')
-					? ($option.attr('data-mode') == 'tinymce')
-					: $wrap.hasClass('tmce-active')
-				);
-
-			$wrap.on('click', '.wp-switch-editor', function () {
-				activeVisualMode[ id ] = $(this).hasClass('switch-tmce');
-			});
-
-			$wrap.find('.switch-'+ (visualMode ? 'tmce' : 'html') +':first').trigger('click');
-
-			if (editor && !visualMode) {
-				$textarea.val(wp.editor.removep(editor.getContent()));
-			}
-		};
+(function ($, slze) {
 
 	var init = function () {
 		var $option = $(this),
 			$textarea = $option.find('.wp-editor-area:first'),
+			id = $option.attr('data-slz-editor-id'),
 			$wrap = $textarea.closest('.wp-editor-wrap'),
-			id = $option.attr('data-fw-editor-id');
+			visualMode = (typeof $option.attr('data-mode') != 'undefined')
+				? ($option.attr('data-mode') == 'tinymce')
+				: $wrap.hasClass('tmce-active'),
+			hasAutoP = $option.attr('data-slz-has-autop') === 'true';
 
 		/**
 		 * Dynamically set tinyMCEPreInit.mceInit and tinyMCEPreInit.qtInit
-		 * based on the data-fw-mce-settings and data-fw-qt-settings
+		 * based on the data-slz-mce-settings and data-slz-qt-settings
 		 */
-		tinyMCEPreInit.mceInit[ id ] = JSON.parse($option.attr('data-fw-mce-settings'));
-		tinyMCEPreInit.qtInit[ id ] = JSON.parse($option.attr('data-fw-qt-settings'));
+		var mceSettings = JSON.parse($option.attr('data-slz-mce-settings'));
+		var qtSettings = JSON.parse($option.attr('data-slz-qt-settings'));
 
-		// Set width
-		$option.closest('.fw-backend-option-input-type-wp-editor').addClass(
+		tinyMCEPreInit.mceInit[ id ] = mceSettings;
+		tinyMCEPreInit.qtInit[ id ] = qtSettings;
+
+		/**
+		 * Set width
+		 */
+		$option.closest('.slz-backend-option-input-type-wp-editor').addClass(
 			'width-type-'+ ($option.attr('data-size') == 'large' ? 'full' : 'fixed')
 		);
 
-		// TinyMCE Editor http://stackoverflow.com/a/21519323/1794248
-		if (tinyMCEPreInit.mceInit[ id ]) {
+		/**
+		 * TinyMCE Editor
+		 * http://stackoverflow.com/a/21519323/1794248
+		 */
+		if (mceSettings) {
 			if (typeof tinyMCEPreInit.mceInit[ id ] == 'undefined') {
 				console.error('Can\'t find "'+ id +'" in tinyMCEPreInit.mceInit');
 				return;
@@ -64,24 +40,16 @@
 			tinymce.execCommand('mceRemoveEditor', false, id);
 
 			tinyMCEPreInit.mceInit[ id ].setup = function(ed) {
-				var initialContent = $textarea.val(); // before \r\n were replaced
-
 				ed.once('init', function (e) {
 					var editor = e.target,
 						id = editor.id;
 
-					editor.on('change', function(){
-						editor.save();
-						$textarea.trigger('change'); // fixes https://github.com/ThemeFuse/Unyson/issues/2273
-					});
+					editor.on('change', function(){ editor.save(); });
 
-					// Fixes when wpautop is false
+					/**
+					 * Fixes when wpautop is false
+					 */
 					if (!editor.getParam('wpautop')) {
-						if (initialContent.indexOf('<p>') !== -1) {
-							initialContent = wp.editor.removep(initialContent);
-						}
-						editor.setContent(initialContent.replace(/\r?\n/g, '<br />'));
-
 						editor
 							.on('SaveContent', function(event){
 								// Remove <p> in Visual mode
@@ -97,22 +65,31 @@
 							});
 					}
 
-					qTagsInit(id, $option, $wrap, $textarea, editor);
+					/**
+					 * Quick Tags
+					 * http://stackoverflow.com/a/21519323/1794248
+					 */
+					{
+						new QTags( tinyMCEPreInit.qtInit[ id ] );
 
-					if (!editor.getParam('wpautop') && $wrap.hasClass('tmce-active')) {
-						/**
-						 * fixes: when initialContent is with <p>
-						 *        if no changes are made in editor the <p> are not removed
-						 */
-						{
-							$wrap.find('.switch-html:first').trigger('click');
-							$wrap.find('.switch-tmce:first').trigger('click');
+						QTags._buttonsInit();
+
+						if ($wrap.hasClass('html-active')) {
+							$wrap.find('.switch-html').trigger('click');
+						}
+
+						$wrap.find('.switch-'+ (visualMode ? 'tmce' : 'html')).trigger('click');
+
+						if (!hasAutoP && !visualMode) {
+							$textarea.val(wp.editor.removep(editor.getContent()));
 						}
 					}
-
-					initialContent = null; // free memory
 				});
 			};
+
+			if (!tinyMCEPreInit.mceInit[ id ].wpautop) {
+				$textarea.val( wp.editor.autop($textarea.val()) );
+			}
 
 			try {
 				tinymce.init( tinyMCEPreInit.mceInit[ id ] );
@@ -142,39 +119,26 @@
 				}
 			}
 		} else {
-			qTagsInit(id, $option, $wrap, $textarea);
-		}
+			/**
+			 * Quick Tags
+			 * http://stackoverflow.com/a/21519323/1794248
+			 */
+			{
+				new QTags( tinyMCEPreInit.qtInit[ id ] );
 
-		tinymce.ui.FloatPanel.zIndex = 100100;
-	};
-
-	fwe.on('fw:options:init', function (data) {
-		data.$elements
-			.find('.fw-option-type-wp-editor:not(.fw-option-initialized)')
-			.each(init)
-			.addClass('fw-option-initialized');
-	});
-
-	fw.options.register('wp-editor', {
-		startListeningForChanges: function (optionDescriptor) {
-			$(optionDescriptor.el).find('textarea.wp-editor-area')
-				.on('change', function (e) {
-					fw.options.trigger.changeForEl(e.target);
-				});
-		},
-
-		getValue: function (optionDescriptor) {
-			return {
-				value: $(optionDescriptor.el).find(
-					'textarea.wp-editor-area'
-				).val(),
-
-				optionDescriptor: optionDescriptor
+				QTags._buttonsInit();
 			}
 		}
+	};
+
+	slze.on('slz:options:init', function (data) {
+		data.$elements
+			.find('.slz-option-type-wp-editor:not(.slz-option-initialized)')
+			.each(init)
+			.addClass('slz-option-initialized');
 	});
 
-})(jQuery, fwEvents);
+})(jQuery, slzEvents);
 
 /**
  * Find all wp-editor option types from container
@@ -185,9 +149,9 @@
  * The main callback we have below will take care about populating
  * tinyMCEPreInit.mceInit and tinyMCEPreInit.qtInit for them.
  */
-function fwWpEditorRefreshIds(currentId, container) {
+function slzWpEditorRefreshIds(currentId, container) {
 	_.map(
-		jQuery(container).find('.fw-option-type-wp-editor').toArray(),
+		jQuery(container).find('.slz-option-type-wp-editor').toArray(),
 		refreshEditor
 	);
 
@@ -195,7 +159,7 @@ function fwWpEditorRefreshIds(currentId, container) {
 		var html = jQuery(editor).clone().wrap('<p>').parent().html();
 
 		var regexp = new RegExp(currentId, 'g');
-		html = html.replace(regexp, fw.randomMD5());
+		html = html.replace(regexp, slz.randomMD5());
 
 		jQuery(editor).replaceWith(html);
 	}

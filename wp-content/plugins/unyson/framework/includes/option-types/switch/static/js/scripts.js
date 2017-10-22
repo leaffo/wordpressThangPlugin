@@ -1,10 +1,10 @@
 jQuery(document).ready(function ($) {
-	var optionTypeClass = 'fw-option-type-switch',
-		customEventPrefix = 'fw:option-type:switch:';
+	var optionTypeClass = 'slz-option-type-switch',
+		customEventPrefix = 'slz:option-type:switch:';
 
-	fwEvents.on('fw:options:init', function (data) {
-		data.$elements.find('.'+ optionTypeClass +':not(.fw-option-initialized)')
-			.addClass('fw-option-initialized')
+	slzEvents.on('slz:options:init', function (data) {
+		data.$elements.find('.'+ optionTypeClass +':not(.slz-option-initialized)')
+			.addClass('slz-option-initialized')
 			.find('input[type="checkbox"]')
 			.on('change', function(){
 				var $this = $(this),
@@ -29,10 +29,6 @@ jQuery(document).ready(function ($) {
 				$this.closest('.'+ optionTypeClass).trigger(customEventPrefix +'change', {
 					value: JSON.parse(value)
 				});
-
-				fw.options.trigger.changeForEl(
-					$this.closest('.' + optionTypeClass)
-				);
 			})
 			.on('change update:color', function(){
 				var $this = $(this),
@@ -46,16 +42,4 @@ jQuery(document).ready(function ($) {
 			.adaptiveSwitch()
 			.trigger('update:color');
 	});
-
-	fw.options.register('switch', {
-		startListeningForChanges: $.noop,
-		getValue: function (optionDescriptor) {
-			return {
-				value: JSON.parse(
-					$(optionDescriptor.el).find('[type="checkbox"]').val()
-				),
-				optionDescriptor: optionDescriptor
-			}
-		}
-	})
 });

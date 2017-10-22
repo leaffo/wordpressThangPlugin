@@ -1,12 +1,12 @@
-var fwFormBuilder = {};
+var slzFormBuilder = {};
 
 /**
  * @param {String} [prefix]
  */
-fwFormBuilder.uniqueShortcode = function(prefix) {
+slzFormBuilder.uniqueShortcode = function(prefix) {
 	prefix = prefix || 'shortcode_';
 
-	var shortcode = prefix + fw.randomMD5().substring(0, 7);
+	var shortcode = prefix + slz.randomMD5().substring(0, 7);
 
 	shortcode = shortcode.replace(/-/g, '_');
 

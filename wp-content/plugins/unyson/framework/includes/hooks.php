@@ -1,5 +1,5 @@
-<?php if ( ! defined( 'FW' ) ) {
-	die( 'Forbidden' );
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 /**
  * Filters and Actions
@@ -12,113 +12,150 @@
 	/**
 	 * @internal
 	 */
-	function _action_fw_init_option_types() {
-		FW_Option_Type::register( 'FW_Option_Type_Hidden' );
-		FW_Option_Type::register( 'FW_Option_Type_Text' );
-		FW_Option_Type::register( 'FW_Option_Type_Short_Text' );
-		FW_Option_Type::register( 'FW_Option_Type_Password' );
-		FW_Option_Type::register( 'FW_Option_Type_Textarea' );
-		FW_Option_Type::register( 'FW_Option_Type_Html' );
-		FW_Option_Type::register( 'FW_Option_Type_Html_Fixed' );
-		FW_Option_Type::register( 'FW_Option_Type_Html_Full' );
-		FW_Option_Type::register( 'FW_Option_Type_Checkbox' );
-		FW_Option_Type::register( 'FW_Option_Type_Checkboxes' );
-		FW_Option_Type::register( 'FW_Option_Type_Radio' );
-		FW_Option_Type::register( 'FW_Option_Type_Select' );
-		FW_Option_Type::register( 'FW_Option_Type_Short_Select' );
-		FW_Option_Type::register( 'FW_Option_Type_Select_Multiple' );
-		FW_Option_Type::register( 'FW_Option_Type_Unique' );
-		FW_Option_Type::register( 'FW_Option_Type_GMap_Key' );
-		FW_Option_Type::register( 'FW_Option_Type_Addable_Box' );
-		FW_Option_Type::register( 'FW_Option_Type_Addable_Option' );
-		FW_Option_Type::register( 'FW_Option_Type_Addable_Popup' );
-		FW_Option_Type::register( 'FW_Option_Type_Addable_Popup_Full' );
-		FW_Option_Type::register( 'FW_Option_Type_Background_Image' );
-		FW_Option_Type::register( 'FW_Option_Type_Color_Picker' );
-		FW_Option_Type::register( 'FW_Option_Type_Date_Picker' );
-		FW_Option_Type::register( 'FW_Option_Type_Datetime_Picker' );
-		FW_Option_Type::register( 'FW_Option_Type_Datetime_Range' );
-		FW_Option_Type::register( 'FW_Option_Type_Gradient' );
-		FW_Option_Type::register( 'FW_Option_Type_Icon' );
-		FW_Option_Type::register( 'FW_Option_Type_Image_Picker' );
-		FW_Option_Type::register( 'FW_Option_Type_Map' );
-		FW_Option_Type::register( 'FW_Option_Type_Multi' );
-		FW_Option_Type::register( 'FW_Option_Type_Multi_Picker' );
-		FW_Option_Type::register( 'FW_Option_Type_Multi_Upload' );
-		FW_Option_Type::register( 'FW_Option_Type_Popup' );
-		FW_Option_Type::register( 'FW_Option_Type_Radio_Text' );
-		FW_Option_Type::register( 'FW_Option_Type_Range_Slider' );
-		FW_Option_Type::register( 'FW_Option_Type_Rgba_Color_Picker' );
-		FW_Option_Type::register( 'FW_Option_Type_Slider' );
-		FW_Option_Type::register( 'FW_Option_Type_Slider_Short' );
-		FW_Option_Type::register( 'FW_Option_Type_Switch' );
-		FW_Option_Type::register( 'FW_Option_Type_Typography' );
-		FW_Option_Type::register( 'FW_Option_Type_Typography_v2' );
-		FW_Option_Type::register( 'FW_Option_Type_Upload' );
-		FW_Option_Type::register( 'FW_Option_Type_Wp_Editor' );
-
-		{
-			$favorites = new FW_Icon_V2_Favorites_Manager();
-			$favorites->attach_ajax_actions();
-
-			FW_Option_Type::register( 'FW_Option_Type_Icon_v2' );
-		}
-
-		{
-			FW_Option_Type::register( 'FW_Option_Type_Multi_Select' );
-		}
-
-		{
-			FW_Option_Type::register( 'FW_Option_Type_Oembed' );
-		}
+	function _action_slz_init_option_types() {
+		require_once dirname(__FILE__) .'/option-types/init.php';
 	}
-
-	add_action( 'fw_option_types_init', '_action_fw_init_option_types' );
+	add_action('slz_option_types_init', '_action_slz_init_option_types');
 
 	/**
 	 * Some option-types have add_action('wp_ajax_...')
 	 * so init all option-types if current request is ajax
 	 * @since 2.6.1
 	 */
-	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-		function _action_fw_init_option_types_on_ajax() {
-			foreach (fw()->backend->get_option_types() as $type) {
-				fw()->backend->option_type($type);
-			}
+	if (defined('DOING_AJAX') && DOING_AJAX) {
+		function _action_slz_init_option_types_on_ajax() {
+			slz()->backend->option_type('text');
 		}
-
-		add_action( 'fw_init', '_action_fw_init_option_types_on_ajax' );
+		add_action('slz_init', '_action_slz_init_option_types_on_ajax');
 	}
+
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-params.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-com.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-util.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-block.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-block-module.php';
+	require_once dirname(__FILE__) . '/extra-functions/model/class-slz-custom-posttype-model.php';
+	require_once dirname(__FILE__) . '/extra-functions/model/class-slz-pagination.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-ajax.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-post-feature-video.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-social-sharing.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-template-module.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-hash-tag-compiler.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-review.php';
+	require_once dirname(__FILE__) . '/extra-functions/extra-functions.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-minify-system.php';
+ 	require_once dirname(__FILE__) . '/extra-functions/class-slz-browser-cache.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-page-cache.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-vc-params.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-icon.php';
+	require_once dirname(__FILE__) . '/extra-functions/class-slz-live-setting.php';
+	
+	
+	/**
+	 * @internal
+	 */
+		function _action_slz_slz_init_ajax() {
+			$new_ajax = new SLZ_Ajax_Loader();
+			$new_ajax->init();
+		}
+		add_action('init', '_action_slz_slz_init_ajax', 0);
+		
+		function _action_slz_feature_video_init() {
+			$video = new SLZ_Post_Feature_Video();
+			$video->init();
+		}
+		add_action( 'init', '_action_slz_feature_video_init' );
+
+		function _action_slz_review_ratings() {
+			$ratings = new SLZ_Review();
+			$ratings->init();
+		}
+		add_action( 'init', '_action_slz_review_ratings' );
+
+		{
+			/**
+			 *  Change image, logo and title for login screen
+			 *  
+			 **/
+			if ( ! function_exists( '_action_slz_login_style' ) ) {
+				function _action_slz_login_style() {
+					$logo = slz_get_db_settings_option('logo', '');
+					if( isset( $logo['url'] ) ) {
+						$custom_css = '.login h1 a { 
+											background : url('.esc_url($logo['url']).') center no-repeat; 
+											width: 100%;
+										}';
+						wp_enqueue_style( 'slz-login-style', slz_get_framework_directory_uri( '/static/css/slz-backend.css' ) );
+						wp_add_inline_style( 'slz-login-style', $custom_css );
+					}
+				}
+			}
+			add_action( 'login_enqueue_scripts', '_action_slz_login_style' );
+	
+			// Change title for login screen
+			if ( ! function_exists( '_filter_slz_login_headertitle' ) ) {
+				function _filter_slz_login_headertitle() {
+					return esc_attr(get_bloginfo('description'));
+				}
+			}
+			add_filter('login_headertitle', '_filter_slz_login_headertitle');
+			
+			// Change url for login screen
+			if ( ! function_exists( '_filter_slz_login_headerurl' ) ) {
+				function _filter_slz_login_headerurl() {
+					return esc_url(home_url('/'));
+				}
+			}
+			add_filter( 'login_headerurl', '_filter_slz_login_headerurl' );
+		}
 
 	/**
 	 * Prevent Fatal Error if someone is registering option-types in old way (right away)
-	 * not in 'fw_option_types_init' action
-	 *
+	 * not in 'slz_option_types_init' action
 	 * @param string $class
 	 */
-	function _fw_autoload_option_types( $class ) {
-		if ( 'FW_Option_Type' === $class ) {
-			if ( is_admin() && defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				FW_Flash_Messages::add(
+	function _slz_autoload_option_types($class) {
+		if ('SLZ_Option_Type' === $class) {
+			require_once dirname(__FILE__) .'/../core/extends/class-slz-option-type.php';
+
+			if (is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
+				SLZ_Flash_Messages::add(
 					'option-type-register-wrong',
-					__( "Please register option-types on 'fw_option_types_init' action", 'fw' ),
+					__("Please register option-types on 'slz_option_types_init' action", 'slz'),
 					'warning'
 				);
 			}
-		} elseif ( 'FW_Container_Type' === $class ) {
-			if ( is_admin() && defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				FW_Flash_Messages::add(
+		} elseif ('SLZ_Container_Type' === $class) {
+			require_once dirname(__FILE__) .'/../core/extends/class-slz-container-type.php';
+
+			if (is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
+				SLZ_Flash_Messages::add(
 					'container-type-register-wrong',
-					__( "Please register container-types on 'fw_container_types_init' action", 'fw' ),
+					__("Please register container-types on 'slz_container_types_init' action", 'slz'),
 					'warning'
 				);
 			}
 		}
 	}
-
-	spl_autoload_register( '_fw_autoload_option_types' );
+	spl_autoload_register('_slz_autoload_option_types');
 }
+/**
+ * Add item for user profile
+ * To get contact items of user :
+ * get_user_meta ( int $user_id, string $key = '', bool $single = false )
+ */
+{
+	function _filter_slz_add_item_user_profile($items) {
 
+		// Add new item
+		$links = SLZ_Params::params_social();
+		foreach($links as $k=>$v){
+			$items[$k] = $v;
+		}
+		return $items;
+	}
+	add_filter('user_contactmethods', '_filter_slz_add_item_user_profile');
+}
 /**
  * Container types
  */
@@ -126,14 +163,10 @@
 	/**
 	 * @internal
 	 */
-	function _action_fw_init_container_types() {
-		FW_Container_Type::register( 'FW_Container_Type_Group' );
-		FW_Container_Type::register( 'FW_Container_Type_Box' );
-		FW_Container_Type::register( 'FW_Container_Type_Popup' );
-		FW_Container_Type::register( 'FW_Container_Type_Tab' );
+	function _action_slz_init_container_types() {
+		require_once dirname(__FILE__) .'/container-types/init.php';
 	}
-
-	add_action( 'fw_container_types_init', '_action_fw_init_container_types' );
+	add_action('slz_container_types_init', '_action_slz_init_container_types');
 }
 
 /**
@@ -143,237 +176,123 @@
  * https://github.com/ThemeFuse/Unyson/issues/138
  * @internal
  */
-function _fw_filter_github_api_url( $url ) {
+function _slz_filter_github_api_url($url) {
 	return 'http://github-api-cache.unyson.io';
 }
-
-add_filter( 'fw_github_api_url', '_fw_filter_github_api_url' );
+add_filter('slz_github_api_url', '_slz_filter_github_api_url');
 
 /**
  * Javascript events related to tinymce init
  * @since 2.6.0
  */
 {
-	add_action( 'wp_tiny_mce_init', '_fw_action_tiny_mce_init' );
-	function _fw_action_tiny_mce_init( $mce_settings ) {
-		?>
-		<script type="text/javascript">
-			if (typeof fwEvents != 'undefined') {
-				fwEvents.trigger('fw:tinymce:init:before');
-			}
-		</script>
-		<?php
+	add_action('wp_tiny_mce_init', '_slz_action_tiny_mce_init');
+	function _slz_action_tiny_mce_init($mce_settings) {
+?>
+<script type="text/javascript">
+	if (typeof slzEvents != 'undefined') { slzEvents.trigger('slz:tinymce:init:before'); }
+</script>
+<?php
 	}
 
-	add_action( 'after_wp_tiny_mce', '_fw_action_after_wp_tiny_mce' );
-	function _fw_action_after_wp_tiny_mce( $mce_settings ) {
-		?>
-		<script type="text/javascript">
-			if (typeof fwEvents != 'undefined') {
-				fwEvents.trigger('fw:tinymce:init:after');
-			}
-		</script>
-		<?php
+	add_action('after_wp_tiny_mce', '_slz_action_after_wp_tiny_mce');
+	function _slz_action_after_wp_tiny_mce($mce_settings) {
+?>
+<script type="text/javascript">
+	if (typeof slzEvents != 'undefined') { slzEvents.trigger('slz:tinymce:init:after'); }
+</script>
+<?php
 	}
 }
 
-// FW_Form hooks
-{
-	if ( is_admin() ) {
-		/**
-		 * Display form errors in admin side
-		 * @internal
-		 */
-		function _action_fw_form_show_errors_in_admin() {
-			$form = FW_Form::get_submitted();
 
-			if ( ! $form || $form->is_valid() ) {
-				return;
-			}
-
-			foreach ( $form->get_errors() as $input_name => $error_message ) {
-				FW_Flash_Messages::add( 'fw-form-admin-' . $input_name, $error_message, 'error' );
+/*
+ * Tracking code
+ */
+add_action('wp_head','_action_show_tracking_array');
+ if ( !function_exists ( '_action_show_tracking_array' ) ) {
+	function _action_show_tracking_array() {
+		$tracking_array = slz_get_db_settings_option ( 'tracking-popup', '' );
+		
+		$tracking = array ();
+		
+		if (! empty ( $tracking_array )) {
+			
+			foreach ( $tracking_array as $tracking_arr ) {
+				
+				$tracking [] = $tracking_arr ['tracking_script'];
 			}
 		}
-
-		add_action( 'wp_loaded', '_action_fw_form_show_errors_in_admin', 111 );
-	} else {
-		/**
-		 * to disable this use remove_action('wp_print_styles', '_action_fw_form_frontend_default_styles');
-		 * @internal
-		 */
-		function _action_fw_form_frontend_default_styles() {
-			$form = FW_Form::get_submitted();
-
-			if ( ! $form || $form->is_valid() ) {
-				return;
-			}
-
-			echo '<style type="text/css">.fw-form-errors { color: #bf0000; }</style>';
+		if ($tracking) {
+			
+			echo implode ( '', $tracking );
 		}
-
-		add_action( 'wp_print_styles', '_action_fw_form_frontend_default_styles' );
+		
+		echo '';
 	}
 }
 
-// FW_Flash_Messages hooks
-{
-	if ( is_admin() ) {
-		/**
-		 * Start the session before the content is sent to prevent the "headers already sent" warning
-		 * @internal
-		 */
-		function _action_fw_flash_message_backend_prepare() {
-			if ( ! session_id() ) {
-				session_start();
-			}
+if ( ! function_exists( '_action_slz_javascript_detection' ) ) :
+
+	function _action_slz_javascript_detection() {
+		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+	}
+
+	add_action( 'wp_head', '_action_slz_javascript_detection', 0 );
+
+endif;
+
+function _action_add_post_format_scripts( $hook ) {
+ 
+	global $post;
+ 
+	if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+		if ( 'post' === $post->post_type ) {
+			wp_enqueue_script(  'slz-post-format-custom', slz_get_framework_directory_uri( '/static/js/slz-post-format.js' ) );
 		}
+	}
+}
+add_action( 'admin_enqueue_scripts', '_action_add_post_format_scripts', 10, 1 );
 
-		add_action( 'current_screen', '_action_fw_flash_message_backend_prepare', 9999 );
-
-		/**
-		 * Display flash messages in backend as notices
-		 */
-		add_action( 'admin_notices', array( 'FW_Flash_Messages', '_print_backend' ) );
-	} else {
-		/**
-		 * Start the session before the content is sent to prevent the "headers already sent" warning
-		 * @internal
-		 */
-		function _action_fw_flash_message_frontend_prepare() {
-			if (
-				/**
-				 * In ajax it's not possible to call flash message after headers were sent,
-				 * so there will be no "headers already sent" warning.
-				 * Also in the Backups extension, are made many internal ajax request,
-				 * each creating a new independent request that don't remember/use session cookie from previous request,
-				 * thus on server side are created many (not used) new sessions.
-				 */
-				! ( defined( 'DOING_AJAX' ) && DOING_AJAX )
-				&&
-				! session_id()
-			) {
-				session_start();
-			}
-		}
-
-		add_action( 'send_headers', '_action_fw_flash_message_frontend_prepare', 9999 );
-
-		/**
-		 * Print flash messages in frontend if this has not been done from theme
-		 */
-		function _action_fw_flash_message_frontend_print() {
-			if ( FW_Flash_Messages::_frontend_printed() ) {
-				return;
-			}
-
-			if ( ! FW_Flash_Messages::_print_frontend() ) {
-				return;
-			}
-
-			?>
-			<script type="text/javascript">
-				(function () {
-					if (typeof jQuery === "undefined") {
-						return;
+if( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+	add_action( 'admin_enqueue_scripts', '_action_slz_deregister_woocommerce_setting', 99 );
+	function _action_slz_deregister_woocommerce_setting(){
+		if( is_admin() ){
+			$screen = get_current_screen();
+			$arr_posttype = '';
+			$arr_posttype = slz()->theme->get_config('woo_posttype_deregister');
+			if( $screen->base == slz()->theme->manifest->get('prefix') . '_page_slz-settings'
+                || ($screen->base == 'post' && $screen->post_type == 'page') ) {
+				wp_deregister_script( 'woocommerce_settings' );
+			}else{
+				if( !empty( $arr_posttype ) ) {
+						
+					foreach ( $arr_posttype as $item ) {
+						if( $screen->post_type == $item ) {
+							wp_deregister_script( 'woocommerce_settings' );
+						}
 					}
-
-					jQuery(function ($) {
-						var $container;
-
-						// Try to find the content element
-						{
-							var selector, selectors = [
-								'#main #content',
-								'#content #main',
-								'#main',
-								'#content',
-								'#content-container',
-								'#container',
-								'.container:first'
-							];
-
-							while (selector = selectors.shift()) {
-								$container = $(selector);
-
-								if ($container.length) {
-									break;
-								}
-							}
-						}
-
-						if (!$container.length) {
-							// Try to find main page H1 container
-							$container = $('h1:first').parent();
-						}
-
-						if (!$container.length) {
-							// If nothing found, just add to body
-							$container = $(document.body);
-						}
-
-						$(".fw-flash-messages").prependTo($container);
-					});
-				})();
-			</script>
-			<style type="text/css">
-				.fw-flash-messages .fw-flash-type-error {
-					color: #f00;
-				}
-
-				.fw-flash-messages .fw-flash-type-warning {
-					color: #f70;
-				}
-
-				.fw-flash-messages .fw-flash-type-success {
-					color: #070;
-				}
-
-				.fw-flash-messages .fw-flash-type-info {
-					color: #07f;
-				}
-			</style>
-			<?php
-		}
-
-		add_action( 'wp_footer', '_action_fw_flash_message_frontend_print', 9999 );
-	}
-}
-
-// FW_Resize hooks
-{
-	if ( ! function_exists( 'fw_delete_resized_thumbnails' ) ) {
-		function fw_delete_resized_thumbnails( $id ) {
-			$images = wp_get_attachment_metadata( $id );
-			if ( ! empty( $images['resizes'] ) ) {
-				$uploads_dir = wp_upload_dir();
-				foreach ( $images['resizes'] as $image ) {
-					$file = $uploads_dir['basedir'] . '/' . $image;
-					@unlink( $file );
 				}
 			}
 		}
-
-		add_action( 'delete_attachment', 'fw_delete_resized_thumbnails' );
 	}
 }
-
 //WPML Hooks
+//Fixed https://github.com/ThemeFuse/Unyson/issues/326
 {
 	if ( is_admin() ) {
-		add_action( 'icl_save_term_translation', '_fw_action_wpml_duplicate_term_options', 20, 2 );
-		function _fw_action_wpml_duplicate_term_options( $original, $translated ) {
-			$original_options = fw_get_db_term_option(
-				fw_akg( 'term_id', $original ),
-				fw_akg( 'taxonomy', $original )
+		add_action( 'icl_save_term_translation', '_slz_action_wpml_duplicate_term_options', 20, 2 );
+		function _slz_action_wpml_duplicate_term_options( $original, $translated ) {
+			$original_options = slz_get_db_term_option(
+					slz_akg( 'term_id', $original ),
+					slz_akg( 'taxonomy', $original )
 			);
-
 			if ( $original_options !== null ) {
-				fw_set_db_term_option(
-					fw_akg( 'term_id', $translated ),
-					fw_akg( 'taxonomy', $original ),
-					null,
-					$original_options
+				slz_set_db_term_option(
+						slz_akg( 'term_id', $translated ),
+						slz_akg( 'taxonomy', $original ),
+						null,
+						$original_options
 				);
 			}
 		}

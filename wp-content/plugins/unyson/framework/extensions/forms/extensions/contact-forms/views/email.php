@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var array $form_values
  * @var array $shortcode_to_item
@@ -25,7 +27,7 @@
 
 		switch ($item['type']) {
 			case 'checkboxes':
-				$title = ( isset( $item_options['label'] ) ) ? fw_htmlspecialchars($item_options['label']) : '';
+				$title = ( isset( $item_options['label'] ) ) ? slz_htmlspecialchars($item_options['label']) : '';
 
 				if ( ! is_array( $form_value ) || empty( $form_value ) ) {
 					break;
@@ -34,18 +36,18 @@
 				$value = implode(', ', $form_value);
 				break;
 			case 'textarea':
-				$title = fw_htmlspecialchars($item_options['label']);
-				$value = '<pre>'. fw_htmlspecialchars($form_value) .'</pre>';
+				$title = slz_htmlspecialchars($item_options['label']);
+				$value = '<pre>'. slz_htmlspecialchars($form_value) .'</pre>';
 				break;
 			case 'recaptcha':
 				continue 2;
 			default:
-				$title = fw_htmlspecialchars($item_options['label']);
+				$title = slz_htmlspecialchars($item_options['label']);
 
 				if (is_array($form_value)) {
-					$value = '<pre>'. fw_htmlspecialchars( print_r($form_value, true) ) .'</pre>';
+					$value = '<pre>'. slz_htmlspecialchars( print_r($form_value, true) ) .'</pre>';
 				} else {
-					$value = fw_htmlspecialchars( $form_value );
+					$value = slz_htmlspecialchars( $form_value );
 				}
 		}
 		?>

@@ -1,45 +1,45 @@
-fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
+slzEvents.on('slz-builder:'+ 'form-builder' +':register-items', function(builder){
 	var currentItemType = 'website';
-	var localized = fw.unysonShortcodesData()['contact_form_items'][currentItemType];
+	var localized = window['slz_form_builder_item_type_'+ currentItemType];
 
 	var ItemView = builder.classes.ItemView.extend({
 		template: _.template(
-			'<div class="fw-form-builder-item-style-default fw-form-builder-item-type-'+ currentItemType +'">'+
-				'<div class="fw-form-item-controls fw-row">'+
-					'<div class="fw-form-item-controls-left fw-col-xs-7">'+
-						'<div class="fw-form-item-width"></div>'+
+			'<div class="slz-form-builder-item-style-default slz-form-builder-item-type-'+ currentItemType +'">'+
+				'<div class="slz-form-item-controls slz-row">'+
+					'<div class="slz-form-item-controls-left slz-col-xs-7">'+
+						'<div class="slz-form-item-width"></div>'+
 					'</div>'+
-					'<div class="fw-form-item-controls-right fw-col-xs-5 fw-text-right">'+
-						'<div class="fw-form-item-control-buttons">'+
-							'<a class="fw-form-item-control-required dashicons<% if (required) { %> required<% } %>" data-hover-tip="<%- toggle_required %>" href="#" onclick="return false;" >*</a>'+
-							'<a class="fw-form-item-control-edit dashicons dashicons-admin-generic" data-hover-tip="<%- edit %>" href="#" onclick="return false;" ></a>'+
-							'<a class="fw-form-item-control-remove dashicons dashicons-no" data-hover-tip="<%- remove %>" href="#" onclick="return false;" ></a>'+
+					'<div class="slz-form-item-controls-right slz-col-xs-5 slz-text-right">'+
+						'<div class="slz-form-item-control-buttons">'+
+							'<a class="slz-form-item-control-required dashicons<% if (required) { %> required<% } %>" data-hover-tip="<%- toggle_required %>" href="#" onclick="return false;" >*</a>'+
+							'<a class="slz-form-item-control-edit dashicons dashicons-admin-generic" data-hover-tip="<%- edit %>" href="#" onclick="return false;" ></a>'+
+							'<a class="slz-form-item-control-remove dashicons dashicons-no" data-hover-tip="<%- remove %>" href="#" onclick="return false;" ></a>'+
 						'</div>'+
 					'</div>'+
 				'</div>'+
-				'<div class="fw-form-item-preview">'+
-					'<div class="fw-form-item-preview-label">'+
-						'<div class="fw-form-item-preview-label-wrapper"><label data-hover-tip="<%- edit_label %>"><%- label %></label> <span <% if (required) { %>class="required"<% } %>>*</span></div>'+
-						'<div class="fw-form-item-preview-label-edit"><!-- --></div>'+
+				'<div class="slz-form-item-preview">'+
+					'<div class="slz-form-item-preview-label">'+
+						'<div class="slz-form-item-preview-label-wrapper"><label data-hover-tip="<%- edit_label %>"><%- label %></label> <span <% if (required) { %>class="required"<% } %>>*</span></div>'+
+						'<div class="slz-form-item-preview-label-edit"><!-- --></div>'+
 					'</div>'+
-					'<div class="fw-form-item-preview-input"><input type="text" placeholder="<%- placeholder %>" value="<%- default_value %>"></div>'+
+					'<div class="slz-form-item-preview-input"><input type="text" placeholder="<%- placeholder %>" value="<%- default_value %>"></div>'+
 				'</div>'+
 			'</div>'
 		),
 		events: {
 			'click': 'onWrapperClick',
-			'click .fw-form-item-control-edit': 'openEdit',
-			'click .fw-form-item-control-remove': 'removeItem',
-			'click .fw-form-item-control-required': 'toggleRequired',
-			'click .fw-form-item-preview .fw-form-item-preview-label label': 'openLabelEditor',
-			'change .fw-form-item-preview-input input': 'updateDefaultValueFromPreviewInput'
+			'click .slz-form-item-control-edit': 'openEdit',
+			'click .slz-form-item-control-remove': 'removeItem',
+			'click .slz-form-item-control-required': 'toggleRequired',
+			'click .slz-form-item-preview .slz-form-item-preview-label label': 'openLabelEditor',
+			'change .slz-form-item-preview-input input': 'updateDefaultValueFromPreviewInput'
 		},
 		initialize: function() {
 			this.defaultInitialize();
 
 			// prepare edit options modal
 			{
-				this.modal = new fw.OptionsModal({
+				this.modal = new slz.OptionsModal({
 					title: localized.l10n.item_title,
 					options: this.model.modalOptions,
 					values: this.model.get('options'),
@@ -58,22 +58,22 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 				}, this);
 			}
 
-			this.widthChangerView = new FwBuilderComponents.ItemView.WidthChanger({
+			this.widthChangerView = new SlzBuilderComponents.ItemView.WidthChanger({
 				model: this.model,
 				view: this
 			});
 
-			this.labelInlineEditor = new FwBuilderComponents.ItemView.InlineTextEditor({
+			this.labelInlineEditor = new SlzBuilderComponents.ItemView.InlineTextEditor({
 				model: this.model,
 				editAttribute: 'options/label'
 			});
 		},
 		render: function () {
 			this.defaultRender({
-				label: fw.opg('label', this.model.get('options')) || localized.l10n.item_title,
-				required: fw.opg('required', this.model.get('options')),
-				placeholder: fw.opg('placeholder', this.model.get('options')),
-				default_value: fw.opg('default_value', this.model.get('options')),
+				label: slz.opg('label', this.model.get('options')) || localized.l10n.item_title,
+				required: slz.opg('required', this.model.get('options')),
+				placeholder: slz.opg('placeholder', this.model.get('options')),
+				default_value: slz.opg('default_value', this.model.get('options')),
 				toggle_required: localized.l10n.toggle_required,
 				edit: localized.l10n.edit,
 				remove: localized.l10n.delete,
@@ -81,14 +81,14 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 			});
 
 			if (this.widthChangerView) {
-				this.$('.fw-form-item-width').append(
+				this.$('.slz-form-item-width').append(
 					this.widthChangerView.$el
 				);
 				this.widthChangerView.delegateEvents();
 			}
 
 			if (this.labelInlineEditor) {
-				this.$('.fw-form-item-preview-label-edit').append(
+				this.$('.slz-form-item-preview-label-edit').append(
 					this.labelInlineEditor.$el
 				);
 				this.labelInlineEditor.delegateEvents();
@@ -113,12 +113,12 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 			this.model.set('options', values);
 		},
 		openLabelEditor: function() {
-			this.$('.fw-form-item-preview-label-wrapper').hide();
+			this.$('.slz-form-item-preview-label-wrapper').hide();
 
 			this.labelInlineEditor.show();
 
 			this.listenToOnce(this.labelInlineEditor, 'hide', function() {
-				this.$('.fw-form-item-preview-label-wrapper').show();
+				this.$('.slz-form-item-preview-label-wrapper').show();
 			});
 		},
 		updateDefaultValueFromPreviewInput: function() {
@@ -127,7 +127,7 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 				this.model.get('options')
 			);
 
-			values.default_value = this.$('.fw-form-item-preview-input input').val();
+			values.default_value = this.$('.slz-form-item-preview-input input').val();
 
 			this.model.set('options', values);
 		},
@@ -137,7 +137,7 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 				return;
 			}
 
-			if (!fw.elementEventHasListenerInContainer(jQuery(e.srcElement), 'click', this.$el)) {
+			if (!slz.elementEventHasListenerInContainer(jQuery(e.srcElement), 'click', this.$el)) {
 				this.openEdit();
 			}
 		}
@@ -147,7 +147,7 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 		defaults: function() {
 			var defaults = _.clone(localized.defaults);
 
-			defaults.shortcode = fwFormBuilder.uniqueShortcode(defaults.type +'_');
+			defaults.shortcode = slzFormBuilder.uniqueShortcode(defaults.type +'_');
 
 			return defaults;
 		},
@@ -160,7 +160,7 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 			this.modalOptions = localized.options;
 
 			this.view = new ItemView({
-				id: 'fw-builder-item-'+ this.cid,
+				id: 'slz-builder-item-'+ this.cid,
 				model: this
 			});
 		}

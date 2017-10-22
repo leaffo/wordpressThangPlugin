@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 /**
@@ -25,17 +25,17 @@ if (empty( $option['choices'] )) {
 }
 
 ?>
-<div <?php echo fw_attr_to_html($wrapper_attr) ?>>
+<div <?php echo slz_attr_to_html($wrapper_attr) ?>>
 	<div class="type">
 		<?php
-		echo fw()->backend->option_type( 'radio' )->render(
+		echo slz()->backend->option_type( 'radio' )->render(
 			'type',
 			array(
 				'type'    => 'radio',
 				'value'   => 'predefined',
 				'choices' => array(
-					'predefined' => __( 'Predefined images', 'fw' ),
-					'custom'     => __( 'Custom image', 'fw' )
+					'predefined' => __( 'Predefined images', 'slz' ),
+					'custom'     => __( 'Custom image', 'slz' )
 				),
 			),
 			array(
@@ -64,7 +64,7 @@ if (empty( $option['choices'] )) {
 	?>
 	<div class="predefined" <?php if ($data['value']['type'] === 'custom'): ?>style="display: none;"<?php endif; ?>>
 		<?php
-		echo fw()->backend->option_type( 'image-picker' )->render(
+		echo slz()->backend->option_type( 'image-picker' )->render(
 			'predefined',
 			array(
 				'type'    => 'image-picker',
@@ -82,7 +82,7 @@ if (empty( $option['choices'] )) {
 
 	<div class="custom" <?php if ($data['value']['type'] !== 'custom'): ?>style="display: none;"<?php endif; ?>>
 		<?php
-		echo fw()->backend->option_type( 'upload' )->render(
+		echo slz()->backend->option_type( 'upload' )->render(
 			'custom',
 			array(
 				'type'  => 'upload'

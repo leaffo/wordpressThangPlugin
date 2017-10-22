@@ -1,4 +1,4 @@
-(function ($, _, fwEvents) {
+(function ($, _, slzEvents) {
     
 	var is_url = function(str) {
 	    var pattern = new RegExp(/^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/, 'i');
@@ -8,7 +8,7 @@
 	var oembed = function () {
 		var $wrapper = $(this);
 		var $input = $wrapper.find('input[type=text]');
-		var $iframeWrapper = $wrapper.find('.fw-oembed-preview');
+		var $iframeWrapper = $wrapper.find('.slz-oembed-preview');
 
 		$input.on('input',
 		    _.debounce(function () {
@@ -32,9 +32,9 @@
 		);
 	};
 
-	fwEvents.on('fw:options:init', function (data) {
+	slzEvents.on('slz:options:init', function (data) {
 		data.$elements
-			.find('.fw-option-type-oembed:not(.fw-option-initialized)').each(oembed)
-			.addClass('fw-option-initialized');
+			.find('.slz-option-type-oembed:not(.slz-option-initialized)').each(oembed)
+			.addClass('slz-option-initialized');
 	});
-})(jQuery, _, fwEvents);
+})(jQuery, _, slzEvents);

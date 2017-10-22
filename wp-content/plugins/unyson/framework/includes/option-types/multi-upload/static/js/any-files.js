@@ -1,4 +1,4 @@
-(function ($, fwe) {
+(function ($, slze) {
 
 	var init = function () {
 		var $this = $(this),
@@ -59,7 +59,7 @@
 			}
 
 			frame.on('ready', function () {
-				frame.modal.$el.addClass('fw-option-type-multi-upload');
+				frame.modal.$el.addClass('slz-option-type-multi-upload');
 			});
 
 			// opens the modal with the correct attachments already selected
@@ -97,16 +97,13 @@
 				elements.$uploadButton.text(l10n.buttonEdit);
 				elements.$container.removeClass('empty');
 
-				fwe.trigger('fw:option-type:multi-upload:change', {
+				slze.trigger('slz:option-type:multi-upload:change', {
 					$element: elements.$container,
 					attachments: attachments
 				});
-
-				elements.$container.trigger('fw:option-type:multi-upload:change', {
+				elements.$container.trigger('slz:option-type:multi-upload:change', {
 					attachments: attachments
 				});
-
-				triggerChangeForIds(elements.$container, ids);
 			});
 		};
 
@@ -125,36 +122,17 @@
 			elements.$uploadButton.text(l10n.buttonAdd);
 			elements.$container.addClass('empty');
 
-			fwe.trigger('fw:option-type:multi-upload:clear', {$element: elements.$container});
-			elements.$container.trigger('fw:option-type:multi-upload:clear');
-
-			triggerChangeForIds(elements.$container, {
-				attachments: [],
-				value: {}
-			});
+			slze.trigger('slz:option-type:multi-upload:clear', {$element: elements.$container});
+			elements.$container.trigger('slz:option-type:multi-upload:clear');
 
 			e.preventDefault();
 		});
 	};
 
-	fwe.on('fw:options:init', function (data) {
+	slze.on('slz:options:init', function (data) {
 		data.$elements
-			.find('.fw-option-type-multi-upload.any-files:not(.fw-option-initialized)').each(init)
-			.addClass('fw-option-initialized');
+			.find('.slz-option-type-multi-upload.any-files:not(.slz-option-initialized)').each(init)
+			.addClass('slz-option-initialized');
 	});
 
-	function triggerChangeForIds ($container, attachment_ids) {
-		fw.options.trigger.changeForEl($container, {
-			attachments: attachment_ids.map(wp.media.attachment),
-			value: attachment_ids.map(extractSingleAttachmentData)
-		});
-
-		function extractSingleAttachmentData (attachment_id) {
-			return {
-				attachment_id: attachment_id,
-				url: wp.media.attachment(attachment_id).get('url')
-			};
-		}
-	}
-
-})(jQuery, fwEvents);
+})(jQuery, slzEvents);

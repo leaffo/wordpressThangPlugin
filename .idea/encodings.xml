@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/index.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/wp-content/plugins/contentPageTemplate/ContentTemplate.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/includes/class-slz-shortcode.php" charset="UTF-8" />
   </component>
 </project>

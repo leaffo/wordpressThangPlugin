@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 /**
@@ -7,6 +7,6 @@
  * @var array $extra_data
  */
 ?>
-<div class="form-wrapper fw-contact-form contact-form">
+<div class="form-wrapper contact-form">
 	<?php echo $form_html; ?>
 </div>

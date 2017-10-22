@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var string $id
  * @var  array $option
@@ -14,9 +16,9 @@ unset($attr['value']);
 // generate controls html
 {
 	ob_start(); ?>
-	<small class="fw-option-box-controls">
+	<small class="slz-option-box-controls">
 		<?php foreach ($controls as $c_id => $control): ?>
-			<small class="fw-option-box-control-wrapper"><a href="#" class="fw-option-box-control" data-control-id="<?php echo esc_attr($c_id) ?>" onclick="return false"><?php echo $control ?></a></small>
+			<small class="slz-option-box-control-wrapper"><a href="#" class="slz-option-box-control" data-control-id="<?php echo esc_attr($c_id) ?>" onclick="return false"><?php echo $control ?></a></small>
 		<?php endforeach; ?>
 	</small>
 	<?php $controls_html = ob_get_clean();
@@ -32,35 +34,35 @@ if (!empty($data['value'])) {
 	$attr['class'] .= ' has-boxes';
 }
 ?>
-<div <?php echo fw_attr_to_html($attr); ?>>
+<div <?php echo slz_attr_to_html($attr); ?>>
 	<!-- Fixes https://github.com/ThemeFuse/Unyson/issues/1278#issuecomment-208032542 -->
-	<?php echo fw()->backend->option_type('hidden')->render($id, array('value' => '~'), array(
+	<?php echo slz()->backend->option_type('hidden')->render($id, array('value' => '~'), array(
 		'id_prefix' => $data['id_prefix'],
 		'name_prefix' => $data['name_prefix'],
 	)); ?>
 	<?php $i = 0; ?>
-	<div class="fw-option-boxes metabox-holder">
+	<div class="slz-option-boxes metabox-holder">
 		<?php foreach ($data['value'] as $value_index => &$values): ?>
 			<?php $i++; ?>
-			<div class="fw-option-box fw-backend-options-virtual-context" data-name-prefix="<?php echo fw_htmlspecialchars($data['name_prefix'] .'['. $id .']['. $i .']') ?>" data-values="<?php echo fw_htmlspecialchars(json_encode($values)) ?>">
+			<div class="slz-option-box" data-name-prefix="<?php echo slz_htmlspecialchars($data['name_prefix'] .'['. $id .']['. $i .']') ?>" data-values="<?php echo slz_htmlspecialchars(json_encode($values)) ?>">
 				<?php ob_start() ?>
-				<div class="fw-option-box-options fw-force-xs">
+				<div class="slz-option-box-options slz-force-xs">
 					<?php
-					echo fw()->backend->render_options($box_options, $values, array(
+					echo slz()->backend->render_options($box_options, $values, array(
 						'id_prefix'   => $data['id_prefix'] . $id .'-'. $i .'-',
 						'name_prefix' => $data['name_prefix'] .'['. $id .']['. $i .']',
 					));
 					?>
 				</div>
 				<?php
-				echo fw()->backend->render_box(
+				echo slz()->backend->render_box(
 					$data['id_prefix'] . $id .'-'. $i .'-box',
 					'&nbsp;',
 					ob_get_clean(),
 					array(
 						'html_after_title' => $controls_html,
 						'attr' => array(
-							'class' => 'fw-option-type-addable-box-pending-title-update',
+							'class' => 'slz-option-type-addable-box-pending-title-update',
 						),
 					)
 				);
@@ -68,7 +70,7 @@ if (!empty($data['value'])) {
 			</div>
 		<?php endforeach; unset($values); ?>
 	</div>
-	<br class="default-box-template fw-hidden" data-template="<?php
+	<br class="default-box-template slz-hidden" data-template="<?php
 		/**
 		 * Place template in attribute to prevent it to be treated as html
 		 * when this option will be used inside another option template
@@ -77,15 +79,15 @@ if (!empty($data['value'])) {
 		$values = array();
 
 		// must contain characters that will remain the same after htmlspecialchars()
-		$increment_placeholder = '###-addable-box-increment-'. fw_rand_md5() .'-###';
+		$increment_placeholder = '###-addable-box-increment-'. slz_rand_md5() .'-###';
 
-		echo fw_htmlspecialchars(
-			'<div class="fw-option-box fw-backend-options-virtual-context" data-name-prefix="'. fw_htmlspecialchars($data['name_prefix'] .'['. $id .']['. $increment_placeholder .']') .'">'.
-				fw()->backend->render_box(
+		echo slz_htmlspecialchars(
+			'<div class="slz-option-box" data-name-prefix="'. slz_htmlspecialchars($data['name_prefix'] .'['. $id .']['. $increment_placeholder .']') .'">'.
+				slz()->backend->render_box(
 					$data['id_prefix'] . $id .'-'. $increment_placeholder .'-box',
 					'&nbsp;',
-					'<div class="fw-option-box-options fw-force-xs">'.
-						fw()->backend->render_options($box_options, $values, array(
+					'<div class="slz-option-box-options slz-force-xs">'.
+						slz()->backend->render_options($box_options, $values, array(
 							'id_prefix'   => $data['id_prefix'] . $id .'-'. $increment_placeholder .'-',
 							'name_prefix' => $data['name_prefix'] .'['. $id .']['. $increment_placeholder .']',
 						)).
@@ -97,16 +99,16 @@ if (!empty($data['value'])) {
 			'</div>'
 		);
 	?>">
-	<div class="fw-option-boxes-controls">
+	<div class="slz-option-boxes-controls">
 		<?php
-		echo fw_html_tag('button', array(
+		echo slz_html_tag('button', array(
 			'type'    => 'button',
 			'onclick' => 'return false;',
-			'class'   => 'button fw-option-boxes-add-button',
+			'class'   => 'button slz-option-boxes-add-button',
 			'data-increment' => ++$i,
 			'data-increment-placeholder' => $increment_placeholder,
 			'data-limit' => intval($option['limit']),
-		), fw_htmlspecialchars($option['add-button-text']));
+		), slz_htmlspecialchars($option['add-button-text']));
 		?>
 	</div>
 </div>

@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var array $item
  * @var array $choices
@@ -17,13 +19,11 @@ switch ($options['layout']) {
 <?php if (empty($choices)): ?>
 	<!-- checkboxes not displayed: no choices -->
 <?php else: ?>
-	<div class="<?php echo esc_attr(fw_ext_builder_get_item_width('form-builder', $item['width'] .'/frontend_class')) ?>">
+	<div class="<?php echo esc_attr(slz_ext_builder_get_item_width('form-builder', $item['width'] .'/frontend_class')) ?>">
 		<div class="field-checkbox input-styled">
-			<?php if ($options['label']): ?>
-			<label><?php echo fw_htmlspecialchars($options['label']) ?>
+			<label><?php echo slz_htmlspecialchars($options['label']) ?>
 				<?php if ($options['required']): ?><sup>*</sup><?php endif; ?>
 			</label>
-			<?php endif; ?>
 			<div class="custom-checkbox field-columns-<?php echo esc_attr($columns); ?>">
 				<?php if ($columns > 1): ?>
 					<?php
@@ -34,9 +34,9 @@ switch ($options['layout']) {
 					?>
 					<div class="field-column">
 					<?php while ($choice = array_shift($choices)): ?>
-						<?php $choice['id'] = 'rand-'. fw_unique_increment(); ?>
+						<?php $choice['id'] = 'rand-'. slz_unique_increment(); ?>
 						<div class="options">
-							<input <?php echo fw_attr_to_html($choice) ?> />
+							<input <?php echo slz_attr_to_html($choice) ?> />
 							<label for="<?php echo esc_attr($choice['id']) ?>"><?php echo $choice['value'] ?></label>
 						</div>
 						<?php if (!(++$counter % $choices_per_column)): ?>
@@ -46,9 +46,9 @@ switch ($options['layout']) {
 					</div>
 				<?php else: ?>
 					<?php foreach ($choices as $choice):
-						$choice['id'] = 'rand-'. fw_unique_increment(); ?>
+						$choice['id'] = 'rand-'. slz_unique_increment(); ?>
 						<div class="options">
-							<input <?php echo fw_attr_to_html($choice) ?> />
+							<input <?php echo slz_attr_to_html($choice) ?> />
 							<label for="<?php echo esc_attr($choice['id']) ?>"><?php echo $choice['value'] ?></label>
 						</div>
 					<?php endforeach; ?>

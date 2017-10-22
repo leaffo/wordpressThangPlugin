@@ -1,34 +1,33 @@
-fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
-	var currentItemType = 'form-header-title';
-
-	var localized = fw.unysonShortcodesData()['contact_form_items'][currentItemType];
+slzEvents.on('slz-builder:'+ 'form-builder' +':register-items', function(builder){
+	var currentItemType = 'form_header_title';
+	var localized = window['slz_form_builder_item_type_'+ currentItemType];
 
 	var ItemView = builder.classes.ItemView.extend({
 		template: _.template(
-			'<div class="fw-form-builder-item-style-default fw-form-builder-item-type-'+ currentItemType +' fw-form-item-control-edit">'+
-				'<div class="fw-form-item-preview">'+
-					'<div class="fw-form-item-preview-title">'+
-						'<div class="fw-form-item-preview-title-wrapper"><label data-hover-tip="<%- edit_title %>"><%- title %></label></div>'+
-						'<div class="fw-form-item-preview-title-edit"><!-- --></div>'+
+			'<div class="slz-form-builder-item-style-default slz-form-builder-item-type-'+ currentItemType +' slz-form-item-control-edit">'+
+				'<div class="slz-form-item-preview">'+
+					'<div class="slz-form-item-preview-title">'+
+						'<div class="slz-form-item-preview-title-wrapper"><label data-hover-tip="<%- edit_title %>"><%- title %></label></div>'+
+						'<div class="slz-form-item-preview-title-edit"><!-- --></div>'+
 					'</div>'+
-					'<div class="fw-form-item-preview-subtitle">'+
-						'<div class="fw-form-item-preview-subtitle-wrapper"><label data-hover-tip="<%- edit_subtitle %>"><%- subtitle %></label></div>'+
-						'<div class="fw-form-item-preview-subtitle-edit"><!-- --></div>'+
+					'<div class="slz-form-item-preview-subtitle">'+
+						'<div class="slz-form-item-preview-subtitle-wrapper"><label data-hover-tip="<%- edit_subtitle %>"><%- subtitle %></label></div>'+
+						'<div class="slz-form-item-preview-subtitle-edit"><!-- --></div>'+
 					'</div>'+
 				'</div>'+
 			'</div>'
 		),
 		events: {
 			'click': 'onWrapperClick',
-			'click .fw-form-item-preview .fw-form-item-preview-title label': 'openTitleEditor',
-			'click .fw-form-item-preview .fw-form-item-preview-subtitle label': 'openSubtitleEditor'
+			'click .slz-form-item-preview .slz-form-item-preview-title label': 'openTitleEditor',
+			'click .slz-form-item-preview .slz-form-item-preview-subtitle label': 'openSubtitleEditor'
 		},
 		initialize: function() {
 			this.defaultInitialize();
 
 			// prepare edit options modal
 			{
-				this.modal = new fw.OptionsModal({
+				this.modal = new slz.OptionsModal({
 					title: localized.l10n.item_title,
 					options: this.model.modalOptions,
 					values: this.model.get('options'),
@@ -47,33 +46,33 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 				}, this);
 			}
 
-			this.titleInlineEditor = new FwBuilderComponents.ItemView.InlineTextEditor({
+			this.titleInlineEditor = new SlzBuilderComponents.ItemView.InlineTextEditor({
 				model: this.model,
 				editAttribute: 'options/title'
 			});
 
-			this.subtitleInlineEditor = new FwBuilderComponents.ItemView.InlineTextEditor({
+			this.subtitleInlineEditor = new SlzBuilderComponents.ItemView.InlineTextEditor({
 				model: this.model,
 				editAttribute: 'options/subtitle'
 			});
 		},
 		render: function () {
 			this.defaultRender({
-				title: ( ( fw.opg('title', this.model.get('options')) ) || localized.l10n.edit_title ),
-				subtitle: ( ( fw.opg('subtitle', this.model.get('options')) ) || localized.l10n.edit_subtitle ),
+				title: ( ( slz.opg('title', this.model.get('options')) ) || localized.l10n.edit_title ),
+				subtitle: ( ( slz.opg('subtitle', this.model.get('options')) ) || localized.l10n.edit_subtitle ),
 				edit_title: localized.l10n.edit_title,
 				edit_subtitle: localized.l10n.edit_subtitle
 			});
 
 			if (this.titleInlineEditor) {
-				this.$('.fw-form-item-preview-title-edit').append(
+				this.$('.slz-form-item-preview-title-edit').append(
 					this.titleInlineEditor.$el
 				);
 				this.titleInlineEditor.delegateEvents();
 			}
 
 			if (this.subtitleInlineEditor) {
-				this.$('.fw-form-item-preview-subtitle-edit').append(
+				this.$('.slz-form-item-preview-subtitle-edit').append(
 					this.subtitleInlineEditor.$el
 				);
 				this.subtitleInlineEditor.delegateEvents();
@@ -88,28 +87,28 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 				return;
 			}
 
-			if (!fw.elementEventHasListenerInContainer(jQuery(e.srcElement), 'click', this.$el)) {
+			if (!slz.elementEventHasListenerInContainer(jQuery(e.srcElement), 'click', this.$el)) {
 				this.openEdit();
 			}
 		},
 		openTitleEditor: function( e ) {
 			e.preventDefault();
-			this.$('.fw-form-item-preview-title-wrapper').hide();
+			this.$('.slz-form-item-preview-title-wrapper').hide();
 
 			this.titleInlineEditor.show();
 
 			this.listenToOnce(this.titleInlineEditor, 'hide', function() {
-				this.$('.fw-form-item-preview-title-wrapper').show();
+				this.$('.slz-form-item-preview-title-wrapper').show();
 			});
 		},
 		openSubtitleEditor: function(e) {
 			e.preventDefault();
-			this.$('.fw-form-item-preview-subtitle-wrapper').hide();
+			this.$('.slz-form-item-preview-subtitle-wrapper').hide();
 
 			this.subtitleInlineEditor.show();
 
 			this.listenToOnce(this.subtitleInlineEditor, 'hide', function() {
-				this.$('.fw-form-item-preview-subtitle-wrapper').show();
+				this.$('.slz-form-item-preview-subtitle-wrapper').show();
 			});
 		}
 	});
@@ -128,16 +127,16 @@ fwEvents.on('fw-builder:'+ 'form-builder' +':register-items', function(builder){
 
 			this.defaultInitialize();
 
-				/**
-			* get options from wp_localize_script() variable
-			*/
+			/**
+			 * get options from wp_localize_script() variable
+			 */
 
 			this.modalOptions = localized.options;
 
 			this.id = 498157655;
 
 			this.view = new ItemView({
-				id: 'fw-builder-item-'+ this.cid,
+				id: 'slz-builder-item-'+ this.cid,
 				model: this
 			});
 		}

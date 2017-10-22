@@ -1,17 +1,12 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
 $manifest = array();
 
-$manifest['name']        = __( 'Events', 'fw' );
-$manifest['description'] = __( 'This extension adds a fully fledged Events module to your theme. It comes with built in pages that contain a calendar where events can be added.', 'fw' );
-$manifest['version'] = '1.0.13';
+$manifest['name']        = esc_html__( 'Events', 'slz' );
+$manifest['description'] = esc_html__( 'This extension use add to events.', 'slz' );
+$manifest['thumbnail'] = slz_get_framework_directory_uri( '/extensions/events/static/img/events.png');
+$manifest['version'] = '1.0';
 $manifest['display'] = true;
 $manifest['standalone'] = true;
-$manifest['github_repo'] = 'https://github.com/ThemeFuse/Unyson-Events-Extension';
-$manifest['uri'] = 'http://manual.unyson.io/en/latest/extension/events/index.html#content';
-$manifest['author'] = 'ThemeFuse';
-$manifest['author_uri'] = 'http://themefuse.com/';
-
-$manifest['github_update'] = 'ThemeFuse/Unyson-Events-Extension';

@@ -1,5 +1,14 @@
-<?php if (!defined('FW')) die( 'Forbidden' ); ?>
-<?php $color_class = !empty($atts['color']) ? "fw-btn-{$atts['color']}" : ''; ?>
-<a href="<?php echo esc_attr($atts['link']) ?>" target="<?php echo esc_attr($atts['target']) ?>" class="fw-btn fw-btn-1 <?php echo esc_attr($color_class); ?>">
-	<span><?php echo $atts['label']; ?></span>
-</a>
+
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die( 'Forbidden' );
+}
+
+slz_print( $data );
+
+$unique_class = 'sc-ads-banner-carousel-' . SLZ_Com::make_id();
+$extra_class = $data['extra_class'] ;
+$sc_class = $extra_class . ' ' . $unique_class;
+?>
+<div class="slz-shortcode sc_ads_banner_carousel <?php echo esc_attr( $sc_class ); ?>">
+ABC
+</div>

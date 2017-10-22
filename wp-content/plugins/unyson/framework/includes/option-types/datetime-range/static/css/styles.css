@@ -1,20 +1,23 @@
-.fw-option-type-datetime-picker .delimiter,
-.fw-backend-option-input-type-datetime-range .delimiter {
+.slz-option-type-datetime-picker .delimiter,
+.slz-backend-option-input-type-datetime-range .delimiter {
 	margin: 0 10px;
 }
 
-.fw-option-type-datetime-range .fw-backend-option-descriptor[data-fw-option-id=from],
-.fw-option-type-datetime-range .fw-backend-option-descriptor[data-fw-option-id=to],
-.fw-option-type-datetime-range .delimiter {
+.slz-option-type-datetime-range .slz-option-type-datetime-picker.from,
+.slz-option-type-datetime-range .slz-option-type-datetime-picker.to,
+.slz-option-type-datetime-range .delimiter,
+.slz-backend-option-input-type-datetime-range .slz-option-type-datetime-picker.from,
+.slz-backend-option-input-type-datetime-range .slz-option-type-datetime-picker.to,
+.slz-backend-option-input-type-datetime-range .delimiter {
 	display: inline-block;
 }
 
-.fw-option-type-datetime-range .fw-option-type-datetime-picker,
-.fw-backend-option-input-type-datetime-range .fw-option-type-datetime-picker {
+.slz-option-type-datetime-range .slz-option-type-datetime-picker,
+.slz-backend-option-input-type-datetime-range .slz-option-type-datetime-picker {
 	width: 150px;
 }
 
 
-.fw-backend-option-input-type-datetime-range .fw-option-help-in-input {
+.slz-backend-option-input-type-datetime-range .slz-option-help-in-input {
 	top: 4px !important;
 }

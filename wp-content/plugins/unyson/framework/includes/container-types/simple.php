@@ -1,6 +1,8 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-class FW_Container_Type_Group extends FW_Container_Type {
+class SLZ_Container_Type_Group extends SLZ_Container_Type {
 	public function get_type() {
 		return 'group';
 	}
@@ -21,20 +23,21 @@ class FW_Container_Type_Group extends FW_Container_Type {
 			{
 				$attr = isset( $group['attr'] ) ? $group['attr'] : array();
 
-				$attr['id'] = 'fw-backend-options-group-' . $id;
+				$attr['id'] = 'slz-backend-options-group-' . $id;
 
 				if ( ! isset( $attr['class'] ) ) {
-					$attr['class'] = 'fw-backend-options-group';
+					$attr['class'] = 'slz-backend-options-group';
 				} else {
-					$attr['class'] = 'fw-backend-options-group ' . $attr['class'];
+					$attr['class'] = 'slz-backend-options-group ' . $attr['class'];
 				}
 			}
 
-			$html .= '<div ' . fw_attr_to_html( $attr ) . '>';
-			$html .= fw()->backend->render_options( $group['options'], $values, $data );
+			$html .= '<div ' . slz_attr_to_html( $attr ) . '>';
+			$html .= slz()->backend->render_options( $group['options'], $values, $data );
 			$html .= '</div>';
 		}
 
 		return $html;
 	}
 }
+SLZ_Container_Type::register('SLZ_Container_Type_Group');

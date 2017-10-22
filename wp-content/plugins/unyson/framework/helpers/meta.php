@@ -1,5 +1,5 @@
-<?php if ( ! defined( 'FW' ) ) {
-	die( 'Forbidden' );
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -23,7 +23,7 @@
  *
  * @return int|bool The meta ID on success, false on failure.
  */
-function fw_add_metadata( $meta_type, $object_id, $meta_key, $meta_value, $unique = false ) {
+function slz_add_metadata( $meta_type, $object_id, $meta_key, $meta_value, $unique = false ) {
 
 	/**
 	 * @var WPDB $wpdb
@@ -136,7 +136,7 @@ function fw_add_metadata( $meta_type, $object_id, $meta_key, $meta_value, $uniqu
  *
  * @return int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
-function fw_update_metadata( $meta_type, $object_id, $meta_key, $meta_value, $prev_value = '' ) {
+function slz_update_metadata( $meta_type, $object_id, $meta_key, $meta_value, $prev_value = '' ) {
 	global $wpdb;
 
 	if ( ! $meta_type || ! $meta_key || ! is_numeric( $object_id ) ) {
@@ -193,7 +193,7 @@ function fw_update_metadata( $meta_type, $object_id, $meta_key, $meta_value, $pr
 	}
 
 	if ( ! $meta_id = $wpdb->get_var( $wpdb->prepare( "SELECT $id_column FROM $table WHERE meta_key = %s AND $column = %d LIMIT 1", $meta_key, $object_id ) ) ) {
-		return fw_add_metadata( $meta_type, $object_id, $meta_key, $passed_value );
+		return slz_add_metadata( $meta_type, $object_id, $meta_key, $passed_value );
 	}
 
 	$_meta_value = $meta_value;
@@ -285,7 +285,7 @@ function fw_update_metadata( $meta_type, $object_id, $meta_key, $meta_value, $pr
  *
  * @return bool True on successful delete, false on failure.
  */
-function fw_delete_metadata( $meta_type, $object_id, $meta_key, $meta_value = '', $delete_all = false ) {
+function slz_delete_metadata( $meta_type, $object_id, $meta_key, $meta_value = '', $delete_all = false ) {
 	/**
 	 * @var WPDB $wpdb
 	 */
@@ -430,8 +430,8 @@ function fw_delete_metadata( $meta_type, $object_id, $meta_key, $meta_value = ''
  *
  * @return int|bool Meta ID on success, false on failure.
  */
-function fw_add_user_meta( $user_id, $meta_key, $meta_value, $unique = false ) {
-	return fw_add_metadata( 'user', $user_id, $meta_key, $meta_value, $unique );
+function slz_add_user_meta( $user_id, $meta_key, $meta_value, $unique = false ) {
+	return slz_add_metadata( 'user', $user_id, $meta_key, $meta_value, $unique );
 }
 
 /**
@@ -449,8 +449,8 @@ function fw_add_user_meta( $user_id, $meta_key, $meta_value, $unique = false ) {
  *
  * @return int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
-function fw_update_user_meta( $user_id, $meta_key, $meta_value, $prev_value = '' ) {
-	return fw_update_metadata( 'user', $user_id, $meta_key, $meta_value, $prev_value );
+function slz_update_user_meta( $user_id, $meta_key, $meta_value, $prev_value = '' ) {
+	return slz_update_metadata( 'user', $user_id, $meta_key, $meta_value, $prev_value );
 }
 
 /**
@@ -466,8 +466,8 @@ function fw_update_user_meta( $user_id, $meta_key, $meta_value, $prev_value = ''
  *
  * @return bool True on success, false on failure.
  */
-function fw_delete_user_meta( $user_id, $meta_key, $meta_value = '' ) {
-	return fw_delete_metadata( 'user', $user_id, $meta_key, $meta_value );
+function slz_delete_user_meta( $user_id, $meta_key, $meta_value = '' ) {
+	return slz_delete_metadata( 'user', $user_id, $meta_key, $meta_value );
 }
 
 /**
@@ -483,13 +483,13 @@ function fw_delete_user_meta( $user_id, $meta_key, $meta_value = '' ) {
  *
  * @return int|bool Meta ID on success, false on failure.
  */
-function fw_add_post_meta( $post_id, $meta_key, $meta_value, $unique = false ) {
+function slz_add_post_meta( $post_id, $meta_key, $meta_value, $unique = false ) {
 	// Make sure meta is added to the post, not a revision. // fixme: why this is needed?
 	/*if ( $the_post = wp_is_post_revision( $post_id ) ) {
 		$post_id = $the_post;
 	}*/
 
-	return fw_add_metadata( 'post', $post_id, $meta_key, $meta_value, $unique );
+	return slz_add_metadata( 'post', $post_id, $meta_key, $meta_value, $unique );
 }
 
 /**
@@ -509,13 +509,13 @@ function fw_add_post_meta( $post_id, $meta_key, $meta_value, $unique = false ) {
  * @return int|bool Meta ID if the key didn't exist, true on successful update,
  *                  false on failure.
  */
-function fw_update_post_meta( $post_id, $meta_key, $meta_value, $prev_value = '' ) {
+function slz_update_post_meta( $post_id, $meta_key, $meta_value, $prev_value = '' ) {
 	// Make sure meta is added to the post, not a revision. fixme: why this is needed?
 	/*if ( $the_post = wp_is_post_revision( $post_id ) ) {
 		$post_id = $the_post;
 	}*/
 
-	return fw_update_metadata( 'post', $post_id, $meta_key, $meta_value, $prev_value );
+	return slz_update_metadata( 'post', $post_id, $meta_key, $meta_value, $prev_value );
 }
 
 /**
@@ -532,7 +532,7 @@ function fw_update_post_meta( $post_id, $meta_key, $meta_value, $prev_value = ''
  *
  * @return bool True on success, false on failure.
  */
-function fw_delete_post_meta( $post_id, $meta_key, $meta_value = '' ) {
+function slz_delete_post_meta( $post_id, $meta_key, $meta_value = '' ) {
 	// Make sure meta is added to the post, not a revision. // fixme: why this is needed?
 	/*if ( $the_post = wp_is_post_revision( $post_id ) ) {
 		$post_id = $the_post;
@@ -555,8 +555,8 @@ function fw_delete_post_meta( $post_id, $meta_key, $meta_value = '' ) {
  *
  * @return int|bool Meta ID on success, false on failure.
  */
-function fw_add_comment_meta( $comment_id, $meta_key, $meta_value, $unique = false ) {
-	return fw_add_metadata( 'comment', $comment_id, $meta_key, $meta_value, $unique );
+function slz_add_comment_meta( $comment_id, $meta_key, $meta_value, $unique = false ) {
+	return slz_add_metadata( 'comment', $comment_id, $meta_key, $meta_value, $unique );
 }
 
 /**
@@ -574,8 +574,8 @@ function fw_add_comment_meta( $comment_id, $meta_key, $meta_value, $unique = fal
  *
  * @return int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
  */
-function fw_update_comment_meta( $comment_id, $meta_key, $meta_value, $prev_value = '' ) {
-	return fw_update_metadata( 'comment', $comment_id, $meta_key, $meta_value, $prev_value );
+function slz_update_comment_meta( $comment_id, $meta_key, $meta_value, $prev_value = '' ) {
+	return slz_update_metadata( 'comment', $comment_id, $meta_key, $meta_value, $prev_value );
 }
 
 /**
@@ -591,8 +591,8 @@ function fw_update_comment_meta( $comment_id, $meta_key, $meta_value, $prev_valu
  *
  * @return bool True on success, false on failure.
  */
-function fw_delete_comment_meta( $comment_id, $meta_key, $meta_value = '' ) {
-	return fw_delete_metadata( 'comment', $comment_id, $meta_key, $meta_value );
+function slz_delete_comment_meta( $comment_id, $meta_key, $meta_value = '' ) {
+	return slz_delete_metadata( 'comment', $comment_id, $meta_key, $meta_value );
 }
 
 //
@@ -608,8 +608,8 @@ function fw_delete_comment_meta( $comment_id, $meta_key, $meta_value = '' ) {
  * @param bool $unique Optional, default is false. Whether the same key should not be added.
  * @return bool False for failure. True for success.
  */
-function fw_add_term_meta( $term_id, $meta_key, $meta_value, $unique = false ) {
-	return fw_add_metadata( 'fw_term', $term_id, $meta_key, $meta_value, $unique );
+function slz_add_term_meta( $term_id, $meta_key, $meta_value, $unique = false ) {
+	return slz_add_metadata( 'slz_term', $term_id, $meta_key, $meta_value, $unique );
 }
 
 /**
@@ -625,8 +625,8 @@ function fw_add_term_meta( $term_id, $meta_key, $meta_value, $unique = false ) {
  *
  * @return bool False for failure. True for success.
  */
-function fw_delete_term_meta( $term_id, $meta_key, $meta_value = '' ) {
-	return fw_delete_metadata( 'fw_term', $term_id, $meta_key, $meta_value );
+function slz_delete_term_meta( $term_id, $meta_key, $meta_value = '' ) {
+	return slz_delete_metadata( 'slz_term', $term_id, $meta_key, $meta_value );
 }
 
 /**
@@ -639,8 +639,8 @@ function fw_delete_term_meta( $term_id, $meta_key, $meta_value = '' ) {
  * @return mixed Will be an array if $single is false. Will be value of meta data field if $single
  *  is true.
  */
-function fw_get_term_meta( $term_id, $key, $single = false ) {
-	return get_metadata( 'fw_term', $term_id, $key, $single );
+function slz_get_term_meta( $term_id, $key, $single = false ) {
+	return get_metadata( 'slz_term', $term_id, $key, $single );
 }
 
 /**
@@ -658,6 +658,6 @@ function fw_get_term_meta( $term_id, $key, $single = false ) {
  *
  * @return bool False on failure, true if success.
  */
-function fw_update_term_meta( $term_id, $meta_key, $meta_value, $prev_value = '' ) {
-	return fw_update_metadata( 'fw_term', $term_id, $meta_key, $meta_value, $prev_value );
+function slz_update_term_meta( $term_id, $meta_key, $meta_value, $prev_value = '' ) {
+	return slz_update_metadata( 'slz_term', $term_id, $meta_key, $meta_value, $prev_value );
 }

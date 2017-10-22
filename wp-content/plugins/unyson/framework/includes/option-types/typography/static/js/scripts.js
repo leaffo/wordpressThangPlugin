@@ -1,7 +1,7 @@
-/*global fw_typography_fonts */
+/*global slz_typography_fonts */
 ( function ($) {
 	$(document).ready(function () {
-		var optionTypeClass = '.fw-option-type-typography',
+		var optionTypeClass = '.slz-option-type-typography',
 			/**
 			 * [ {'value': 'Font Family', 'text': 'Font Family'} ]
 			 */
@@ -15,7 +15,7 @@
 					fontsOptions = [];
 					fontsOptionsHTML = {};
 
-					_.each(fw_typography_fonts['standard'], function (item) {
+					_.each(slz_typography_fonts['standard'], function (item) {
 						fontsOptionsHTML[item] = '<option value="' + item + '">' + item + '</option>';
 						fontsOptions.push({
 							value: item,
@@ -23,7 +23,7 @@
 						});
 					});
 
-					_.each(fw_typography_fonts['google'], function (item) {
+					_.each(slz_typography_fonts['google'], function (item) {
 						fontsOptionsHTML[item['family']] = '<option value="' + item['family'] + '">' + item['family'] + '</option>';
 						fontsOptions.push({
 							value: item['family'],
@@ -42,21 +42,21 @@
 				return fontsOptionsHTML[fontFamily];
 			};
 
-		fwEvents.on('fw:options:init', function (data) {
+		slzEvents.on('slz:options:init', function (data) {
 			data.$elements.find(optionTypeClass +':not(.initialized)').each(function(){
 				var $option = $(this);
 
 				{
-					var $fontFamilySelect = $option.find('.fw-option-typography-option-family select[data-type="family"]');
+					var $fontFamilySelect = $option.find('.slz-option-typography-option-family select[data-type="family"]');
 
 					$fontFamilySelect
 						.html(getFontsOptionHTML($fontFamilySelect.attr('data-value')))
 						.selectize({
 							render: {
 								option: function (item) {
-									if (fw_typography_fonts['google'].hasOwnProperty(item.value)) {
-										var background = (typeof fw_typography_fonts['google'][item.value].position === "number")
-											? 'style="background-position: 0 -' + fw_typography_fonts['google'][item.value].position + 'px;'
+									if (slz_typography_fonts['google'].hasOwnProperty(item.value)) {
+										var background = (typeof slz_typography_fonts['google'][item.value].position === "number")
+											? 'style="background-position: 0 -' + slz_typography_fonts['google'][item.value].position + 'px;'
 											: 'style="background: none;';
 
 										return ''+
@@ -76,10 +76,10 @@
 							onChange: function (selected) {
 								var html = '';
 
-								if (fw_typography_fonts['google'].hasOwnProperty(selected)) {
-									var font = fw_typography_fonts['google'][selected];
+								if (slz_typography_fonts['google'].hasOwnProperty(selected)) {
+									var font = slz_typography_fonts['google'][selected];
 									_.each(font.variants, function (variant) {
-										html += '<option value="' + variant + '">' + fw.capitalizeFirstLetter(variant) + '</option>';
+										html += '<option value="' + variant + '">' + slz.capitalizeFirstLetter(variant) + '</option>';
 									});
 								} else {
 									html += [ // todo: translate these strings
@@ -93,8 +93,8 @@
 								}
 
 								this.$dropdown
-									.closest('.fw-option-typography-option-family')
-									.next('.fw-option-typography-option-style')
+									.closest('.slz-option-typography-option-family')
+									.next('.slz-option-typography-option-style')
 									.find('select[data-type="style"]').html(html);
 							},
 							onFocus: function() {

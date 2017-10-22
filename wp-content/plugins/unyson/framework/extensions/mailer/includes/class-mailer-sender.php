@@ -1,9 +1,11 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * @deprecated
  */
-class FW_Ext_Mailer_Sender
+class SLZ_Ext_Mailer_Sender
 {
 	private $config;
 
@@ -24,7 +26,7 @@ class FW_Ext_Mailer_Sender
 		if (!$config) {
 			return array(
 				'status'  => 0,
-				'message' => __('Invalid email configuration', 'fw')
+				'message' => __('Invalid email configuration', 'slz')
 			);
 		} else {
 			switch ($config['_method']) {
@@ -69,7 +71,7 @@ class FW_Ext_Mailer_Sender
 				if (
 					$username
 					&& $password
-					&& fw_is_valid_domain_name($host)
+					&& slz_is_valid_domain_name($host)
 				) {
 					$conf = array(
 						'host'      => $host,
@@ -142,8 +144,8 @@ class FW_Ext_Mailer_Sender
 		unset($mailer);
 
 		return $result
-				? array('status' => 1, 'message' => __('Email sent', 'fw'))
-				: array('status' => 0, 'message' => __('Could not send via smtp', 'fw'));
+				? array('status' => 1, 'message' => __('Email sent', 'slz'))
+				: array('status' => 0, 'message' => __('Could not send via smtp', 'slz'));
 	}
 
 	private function send_through_wpmail($to, $subject, $message, $config)
@@ -158,7 +160,7 @@ class FW_Ext_Mailer_Sender
 		$result = wp_mail($to, $subject, $message, $headers);
 
 		return $result
-				? array('status' => 1, 'message' => __('Email sent', 'fw'))
-				: array('status' => 0, 'message' => __('Could not send via wp_mail', 'fw'));
+				? array('status' => 1, 'message' => __('Email sent', 'slz'))
+				: array('status' => 0, 'message' => __('Could not send via wp_mail', 'slz'));
 	}
 }

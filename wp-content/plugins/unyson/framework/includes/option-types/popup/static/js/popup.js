@@ -1,4 +1,4 @@
-(function ($, _, fwEvents, window) {
+(function ($, _, slzEvents, window) {
 	var popup = function () {
 		var $this = $(this),
 			$defaultItem = $this.find('.item.default'),
@@ -12,7 +12,7 @@
 			},
 			data = JSON.parse(nodes.$optionWrapper.attr('data-for-js')),
 			utils = {
-				modal: new fw.OptionsModal({
+				modal: new slz.OptionsModal({
 					title: data.title,
 					options: data.options,
 					size : data.size
@@ -24,7 +24,7 @@
 					$input.val( values = JSON.stringify( values ) );
 
 					if (val != values) {
-						$this.trigger('fw:option-type:popup:change');
+						$this.trigger('slz:option-type:popup:change');
 						$input.trigger('change');
 					}
 				}
@@ -51,40 +51,36 @@
 			'change:values': function (modal, values) {
 				utils.editItem(utils.modal.get('itemRef'), values);
 
-                fw.options.trigger.changeForEl(utils.modal.get('itemRef'), {
-					value: values
-				});
-
-				fwEvents.trigger('fw:option-type:popup:change', {
+				slzEvents.trigger('slz:option-type:popup:change', {
 					element: $this,
 					values: values
 				});
 			},
 			'open': function () {
-				$this.trigger('fw:option-type:popup:open');
+				$this.trigger('slz:option-type:popup:open');
 
 				if (data['custom-events']['open']) {
-					fwEvents.trigger('fw:option-type:popup:custom:' + data['custom-events']['open'], {
+					slzEvents.trigger('slz:option-type:popup:custom:' + data['custom-events']['open'], {
 						element: $this,
 						modal: utils.modal
 					});
 				}
 			},
 			'close': function () {
-				$this.trigger('fw:option-type:popup:close');
+				$this.trigger('slz:option-type:popup:close');
 
 				if (data['custom-events']['close']) {
-					fwEvents.trigger('fw:option-type:popup:custom:' + data['custom-events']['close'], {
+					slzEvents.trigger('slz:option-type:popup:custom:' + data['custom-events']['close'], {
 						element: $this,
 						modal: utils.modal
 					});
 				}
 			},
 			'render': function () {
-				$this.trigger('fw:option-type:popup:render');
+				$this.trigger('slz:option-type:popup:render');
 
 				if (data['custom-events']['render']) {
-					fwEvents.trigger('fw:option-type:popup:custom:' + data['custom-events']['render'], {
+					slzEvents.trigger('slz:option-type:popup:custom:' + data['custom-events']['render'], {
 						element: $this,
 						modal: utils.modal
 					});
@@ -93,22 +89,9 @@
 		});
 	};
 
-	fwEvents.on('fw:options:init', function (data) {
+	slzEvents.on('slz:options:init', function (data) {
 		data.$elements
-			.find('.fw-option-type-popup:not(.fw-option-initialized)').each(popup)
-			.addClass('fw-option-initialized');
+			.find('.slz-option-type-popup:not(.slz-option-initialized)').each(popup)
+			.addClass('slz-option-initialized');
 	});
-
-	fw.options.register('popup', {
-		startListeningForChanges: $.noop,
-		getValue: function (optionDescriptor) {
-			return {
-				value: JSON.parse(
-					$(optionDescriptor.el).find('[type="hidden"]').val() || '""'
-				),
-
-				optionDescriptor: optionDescriptor
-			}
-		}
-	});
-})(jQuery, _, fwEvents, window);
+})(jQuery, _, slzEvents, window);

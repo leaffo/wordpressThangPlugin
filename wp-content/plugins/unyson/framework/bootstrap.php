@@ -1,17 +1,13 @@
-<?php if (!defined('ABSPATH')) die('Forbidden');
-
-if ( defined( 'WP_CLI' ) && WP_CLI && ! isset( $_SERVER['HTTP_HOST'] ) ) {
-	$_SERVER['HTTP_HOST'] = 'unyson.io';
-	$_SERVER['SERVER_NAME'] = 'unyson';
-	$_SERVER['SERVER_PORT'] = '80';
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
-if (defined('FW')) {
+if (defined('SLZ')) {
 	/**
 	 * The framework is already loaded.
 	 */
 } else {
-	define('FW', true);
+	define('SLZ', true);
 
 	/**
 	 * Load the framework on 'after_setup_theme' action when the theme information is available
@@ -20,29 +16,70 @@ if (defined('FW')) {
 	add_action('after_setup_theme', '_action_init_framework');
 
 	function _action_init_framework() {
-		if (did_action('fw_init')) {
+		if (did_action('slz_init')) {
 			return;
 		}
 
-		do_action('fw_before_init');
+		do_action('slz_before_init');
 
-		$dir = dirname(__FILE__);
+		$slz_dir = dirname(__FILE__);
 
-		require $dir .'/autoload.php';
+		include $slz_dir .'/bootstrap-helpers.php';
 
-		// Load helper functions
-		foreach (array('general', 'meta', 'fw-storage', 'database') as $file) {
-			require $dir .'/helpers/'. $file .'.php';
-		}
-
-		// Load core
+		// these are required when slz() is executed below
 		{
-			require $dir .'/core/Fw.php';
-
-			fw();
+			require $slz_dir .'/helpers/class-slz-dumper.php';
+			require $slz_dir .'/helpers/general.php';
+			require $slz_dir .'/helpers/class-slz-cache.php';
 		}
 
-		require $dir .'/includes/hooks.php';
+		/**
+		 * Load core
+		 */
+		{
+			require $slz_dir .'/core/Slz.php';
+
+			slz();
+		}
+
+		/**
+		 * Load helpers
+		 */
+		foreach (
+			array(
+				'meta',
+				'class-slz-access-key',
+				// 'class-slz-dumper', // included below
+				// 'general', // included below
+				'class-slz-wp-filesystem',
+				// 'class-slz-cache', // included below
+				'class-slz-file-cache',
+				'class-slz-form',
+				'class-slz-request',
+				'class-slz-session',
+				'class-slz-wp-option',
+				'class-slz-wp-meta',
+				'class-slz-db-options-model',
+				'slz-storage',
+				'database',
+				'class-slz-flash-messages',
+				'class-slz-resize',
+				'class-slz-wp-list-table',
+				'class-slz-image',
+				'type/class-slz-type',
+				'type/class-slz-type-register',
+			)
+			as $file
+		) {
+			require $slz_dir .'/helpers/'. $file .'.php';
+		}
+
+		/**
+		 * Load includes
+		 */
+		foreach (array('hooks') as $file) {
+			require $slz_dir .'/includes/'. $file .'.php';
+		}
 
 		/**
 		 * Init components
@@ -63,17 +100,17 @@ if (defined('FW')) {
 			);
 
 			foreach ($components as $component) {
-				fw()->{$component}->_init();
+				slz()->{$component}->_init();
 			}
 
 			foreach ($components as $component) {
-				fw()->{$component}->_after_components_init();
+				slz()->{$component}->_after_components_init();
 			}
 		}
 
 		/**
 		 * The framework is loaded
 		 */
-		do_action('fw_init');
+		do_action('slz_init');
 	}
 }

@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
@@ -7,13 +7,9 @@
  *
  * Convention: Simple options like text|select|input|textarea, should always generate only input, without div wrappers
  */
-class FW_Option_Type_Hidden extends FW_Option_Type {
+class SLZ_Option_Type_Hidden extends SLZ_Option_Type {
 	public function get_type() {
 		return 'hidden';
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -35,7 +31,7 @@ class FW_Option_Type_Hidden extends FW_Option_Type {
 	protected function _render( $id, $option, $data ) {
 		$option['attr']['value'] = (string) $data['value'];
 
-		return '<input ' . fw_attr_to_html( $option['attr'] ) . ' type="hidden" />';
+		return '<input ' . slz_attr_to_html( $option['attr'] ) . ' type="hidden" />';
 	}
 
 	/**
@@ -67,7 +63,9 @@ class FW_Option_Type_Hidden extends FW_Option_Type {
 	}
 }
 
-class FW_Option_Type_Text extends FW_Option_Type {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Hidden' );
+
+class SLZ_Option_Type_Text extends SLZ_Option_Type {
 	public function get_type() {
 		return 'text';
 	}
@@ -77,10 +75,6 @@ class FW_Option_Type_Text extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -95,7 +89,7 @@ class FW_Option_Type_Text extends FW_Option_Type {
 	protected function _render( $id, $option, $data ) {
 		$option['attr']['value'] = (string) $data['value'];
 
-		return '<input ' . fw_attr_to_html( $option['attr'] ) . ' type="text" />';
+		return '<input ' . slz_attr_to_html( $option['attr'] ) . ' type="text" />';
 	}
 
 	/**
@@ -120,13 +114,11 @@ class FW_Option_Type_Text extends FW_Option_Type {
 	}
 }
 
-class FW_Option_Type_Short_Text extends FW_Option_Type_Text {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Text' );
+
+class SLZ_Option_Type_Short_Text extends SLZ_Option_Type_Text {
 	public function get_type() {
 		return 'short-text';
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -139,7 +131,7 @@ class FW_Option_Type_Short_Text extends FW_Option_Type_Text {
 	 * @internal
 	 */
 	protected function _render( $id, $option, $data ) {
-		$option['attr']['class'] .= ' fw-option-width-short';
+		$option['attr']['class'] .= ' slz-option-width-short';
 
 		return parent::_render( $id, $option, $data );
 	}
@@ -153,7 +145,9 @@ class FW_Option_Type_Short_Text extends FW_Option_Type_Text {
 	}
 }
 
-class FW_Option_Type_Password extends FW_Option_Type {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Short_Text' );
+
+class SLZ_Option_Type_Password extends SLZ_Option_Type {
 	public function get_type() {
 		return 'password';
 	}
@@ -163,10 +157,6 @@ class FW_Option_Type_Password extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -181,7 +171,7 @@ class FW_Option_Type_Password extends FW_Option_Type {
 	protected function _render( $id, $option, $data ) {
 		$option['attr']['value'] = (string) $data['value'];
 
-		return '<input ' . fw_attr_to_html( $option['attr'] ) . ' type="password" />';
+		return '<input ' . slz_attr_to_html( $option['attr'] ) . ' type="password" />';
 	}
 
 	/**
@@ -206,7 +196,9 @@ class FW_Option_Type_Password extends FW_Option_Type {
 	}
 }
 
-class FW_Option_Type_Textarea extends FW_Option_Type {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Password' );
+
+class SLZ_Option_Type_Textarea extends SLZ_Option_Type {
 	public function get_type() {
 		return 'textarea';
 	}
@@ -216,10 +208,6 @@ class FW_Option_Type_Textarea extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -239,7 +227,7 @@ class FW_Option_Type_Textarea extends FW_Option_Type {
 		$option['attr'] = array_merge( array( 'rows' => '6' ), $option['attr'] );
 		$option['attr']['class'] .= ' code';
 
-		return '<textarea ' . fw_attr_to_html( $option['attr'] ) . '>' .
+		return '<textarea ' . slz_attr_to_html( $option['attr'] ) . '>' .
 		       htmlspecialchars( $option['value'], ENT_COMPAT, 'UTF-8' ) .
 		       '</textarea>';
 	}
@@ -266,7 +254,9 @@ class FW_Option_Type_Textarea extends FW_Option_Type {
 	}
 }
 
-class FW_Option_Type_Html extends FW_Option_Type {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Textarea' );
+
+class SLZ_Option_Type_Html extends SLZ_Option_Type {
 	public function get_type() {
 		return 'html';
 	}
@@ -276,10 +266,6 @@ class FW_Option_Type_Html extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -298,10 +284,10 @@ class FW_Option_Type_Html extends FW_Option_Type {
 		unset( $div_attr['name'] );
 		unset( $div_attr['value'] );
 
-		return '<div ' . fw_attr_to_html( $div_attr ) . '>' .
-		       fw()->backend->option_type( 'hidden' )->render( $id, array(
+		return '<div ' . slz_attr_to_html( $div_attr ) . '>' .
+		       slz()->backend->option_type( 'hidden' )->render( $id, array(
 			       'attr'  => array(
-				       'class' => 'fw-option-html-value',
+				       'class' => 'slz-option-html-value',
 			       ),
 			       'value' => $option['attr']['value'],
 		       ),
@@ -310,7 +296,7 @@ class FW_Option_Type_Html extends FW_Option_Type {
 				       'name_prefix' => $data['name_prefix']
 			       )
 		       ) .
-		       '<div class="fw-option-html">' . $option['html'] . '</div>' .
+		       '<div class="slz-option-html">' . $option['html'] . '</div>' .
 		       '</div>';
 	}
 
@@ -344,10 +330,12 @@ class FW_Option_Type_Html extends FW_Option_Type {
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Html' );
+
 /**
  * Same html but displayed in fixed width
  */
-class FW_Option_Type_Html_Fixed extends FW_Option_Type_Html {
+class SLZ_Option_Type_Html_Fixed extends SLZ_Option_Type_Html {
 	public function get_type() {
 		return 'html-fixed';
 	}
@@ -360,10 +348,12 @@ class FW_Option_Type_Html_Fixed extends FW_Option_Type_Html {
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Html_Fixed' );
+
 /**
  * Same html but displayed in full width
  */
-class FW_Option_Type_Html_Full extends FW_Option_Type_Html {
+class SLZ_Option_Type_Html_Full extends SLZ_Option_Type_Html {
 	public function get_type() {
 		return 'html-full';
 	}
@@ -376,8 +366,9 @@ class FW_Option_Type_Html_Full extends FW_Option_Type_Html {
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Html_Full' );
 
-class FW_Option_Type_Checkbox extends FW_Option_Type {
+class SLZ_Option_Type_Checkbox extends SLZ_Option_Type {
 	public function get_type() {
 		return 'checkbox';
 	}
@@ -387,10 +378,6 @@ class FW_Option_Type_Checkbox extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -411,7 +398,7 @@ class FW_Option_Type_Checkbox extends FW_Option_Type {
 			in_array($data['value'], array('false', 'true'))
 		) {
 			/**
-			 * This happens on fw.OptionsModal open/render
+			 * This happens on slz.OptionsModal open/render
 			 * When the checkbox is used by other option types
 			 * then this script http://bit.ly/1QshDoS can't fix nested values
 			 *
@@ -433,7 +420,7 @@ class FW_Option_Type_Checkbox extends FW_Option_Type {
 			'<!-- used for "' . esc_attr( $id ) . '" to be present in _POST -->' .
 			'' .
 			'<label for="' . esc_attr( $option['attr']['id'] ) . '">' .
-				'<input ' . fw_attr_to_html( $option['attr'] ) . ' type="checkbox" value="true" ' .
+				'<input ' . slz_attr_to_html( $option['attr'] ) . ' type="checkbox" value="true" ' .
 					( $option['value'] ? 'checked="checked" ' : '' ) .
 				'> ' . htmlspecialchars( $option['text'], ENT_COMPAT, 'UTF-8' ) .
 			'</label>';
@@ -464,15 +451,17 @@ class FW_Option_Type_Checkbox extends FW_Option_Type {
 	protected function _get_defaults() {
 		return array(
 			'value' => false,
-			'text'  => __( 'Yes', 'fw' ),
+			'text'  => __( 'Yes', 'slz' ),
 		);
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Checkbox' );
+
 /**
  * Checkboxes list
  */
-class FW_Option_Type_Checkboxes extends FW_Option_Type {
+class SLZ_Option_Type_Checkboxes extends SLZ_Option_Type {
 	public function get_type() {
 		return 'checkboxes';
 	}
@@ -482,10 +471,6 @@ class FW_Option_Type_Checkboxes extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -505,10 +490,10 @@ class FW_Option_Type_Checkboxes extends FW_Option_Type {
 		unset( $div_attr['value'] );
 
 		if ( $option['inline'] ) {
-			$div_attr['class'] .= ' fw-option-type-checkboxes-inline fw-clearfix';
+			$div_attr['class'] .= ' slz-option-type-checkboxes-inline slz-clearfix';
 		}
 
-		$html = '<div ' . fw_attr_to_html( $div_attr ) . '>';
+		$html = '<div ' . slz_attr_to_html( $div_attr ) . '>';
 
 		$html .= '<input type="checkbox" name="' . esc_attr( $option['attr']['name'] ) . '[]" value="" checked="checked" style="display: none">' .
 		         '<!-- used for "' . esc_attr( $id ) . '" to be present in _POST -->';
@@ -528,7 +513,6 @@ class FW_Option_Type_Checkboxes extends FW_Option_Type {
 					'name' => $option['attr']['name'] . '[' . $value . ']',
 					'value' => 'true',
 					'id' => $option['attr']['id'] . '-' . $value,
-					'data-fw-checkbox-id' => $value
 				),
 				isset( $option['value'][ $value ] ) && $option['value'][ $value ]
 					? array('checked' => 'checked') : array()
@@ -537,7 +521,7 @@ class FW_Option_Type_Checkboxes extends FW_Option_Type {
 			$html .=
 				'<div>' .
 					'<label for="' . esc_attr( $choice['attr']['id'] ) . '">' .
-						'<input  ' . fw_attr_to_html($choice['attr']) . '>' .
+						'<input  ' . slz_attr_to_html($choice['attr']) . '>' .
 						' ' . htmlspecialchars( $choice['text'], ENT_COMPAT, 'UTF-8' ) .
 					'</label>' .
 				'</div>';
@@ -604,10 +588,12 @@ class FW_Option_Type_Checkboxes extends FW_Option_Type {
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Checkboxes' );
+
 /**
  * Radio list
  */
-class FW_Option_Type_Radio extends FW_Option_Type {
+class SLZ_Option_Type_Radio extends SLZ_Option_Type {
 	public function get_type() {
 		return 'radio';
 	}
@@ -617,10 +603,6 @@ class FW_Option_Type_Radio extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -640,10 +622,10 @@ class FW_Option_Type_Radio extends FW_Option_Type {
 		unset( $div_attr['value'] );
 
 		if ( $option['inline'] ) {
-			$div_attr['class'] .= ' fw-option-type-radio-inline fw-clearfix';
+			$div_attr['class'] .= ' slz-option-type-radio-inline slz-clearfix';
 		}
 
-		$html = '<div ' . fw_attr_to_html( $div_attr ) . '>';
+		$html = '<div ' . slz_attr_to_html( $div_attr ) . '>';
 
 		foreach ( $option['choices'] as $value => $choice ) {
 			if (is_string($choice)) {
@@ -667,7 +649,7 @@ class FW_Option_Type_Radio extends FW_Option_Type {
 			$html .=
 			'<div>' .
 				'<label for="' . esc_attr( $choice['attr']['id'] ) . '">' .
-					'<input  ' . fw_attr_to_html($choice['attr']) . '>' .
+					'<input  ' . slz_attr_to_html($choice['attr']) . '>' .
 					' ' . htmlspecialchars( $choice['text'], ENT_COMPAT, 'UTF-8' ) .
 				'</label>' .
 			'</div>';
@@ -726,10 +708,12 @@ class FW_Option_Type_Radio extends FW_Option_Type {
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Radio' );
+
 /**
  * Select
  */
-class FW_Option_Type_Select extends FW_Option_Type {
+class SLZ_Option_Type_Select extends SLZ_Option_Type {
 	public function get_type() {
 		return 'select';
 	}
@@ -739,10 +723,6 @@ class FW_Option_Type_Select extends FW_Option_Type {
 	 * {@inheritdoc}
 	 */
 	protected function _enqueue_static( $id, $option, $data ) {
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	/**
@@ -757,7 +737,11 @@ class FW_Option_Type_Select extends FW_Option_Type {
 	protected function _render( $id, $option, $data ) {
 		$option['value'] = $data['value'];
 
-		$option['attr']['data-saved-value'] = $data['value'];
+		if ( !isset ( $option['attr']['data-saved-value'] ) )
+			$option['attr']['data-saved-value'] = $data['value'];
+		
+		$option['value'] = $option['attr']['data-saved-value'];
+
 		unset(
 			$option['attr']['value'],
 			$option['attr']['multiple']
@@ -767,7 +751,7 @@ class FW_Option_Type_Select extends FW_Option_Type {
 			$option['choices'] = array();
 		}
 
-		$html = '<select ' . fw_attr_to_html( $option['attr'] ) . '>' .
+		$html = '<select ' . slz_attr_to_html( $option['attr'] ) . '>' .
 		        $this->render_choices( $option['choices'], $option['value'] ) .
 		        '</select>';
 
@@ -832,7 +816,7 @@ class FW_Option_Type_Select extends FW_Option_Type {
 		return $result;
 	}
 
-	protected function render_choices( $choices, $value ) {
+	protected function render_choices( &$choices, &$value ) {
 		if ( empty( $choices ) || ! is_array( $choices ) ) {
 			return '';
 		}
@@ -846,7 +830,7 @@ class FW_Option_Type_Select extends FW_Option_Type {
 				}
 
 				if ( isset( $choice['choices'] ) ) { // optgroup
-					$html .= '<optgroup ' . fw_attr_to_html( $choice['attr'] ) . '>' .
+					$html .= '<optgroup ' . slz_attr_to_html( $choice['attr'] ) . '>' .
 					         $this->render_choices( $choice['choices'], $value ) .
 					         '</optgroup>';
 				} else { // choice as array (with custom attributes)
@@ -854,7 +838,7 @@ class FW_Option_Type_Select extends FW_Option_Type {
 
 					unset( $choice['attr']['selected'] ); // this is not allowed
 
-					$html .= '<option ' . fw_attr_to_html( $choice['attr'] ) . ' ' .
+					$html .= '<option ' . slz_attr_to_html( $choice['attr'] ) . ' ' .
 					         ( $c_value == $value ? 'selected="selected" ' : '' ) . '>' .
 					         htmlspecialchars( isset( $choice['text'] ) ? $choice['text'] : '', ENT_COMPAT, 'UTF-8' ) .
 					         '</option>';
@@ -881,7 +865,9 @@ class FW_Option_Type_Select extends FW_Option_Type {
 	}
 }
 
-class FW_Option_Type_Short_Select extends FW_Option_Type_Select {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Select' );
+
+class SLZ_Option_Type_Short_Select extends SLZ_Option_Type_Select {
 	public function get_type() {
 		return 'short-select';
 	}
@@ -896,7 +882,7 @@ class FW_Option_Type_Short_Select extends FW_Option_Type_Select {
 	 * @internal
 	 */
 	protected function _render( $id, $option, $data ) {
-		$option['attr']['class'] .= ' fw-option-width-short';
+		$option['attr']['class'] .= ' slz-option-width-short';
 
 		return parent::_render( $id, $option, $data );
 	}
@@ -910,10 +896,12 @@ class FW_Option_Type_Short_Select extends FW_Option_Type_Select {
 	}
 }
 
+SLZ_Option_Type::register( 'SLZ_Option_Type_Short_Select' );
+
 /**
  * Select Multiple
  */
-class FW_Option_Type_Select_Multiple extends FW_Option_Type_Select {
+class SLZ_Option_Type_Select_Multiple extends SLZ_Option_Type_Select {
 	public function get_type() {
 		return 'select-multiple';
 	}
@@ -948,7 +936,7 @@ class FW_Option_Type_Select_Multiple extends FW_Option_Type_Select {
 			$option['attr']['size'] = '7';
 		}
 
-		$html .= '<select ' . fw_attr_to_html( $option['attr'] ) . '>' .
+		$html .= '<select ' . slz_attr_to_html( $option['attr'] ) . '>' .
 		         $this->render_choices( $option['choices'], $option['value'] ) .
 		         '</select>';
 
@@ -987,7 +975,7 @@ class FW_Option_Type_Select_Multiple extends FW_Option_Type_Select {
 		return $input_value;
 	}
 
-	protected function render_choices( $choices, $value ) {
+	protected function render_choices( &$choices, &$value ) {
 		if ( empty( $choices ) || ! is_array( $choices ) ) {
 			return '';
 		}
@@ -1001,7 +989,7 @@ class FW_Option_Type_Select_Multiple extends FW_Option_Type_Select {
 				}
 
 				if ( isset( $choice['choices'] ) ) { // optgroup
-					$html .= '<optgroup ' . fw_attr_to_html( $choice['attr'] ) . '>' .
+					$html .= '<optgroup ' . slz_attr_to_html( $choice['attr'] ) . '>' .
 					         $this->render_choices( $choice['choices'], $value ) .
 					         '</optgroup>';
 				} else { // choice as array (with custom attributes)
@@ -1009,7 +997,7 @@ class FW_Option_Type_Select_Multiple extends FW_Option_Type_Select {
 
 					unset( $choice['attr']['selected'] ); // this is not allowed
 
-					$html .= '<option ' . fw_attr_to_html( $choice['attr'] ) . ' ' .
+					$html .= '<option ' . slz_attr_to_html( $choice['attr'] ) . ' ' .
 					         ( in_array( $c_value, $value ) ? 'selected="selected" ' : '' ) . '>' .
 					         htmlspecialchars( isset( $choice['text'] ) ? $choice['text'] : '', ENT_COMPAT, 'UTF-8' ) .
 					         '</option>';
@@ -1036,17 +1024,17 @@ class FW_Option_Type_Select_Multiple extends FW_Option_Type_Select {
 	}
 }
 
-class FW_Option_Type_Unique extends FW_Option_Type {
+SLZ_Option_Type::register( 'SLZ_Option_Type_Select_Multiple' );
+
+
+class SLZ_Option_Type_Unique extends SLZ_Option_Type
+{
 	private static $ids = array();
 	private static $should_do_regeneration = true;
 
 	public function get_type()
 	{
 		return 'unique';
-	}
-
-	protected function _get_data_for_js($id, $option, $data = array()) {
-		return false;
 	}
 
 	protected function _get_defaults()
@@ -1058,7 +1046,7 @@ class FW_Option_Type_Unique extends FW_Option_Type {
 	}
 
 	protected function _render($id, $option, $data) {
-		return fw_html_tag('input', array(
+		return slz_html_tag('input', array(
 			'type' => 'hidden',
 			'name' => $option['attr']['name'],
 			'id' => $option['attr']['id'],
@@ -1068,7 +1056,7 @@ class FW_Option_Type_Unique extends FW_Option_Type {
 
 	protected function _init() {
 		add_action('save_post', array($this, '_action_reset_post_ids'), 8);
-		add_filter('fw:option-type:addable-popup:value-from-input', array($this, '_filter_addable_popup_value_from_input'), 10, 2);
+		add_filter('slz:option-type:addable-popup:value-from-input', array($this, '_filter_addable_popup_value_from_input'), 10, 2);
 	}
 
 	/**
@@ -1077,7 +1065,7 @@ class FW_Option_Type_Unique extends FW_Option_Type {
 	 */
 	protected function generate_id($length_limit = null)
 	{
-		$id = fw_rand_md5();
+		$id = slz_rand_md5();
 
 		if ($length_limit) {
 			$id = substr($id, 0, (int)$length_limit);
@@ -1171,7 +1159,7 @@ class FW_Option_Type_Unique extends FW_Option_Type {
 		{
 			$update_options = array();
 
-			fw_collect_options($update_options, $option['popup-options'], array(
+			slz_collect_options($update_options, $option['popup-options'], array(
 				'limit_option_types' => array($this->get_type())
 			));
 
@@ -1183,7 +1171,7 @@ class FW_Option_Type_Unique extends FW_Option_Type {
 		foreach ($value as &$row) {
 			foreach ($update_options as $opt_id => $opt) {
 				if (isset($row[$opt_id])) { // should not happen, but just in case, prevent notice
-					$row[$opt_id] = fw()->backend->option_type($opt['type'])->get_value_from_input(
+					$row[$opt_id] = slz()->backend->option_type($opt['type'])->get_value_from_input(
 						array_merge($opt, array('value' => $row[$opt_id])),
 						null
 					);
@@ -1194,12 +1182,13 @@ class FW_Option_Type_Unique extends FW_Option_Type {
 		return $value;
 	}
 }
+SLZ_Option_Type::register('SLZ_Option_Type_Unique');
 
 /**
  * Input for Google Maps API Key which is stored in a wp_option
  * @since 2.5.7
  */
-class FW_Option_Type_GMap_Key extends FW_Option_Type_Text {
+class SLZ_Option_Type_GMap_Key extends SLZ_Option_Type_Text {
 
 	private static $original_value = null;
 
@@ -1209,7 +1198,7 @@ class FW_Option_Type_GMap_Key extends FW_Option_Type_Text {
 	 * @return string
 	 */
 	public static function get_key_option_id() {
-		return 'fw-option-types:gmap-key';
+		return 'slz-option-types:gmap-key';
 	}
 
 	public static function get_key() {
@@ -1232,7 +1221,7 @@ class FW_Option_Type_GMap_Key extends FW_Option_Type_Text {
 	protected function _get_defaults() {
 		return array(
 			'value'      => self::get_key(),
-			'fw-storage' => array(
+			'slz-storage' => array(
 				'type'      => 'wp-option',
 				'wp-option' => self::get_key_option_id(),
 			),
@@ -1250,3 +1239,5 @@ class FW_Option_Type_GMap_Key extends FW_Option_Type_Text {
 		return parent::_storage_save( $id, $option, $value, $params );
 	}
 }
+
+SLZ_Option_Type::register( 'SLZ_Option_Type_GMap_Key' );

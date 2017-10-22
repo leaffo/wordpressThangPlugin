@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var array $extension_titles
  * @var array $list_page_link
@@ -13,14 +15,14 @@ $count = count($extension_titles);
 	'We\'ve detected that your current theme is compatible with the following extension and it is recommended that you install it to fully benefit from your theme.',
 	'We\'ve detected that your current theme is compatible with the following extensions and it is recommended that you install them to fully benefit from your theme.',
 	$count,
-	'fw'
+	'slz'
 ) ?></p>
 <?php else: ?>
 <p><?php echo _n(
 	'You are about to install the following extension:',
 	'You are about to install the following extensions:',
 	$count,
-	'fw'
+	'slz'
 ) ?></p>
 <?php endif; ?>
 
@@ -35,7 +37,7 @@ $count = count($extension_titles);
 		'Are you sure you wish to install this extension?',
 		'Are you sure you wish to install these extensions?',
 		$count,
-		'fw'
+		'slz'
 	)
 ?></p>
 
@@ -44,8 +46,8 @@ $count = count($extension_titles);
 		'Yes, Install this extension',
 		'Yes, Install these extensions',
 		$count,
-		'fw'
+		'slz'
 	) )
 ?>">
 
-<a class="button" href="<?php echo esc_attr($list_page_link) ?>" ><?php _e('No, Return me to the extension list', 'fw') ?></a>
+<a class="button" href="<?php echo esc_attr($list_page_link) ?>" ><?php _e('No, Return me to the extension list', 'slz') ?></a>

@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var array $extension_names
  * @var array $installed_extensions
@@ -12,12 +14,12 @@ $count = count($extension_names);
 	'You are about to remove the following extension:',
 	'You are about to remove the following extensions:',
 	$count,
-	'fw'
+	'slz'
 ) ?></p>
 
 <ul class="ul-disc">
 	<?php foreach ($extension_names as $extension_name): ?>
-		<li><strong><?php echo fw()->extensions->manager->get_extension_title($extension_name); ?></strong></li>
+		<li><strong><?php echo slz()->extensions->manager->get_extension_title($extension_name); ?></strong></li>
 	<?php endforeach; ?>
 </ul>
 
@@ -26,7 +28,7 @@ $count = count($extension_names);
 		'Are you sure you wish to delete this extension?',
 		'Are you sure you wish to delete these extensions?',
 		$count,
-		'fw'
+		'slz'
 	)
 ?></p>
 
@@ -35,18 +37,18 @@ $count = count($extension_names);
 		'Yes, Delete this extension',
 		'Yes, Delete these extensions',
 		$count,
-		'fw'
+		'slz'
 	) )
 ?>">
 
-<a class="button" href="<?php echo esc_attr($list_page_link) ?>" ><?php _e('No, Return me to the extension list', 'fw') ?></a>
+<a class="button" href="<?php echo esc_attr($list_page_link) ?>" ><?php _e('No, Return me to the extension list', 'slz') ?></a>
 
 <p>
-	<a href="#" onclick="jQuery('#files-list').toggle(); return false;"><?php _e('Click to view entire list of directories which will be deleted', 'fw') ?></a>
+	<a href="#" onclick="jQuery('#files-list').toggle(); return false;"><?php _e('Click to view entire list of directories which will be deleted', 'slz') ?></a>
 </p>
 <div id="files-list" style="display: none;">
 	<ul class="code">
-		<?php $replace_regex = '/^'. preg_quote(fw_get_framework_directory('/extensions'), '/') .'/'; ?>
+		<?php $replace_regex = '/^'. preg_quote(slz_get_framework_directory('/extensions'), '/') .'/'; ?>
 		<?php foreach ($extension_names as $extension_name): ?>
 			<?php if (!isset($installed_extensions[$extension_name])) continue; ?>
 			<li><?php echo preg_replace($replace_regex, '', $installed_extensions[$extension_name]['path']) ?>/</li>

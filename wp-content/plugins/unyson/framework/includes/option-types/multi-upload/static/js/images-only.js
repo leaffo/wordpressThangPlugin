@@ -1,4 +1,4 @@
-(function ($, _, fwe) {
+(function ($, _, slze) {
 
 	var init = function () {
 		var $this = $(this),
@@ -71,7 +71,7 @@
 				});
 			}
 			frame.on('ready', function () {
-				frame.modal.$el.addClass('fw-option-type-multi-upload');
+				frame.modal.$el.addClass('slz-option-type-multi-upload');
 			});
 
 			// opens the modal with the correct attachments already selected
@@ -128,16 +128,13 @@
 				elements.$thumbsContainer.html(compiledTemplates.join(''));
 				elements.$container.removeClass('empty');
 
-				fwe.trigger('fw:option-type:multi-upload:change', {
+				slze.trigger('slz:option-type:multi-upload:change', {
 					$element: elements.$container,
 					attachments: attachments
 				});
-
-				elements.$container.trigger('fw:option-type:multi-upload:change', {
+				elements.$container.trigger('slz:option-type:multi-upload:change', {
 					attachments: attachments
 				});
-
-				triggerChangeForIds(elements.$container, ids);
 			});
 		};
 
@@ -162,18 +159,16 @@
 
 			if (ids.length) {
 				elements.$input.val(JSON.stringify(ids));
-				fwe.trigger('fw:option-type:multi-upload:remove', {$element: elements.$container}); // TODO: think what other data would be usefull
-				elements.$container.trigger('fw:option-type:multi-upload:remove'); // TODO: think what other data would be usefull
+				slze.trigger('slz:option-type:multi-upload:remove', {$element: elements.$container}); // TODO: think what other data would be usefull
+				elements.$container.trigger('slz:option-type:multi-upload:remove'); // TODO: think what other data would be usefull
 			} else {
 				elements.$input.val('[]');
 				elements.$uploadButton.text(l10n.buttonAdd);
 				elements.$thumbsContainer.html(templates.thumb.empty);
 				elements.$container.addClass('empty');
-				fwe.trigger('fw:option-type:multi-upload:clear', {$element: elements.$container});
-				elements.$container.trigger('fw:option-type:multi-upload:clear');
+				slze.trigger('slz:option-type:multi-upload:clear', {$element: elements.$container});
+				elements.$container.trigger('slz:option-type:multi-upload:clear');
 			}
-
-			triggerChangeForIds(elements.$container, ids);
 
 			e.preventDefault();
 		});
@@ -183,53 +178,14 @@
 			update: function () {
 				var ids = collectThumbsIds();
 				elements.$input.val(JSON.stringify(ids));
-				triggerChangeForIds(elements.$container, ids);
 			}
 		});
 	};
 
-	fwe.on('fw:options:init', function (data) {
+	slze.on('slz:options:init', function (data) {
 		data.$elements
-			.find('.fw-option-type-multi-upload.images-only:not(.fw-option-initialized)').each(init)
-			.addClass('fw-option-initialized');
+			.find('.slz-option-type-multi-upload.images-only:not(.slz-option-initialized)').each(init)
+			.addClass('slz-option-initialized');
 	});
 
-	fw.options.register('multi-upload', {
-		startListeningForChanges: $.noop,
-		getValue: function (optionDescriptor) {
-			var ids = [];
-
-			$(optionDescriptor.el).find('.thumb').each(function () {
-				ids.push($(this).data('attid'));
-			});
-
-			var value = getValueForIds(ids);
-			value.optionDescriptor = optionDescriptor;
-
-			return value;
-		}
-	});
-
-	function getValueForIds (ids) {
-		return {
-			attachments: ids.map(wp.media.attachment),
-			value: ids.map(extractSingleAttachmentData)
-		};
-
-		function extractSingleAttachmentData (attachment_id) {
-			return {
-				attachment_id: attachment_id,
-				url: wp.media.attachment(attachment_id).get('url')
-			};
-		}
-	}
-
-	function triggerChangeForIds ($container, attachment_ids) {
-		fw.options.trigger.changeForEl(
-			$container,
-			getValueForIds(attachment_ids)
-		);
-	}
-
-
-})(jQuery, _, fwEvents);
+})(jQuery, _, slzEvents);

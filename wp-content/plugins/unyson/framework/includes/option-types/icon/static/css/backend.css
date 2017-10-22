@@ -1,4 +1,4 @@
-.fw-option-type-icon .option-type-icon-list {
+.slz-option-type-icon .option-type-icon-list {
 	margin-top: 1em;
 	padding-left: 1px;
 	padding-bottom: 1px;
@@ -6,17 +6,17 @@
 	max-height: 10.1em;
 }
 
-.fw-option-type-icon .option-type-icon-list:first-child {
+.slz-option-type-icon .option-type-icon-list:first-child {
 	margin-top: 0;
 }
 
-.fw-option-type-icon .option-type-icon-list:after {
+.slz-option-type-icon .option-type-icon-list:after {
 	content: '';
 	display: block;
 	clear: both;
 }
 
-.fw-option-type-icon .option-type-icon-list i {
+.slz-option-type-icon .option-type-icon-list i {
 	float: left;
 	border: 1px solid #e1e1e1;
 	margin: 0 0 -1px -1px;
@@ -26,51 +26,65 @@
 	min-width: 2em;
 }
 
-body.rtl .fw-option-type-icon .option-type-icon-list i {
+body.rtl .slz-option-type-icon .option-type-icon-list i {
 	float: right;
 }
 
-.fw-option-type-icon .option-type-icon-list i:before {
+.slz-option-type-icon .option-type-icon-list i:before {
 	display: inline-block;
 }
 
-.fw-option-type-icon .option-type-icon-list i:hover {
+.slz-option-type-icon .option-type-icon-list i:hover {
 	background: #0074a2;
 	color: #fff;
 	cursor: pointer;
 }
-.fw-option-type-icon .option-type-icon-list i.active:hover,
-.fw-option-type-icon .option-type-icon-list i.active{
+.slz-option-type-icon .option-type-icon-list i.active:hover,
+.slz-option-type-icon .option-type-icon-list i.active{
 	background: #64bd1f;
 	color: #fff;
 }
 
-.fw-option-type-icon .fw-backend-option {
+.slz-option-type-icon .slz-backend-option {
 	border-bottom: none;
 	padding-bottom: 0;
 }
 
-.fw-option-type-icon .fw-options-tabs-wrapper .fw-options-tabs-contents {
+.slz-option-type-icon .slz-options-tabs-wrapper .slz-options-tabs-contents {
 	margin-top: 0 !important;
 }
 
 
 /* Let's get this party started */
 
-.fw-option-type-icon .option-type-icon-list::-webkit-scrollbar {
+.slz-option-type-icon .option-type-icon-list::-webkit-scrollbar {
 	width: 5px;
 }
 
 
 /* Handle */
 
-.fw-option-type-icon .option-type-icon-list::-webkit-scrollbar-thumb {
+.slz-option-type-icon .option-type-icon-list::-webkit-scrollbar-thumb {
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
 	background: rgba(92,92,92,0.8);
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
-.fw-option-type-icon .option-type-icon-list::-webkit-scrollbar-thumb:window-inactive {
+.slz-option-type-icon .option-type-icon-list::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(92,92,92,0.4);
+}
+
+.slz-option-type-icon .slz-backend-option-fixed-width {
+	display: inline-block;
+	width: 55%;
+}
+
+.slz-option-type-icon .slz-icon-toolbar {
+	display: inline-block;
+	float: right;
+}
+
+.slz-backend-option .slz-backend-option-input .slz-option-type-icon .slz-icon-toolbar {
+	width: 40%;
 }

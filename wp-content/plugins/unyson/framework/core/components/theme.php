@@ -1,26 +1,29 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Theme Component
  * Works with framework customizations / theme directory
  */
-final class _FW_Component_Theme
+final class _SLZ_Component_Theme
 {
-	private static $cache_key = 'fw_theme';
+	private static $cache_key = 'slz_theme';
 
 	/**
-	 * @var FW_Theme_Manifest
+	 * @var SLZ_Theme_Manifest
 	 */
 	public $manifest;
 
-	public function __construct() {
-		$manifest = array();
+	public function __construct()
+	{
+		{
+			$manifest = array();
 
-		if ( ( $manifest_file = fw_get_template_customizations_directory( '/theme/manifest.php' ) ) && is_file( $manifest_file ) ) {
-			@include $manifest_file;
+			@include slz_get_template_customizations_directory('/theme/manifest.php');
+
+			$this->manifest = new SLZ_Theme_Manifest($manifest);
 		}
-
-		$this->manifest = new FW_Theme_Manifest( $manifest );
 	}
 
 	/**
@@ -45,12 +48,20 @@ final class _FW_Component_Theme
 	 */
 	public function locate_path($rel_path)
 	{
-		if (is_child_theme() && file_exists(fw_get_stylesheet_customizations_directory('/theme'. $rel_path))) {
-			return fw_get_stylesheet_customizations_directory('/theme'. $rel_path);
-		} elseif (file_exists(fw_get_template_customizations_directory('/theme'. $rel_path))) {
-			return fw_get_template_customizations_directory('/theme'. $rel_path);
-		} else {
-			return false;
+		try {
+			return SLZ_File_Cache::get($cache_key = 'core:theme:path:'. $rel_path);
+		} catch (SLZ_File_Cache_Not_Found_Exception $e) {
+			if (is_child_theme() && file_exists(slz_get_stylesheet_customizations_directory('/theme'. $rel_path))) {
+				$path = slz_get_stylesheet_customizations_directory('/theme'. $rel_path);
+			} elseif (file_exists(slz_get_template_customizations_directory('/theme'. $rel_path))) {
+				$path = slz_get_template_customizations_directory('/theme'. $rel_path);
+			} else {
+				$path = false;
+			}
+
+			SLZ_File_Cache::set($cache_key, $path);
+
+			return $path;
 		}
 	}
 
@@ -68,7 +79,7 @@ final class _FW_Component_Theme
 			return array();
 		}
 
-		$variables = fw_get_variables_from_file($path, array('options' => array()), $variables);
+		$variables = slz_get_variables_from_file($path, array('options' => array()), $variables);
 
 		return $variables['options'];
 	}
@@ -78,11 +89,11 @@ final class _FW_Component_Theme
 		$cache_key = self::$cache_key .'/options/settings';
 
 		try {
-			return FW_Cache::get($cache_key);
-		} catch (FW_Cache_Not_Found_Exception $e) {
-			$options = apply_filters('fw_settings_options', $this->get_options('settings'));
+			return SLZ_Cache::get($cache_key);
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
+			$options = apply_filters('slz_settings_options', $this->get_options('settings'));
 
-			FW_Cache::set($cache_key, $options);
+			SLZ_Cache::set($cache_key, $options);
 
 			return $options;
 		}
@@ -93,11 +104,11 @@ final class _FW_Component_Theme
 		$cache_key = self::$cache_key .'/options/customizer';
 
 		try {
-			return FW_Cache::get($cache_key);
-		} catch (FW_Cache_Not_Found_Exception $e) {
-			$options = apply_filters('fw_customizer_options', $this->get_options('customizer'));
+			return SLZ_Cache::get($cache_key);
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
+			$options = apply_filters('slz_customizer_options', $this->get_options('customizer'));
 
-			FW_Cache::set($cache_key, $options);
+			SLZ_Cache::set($cache_key, $options);
 
 			return $options;
 		}
@@ -108,15 +119,11 @@ final class _FW_Component_Theme
 		$cache_key = self::$cache_key .'/options/posts/'. $post_type;
 
 		try {
-			return FW_Cache::get($cache_key);
-		} catch (FW_Cache_Not_Found_Exception $e) {
-			$options = apply_filters(
-				'fw_post_options',
-				apply_filters( "fw_post_options:$post_type", $this->get_options( 'posts/' . $post_type ) ),
-				$post_type
-			);
+			return SLZ_Cache::get($cache_key);
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
+			$options = apply_filters('slz_post_options', $this->get_options('posts/'. $post_type), $post_type);
 
-			FW_Cache::set($cache_key, $options);
+			SLZ_Cache::set($cache_key, $options);
 
 			return $options;
 		}
@@ -127,15 +134,14 @@ final class _FW_Component_Theme
 		$cache_key = self::$cache_key .'/options/taxonomies/'. $taxonomy;
 
 		try {
-			return FW_Cache::get($cache_key);
-		} catch (FW_Cache_Not_Found_Exception $e) {
-			$options = apply_filters(
-				'fw_taxonomy_options',
-				apply_filters( "fw_taxonomy_options:$taxonomy", $this->get_options( 'taxonomies/' . $taxonomy ) ),
+			return SLZ_Cache::get($cache_key);
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
+			$options = apply_filters('slz_taxonomy_options',
+				$this->get_options('taxonomies/'. $taxonomy),
 				$taxonomy
 			);
 
-			FW_Cache::set($cache_key, $options);
+			SLZ_Cache::set($cache_key, $options);
 
 			return $options;
 		}
@@ -153,8 +159,8 @@ final class _FW_Component_Theme
 		$cache_key = self::$cache_key .'/config';
 
 		try {
-			$config = FW_Cache::get($cache_key);
-		} catch (FW_Cache_Not_Found_Exception $e) {
+			$config = SLZ_Cache::get($cache_key);
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
 			// default values
 			$config = array(
 				/** Toggle Theme Settings form ajax submit */
@@ -165,8 +171,8 @@ final class _FW_Component_Theme
 				'lazy_tabs' => true,
 			);
 
-			if (file_exists(fw_get_template_customizations_directory('/theme/config.php'))) {
-				$variables = fw_get_variables_from_file(fw_get_template_customizations_directory('/theme/config.php'), array('cfg' => null));
+			if (file_exists(slz_get_template_customizations_directory('/theme/config.php'))) {
+				$variables = slz_get_variables_from_file(slz_get_template_customizations_directory('/theme/config.php'), array('cfg' => null));
 
 				if (!empty($variables['cfg'])) {
 					$config = array_merge($config, $variables['cfg']);
@@ -174,8 +180,8 @@ final class _FW_Component_Theme
 				}
 			}
 
-			if (is_child_theme() && file_exists(fw_get_stylesheet_customizations_directory('/theme/config.php'))) {
-				$variables = fw_get_variables_from_file(fw_get_stylesheet_customizations_directory('/theme/config.php'), array('cfg' => null));
+			if (is_child_theme() && file_exists(slz_get_stylesheet_customizations_directory('/theme/config.php'))) {
+				$variables = slz_get_variables_from_file(slz_get_stylesheet_customizations_directory('/theme/config.php'), array('cfg' => null));
 
 				if (!empty($variables['cfg'])) {
 					$config = array_merge($config, $variables['cfg']);
@@ -185,10 +191,10 @@ final class _FW_Component_Theme
 
 			unset($path);
 
-			FW_Cache::set($cache_key, $config);
+			SLZ_Cache::set($cache_key, $config);
 		}
 
-		return $key === null ? $config : fw_akg($key, $config, $default_value);
+		return $key === null ? $config : slz_akg($key, $config, $default_value);
 	}
 
 	/**
@@ -196,9 +202,9 @@ final class _FW_Component_Theme
 	 */
 	public function _action_admin_notices()
 	{
-		if ( is_admin() && !fw()->theme->manifest->check_requirements() && current_user_can('manage_options') ) {
+		if ( is_admin() && !slz()->theme->manifest->check_requirements() && current_user_can('manage_options') ) {
 			echo '<div class="notice notice-warning"><p>';
-			echo __('Theme requirements not met:', 'fw') .' '. fw()->theme->manifest->get_not_met_requirement_text();
+			echo __('Theme requirements not met:', 'slz') .' '. slz()->theme->manifest->get_not_met_requirement_text();
 			echo '</p></div>';
 		}
 	}

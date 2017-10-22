@@ -1,21 +1,11 @@
 (function(){
-	var optionTypeClass = 'fw-option-type-image-picker';
-	var eventNamePrefix = 'fw:option-type:image-picker:';
-
-	fw.options.register('image-picker', {
-		startListeningForChanges: jQuery.noop,
-		getValue: function (optionDescriptor) {
-			return {
-				value: optionDescriptor.el.querySelector('select').value,
-				optionDescriptor: optionDescriptor
-			}
-		}
-	});
+	var optionTypeClass = 'slz-option-type-image-picker';
+	var eventNamePrefix = 'slz:option-type:image-picker:';
 
 	jQuery(document).ready(function ($) {
 		/** Init image_picker options */
-		fwEvents.on('fw:options:init', function (data) {
-			var $elements = data.$elements.find('.'+ optionTypeClass +':not(.fw-option-initialized)');
+		slzEvents.on('slz:options:init', function (data) {
+			var $elements = data.$elements.find('.'+ optionTypeClass +':not(.slz-option-initialized)');
 
 			if (!$elements.length) {
 				return;
@@ -36,10 +26,6 @@
 					},
 					changed: function (oldValues, newValues) {
 						var $this = $(this);
-
-						fw.options.trigger.changeForEl($this[0], {
-							value: newValues[0]
-						});
 
 						$this.closest('.'+ optionTypeClass).trigger(eventNamePrefix +'changed', {
 							oldValues : oldValues,
@@ -65,7 +51,7 @@
 								}
 							},
 							style: {
-								classes: 'qtip-fw',
+								classes: 'qtip-slz',
 								tip: {
 									width: 12,
 									height: 5
@@ -92,7 +78,7 @@
 					}
 				});
 
-			$elements.addClass('fw-option-initialized');
+			$elements.addClass('slz-option-initialized');
 		});
 	});
 })();

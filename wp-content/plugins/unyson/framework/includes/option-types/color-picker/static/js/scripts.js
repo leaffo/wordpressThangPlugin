@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
 	var helpers = {
-		optionClass: 'fw-option-type-color-picker',
-		eventNamespace: '.fwOptionTypeColorPicker',
-		colorRegex: /^#([a-f0-9]{3}){1,2}$/i,
-		localized: window._fw_option_type_color_picker_localized,
+		optionClass: 'slz-option-type-color-picker',
+		eventNamespace: '.slzOptionTypeColorPicker',
+		colorRegex: /^#[a-f0-9]{3}([a-f0-9]{3})?$/i,
+		localized: window._slz_option_type_color_picker_localized,
 		/**
 		 * Return true if color is dark
 		 * @param {string} color Accept only correct color format, e.g. #123456
@@ -43,7 +43,7 @@ jQuery(document).ready(function($){
 		increment: 0
 	};
 
-	fwEvents.on('fw:options:init', function (data) {
+	slzEvents.on('slz:options:init', function (data) {
 		data.$elements.find('input.'+ helpers.optionClass +':not(.initialized)').each(function(){
 			var $input = $(this),
 				changeTimeoutId = 0,
@@ -74,7 +74,7 @@ jQuery(document).ready(function($){
 								initialValue = null; // make sure the above `if` is executed only once
 							}
 
-							$input.trigger('fw:color:picker:changed', { // should be 'fw:option-type:color-picker:change'
+							$input.trigger('slz:color:picker:changed', { // should be 'slz:option-type:color-picker:change'
 								$element: $input,
 								event   : event,
 								ui      : ui
@@ -103,7 +103,7 @@ jQuery(document).ready(function($){
 				 * Hide if clicked outside option
 				 */
 				{
-					$input.parent().attr('id', 'fw-color-picker-r-'+ (++helpers.increment));
+					$input.parent().attr('id', 'slz-color-picker-r-'+ (++helpers.increment));
 
 					var originalShowCallback = helpers.getInstance($input).show;
 
@@ -158,7 +158,7 @@ jQuery(document).ready(function($){
 				}], function(i, data){
 					if (data.color && helpers.isColorValid(data.color)) {
 						$picker.find('> .iris-picker-inner').append(''
-							+ '<div class="' + helpers.optionClass + '-reset-default fw-pull-left">'
+							+ '<div class="' + helpers.optionClass + '-reset-default slz-pull-left">'
 							+ /**/'<a class="iris-palette" style="'
 							+ /**//**/'background-color:'+ data.color +';'
 							+ /**//**/'height:' + $firstPalette.css('height') + ';'

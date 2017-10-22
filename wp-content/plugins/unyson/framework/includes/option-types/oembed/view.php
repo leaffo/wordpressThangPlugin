@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
@@ -16,16 +16,16 @@ $input_attr['value']       = $data['value'];
 $input_attr['name']        = $option['attr']['name'];
 $input_attr['placeholder'] = $option['attr']['placeholder'];
 ?>
-<div <?php echo fw_attr_to_html( $wrapper_attr ) ?>>
+<div <?php echo slz_attr_to_html( $wrapper_attr ) ?>>
 
-	<div class="fw-oembed-input">
-		<input type="text" <?php echo fw_attr_to_html( $input_attr ); ?>/>
+	<div class="slz-oembed-input">
+		<input type="text" <?php echo slz_attr_to_html( $input_attr ); ?>/>
 	</div>
-	<div class="fw-oembed-preview">
+	<div class="slz-oembed-preview">
 		<?php
-		$value = fw_akg('value', $data);
+		$value = slz_akg('value', $data);
 		if ( filter_var( $value, FILTER_VALIDATE_URL ) ) {
-			$iframe = empty( $option['preview']['keep_ratio'] ) ? fw_oembed_get( $value, array(
+			$iframe = empty( $option['preview']['keep_ratio'] ) ? slz_oembed_get( $value, array(
 				'height' => $option['preview']['height'],
 				'width'  => $option['preview']['width']
 			) ) :

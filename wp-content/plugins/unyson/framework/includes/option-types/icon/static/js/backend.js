@@ -1,7 +1,7 @@
 jQuery(function ($) {
-	var optionTypeClass = '.fw-option-type-icon';
+	var optionTypeClass = '.slz-option-type-icon';
 
-	fwEvents.on('fw:options:init', function (data) {
+	slzEvents.on('slz:options:init', function (data) {
 
 		var $options = data.$elements.find(optionTypeClass +':not(.initialized)');
 
@@ -11,10 +11,10 @@ jQuery(function ($) {
 
 			if ($this.hasClass('active')) {
 				$this.removeClass('active');
-				$this.closest(optionTypeClass).find('input').val('').trigger('change');
+				$this.closest(optionTypeClass).find('input[type="hidden"]').val('').trigger('change');
 			} else {
 				$this.addClass('active').siblings().removeClass('active');
-				$this.closest(optionTypeClass).find('input').val($this.data('value')).trigger('change');
+				$this.closest(optionTypeClass).find('input[type="hidden"]').val($this.data('value')).trigger('change');
 			}
 		});
 
@@ -23,12 +23,30 @@ jQuery(function ($) {
 			.on('change', function () {
 				var $this = $(this);
 				var group = $this.val();
-
 				$this.closest(optionTypeClass).find('.js-option-type-icon-item').each(function () {
-					$(this).toggle(group == 'all' || group == $(this).data('group'));
+					var group_id = $(this).data('group-id');
+					$(this).toggle( group == group_id  || group == $(this).data('group') );
 				});
 			})
 			.trigger('change');
+
+		// handle searching icon
+		$options.find('.js-option-type-icon-search')
+			.on('input', function () {
+				var $this = $(this);
+				var text = $this.val();
+				var group = $this.closest(optionTypeClass).find('.js-option-type-icon-dropdown').val();
+				$this.closest(optionTypeClass).find('.js-option-type-icon-item').each(function () {
+					var value = $(this).data('value');
+					var group_id = $(this).data('group-id');
+					var show = false;
+					if ( ( $(this).data('value').indexOf(text) >= 0 ) && ( group == group_id  || group == $(this).data('group') )){
+						show = true;
+					}
+					$(this).toggle( show );
+				});
+			})
+			.trigger('input');
 
 		$options.addClass('initialized');
 

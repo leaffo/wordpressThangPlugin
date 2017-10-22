@@ -1,13 +1,15 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 if (!is_admin()) {
-	wp_enqueue_style('fw-ext-builder-frontend-grid');
+	wp_enqueue_style('slz-ext-builder-frontend-grid');
 
 	wp_enqueue_style(
-		'fw-ext-forms-default-styles',
-		fw()->extensions->get('forms')->get_declared_URI('/static/css/frontend.css'),
+		'slz-ext-forms-default-styles',
+		slz()->extensions->get('forms')->get_declared_URI('/static/css/frontend.css'),
 		array(),
-		fw()->manifest->get_version()
+		slz()->manifest->get_version()
 	);
 }
 

@@ -1,8 +1,8 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 /**
- * @var  FW_Option_Type_Typography_v2 $typography_v2
+ * @var  SLZ_Option_Type_Typography_v2 $typography_v2
  * @var  string $id
  * @var  array $option
  * @var  array $data
@@ -25,48 +25,43 @@
 
 }
 
-$components = (isset($option['components']) && is_array($option['components']))
-	? array_merge($defaults['components'], $option['components'])
-	: $defaults['components'];
+$components = (isset($option['components']) && is_array($option['components'])) ? array_merge($defaults['components'], $option['components']) : $defaults['components'];
 ?>
-<div <?php echo fw_attr_to_html( $wrapper_attr ) ?>>
+<div <?php echo slz_attr_to_html( $wrapper_attr ) ?>>
 	<?php if ( $components['family'] ) : ?>
-		<div class="fw-option-typography-v2-option fw-option-typography-v2-option-family fw-border-box-sizing fw-col-sm-5">
+		<div class="slz-option-typography-v2-option slz-option-typography-v2-option-family slz-border-box-sizing slz-col-sm-5">
 			<select data-type="family" data-value="<?php echo esc_attr($data['value']['family']); ?>"
 			        name="<?php echo esc_attr( $option['attr']['name'] ) ?>[family]"
-			        class="fw-option-typography-v2-option-family-input">
+			        class="slz-option-typography-v2-option-family-input">
 			</select>
 
-			<div class="fw-inner"><?php _e('Font face', 'fw'); ?></div>
+			<div class="slz-inner"><?php _e('Font face', 'slz'); ?></div>
 		</div>
 
-		<?php if ( $components['style'] ) : ?>
-		<div class="fw-option-typography-v2-option fw-option-typography-v2-option-style fw-border-box-sizing fw-col-sm-3"
+		<div class="slz-option-typography-v2-option slz-option-typography-v2-option-style slz-border-box-sizing slz-col-sm-3"
 		     style="display: <?php echo ( $google_font ) ? 'none' : 'inline-block'; ?>;">
 			<select data-type="style" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[style]"
-			        class="fw-option-typography-v2-option-style-input">
+			        class="slz-option-typography-v2-option-style-input">
 				<?php foreach (
 					array(
-						'normal'  => __('Normal', 'fw'),
-						'italic'  => __('Italic', 'fw'),
-						'oblique' => __('Oblique', 'fw')
+						'normal'  => __('Normal', 'slz'),
+						'italic'  => __('Italic', 'slz'),
+						'oblique' => __('Oblique', 'slz')
 					)
 					as $key => $style
 				): ?>
 					<option value="<?php echo esc_attr( $key ) ?>"
-					        <?php if ($data['value']['style'] === $key): ?>selected="selected"<?php endif; ?>><?php echo fw_htmlspecialchars( $style ) ?></option>
+					        <?php if ($data['value']['style'] === $key): ?>selected="selected"<?php endif; ?>><?php echo slz_htmlspecialchars( $style ) ?></option>
 				<?php endforeach; ?>
 			</select>
 
-			<div class="fw-inner"><?php _e( 'Style', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Style', 'slz' ); ?></div>
 		</div>
-		<?php endif; ?>
 
-		<?php if ( $components['weight'] ) : ?>
-		<div class="fw-option-typography-v2-option fw-option-typography-v2-option-weight fw-border-box-sizing fw-col-sm-3"
+		<div class="slz-option-typography-v2-option slz-option-typography-v2-option-weight slz-border-box-sizing slz-col-sm-3"
 		     style="display: <?php echo ( $google_font ) ? 'none' : 'inline-block'; ?>;">
 			<select data-type="weight" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[weight]"
-			        class="fw-option-typography-v2-option-weight-input">
+			        class="slz-option-typography-v2-option-weight-input">
 				<?php foreach (
 					array(
 						100 => 100,
@@ -82,88 +77,84 @@ $components = (isset($option['components']) && is_array($option['components']))
 					as $key => $style
 				): ?>
 					<option value="<?php echo esc_attr( $key ) ?>"
-					        <?php if ($data['value']['weight'] == $key): ?>selected="selected"<?php endif; ?>><?php echo fw_htmlspecialchars( $style ) ?></option>
+					        <?php if ($data['value']['weight'] == $key): ?>selected="selected"<?php endif; ?>><?php echo slz_htmlspecialchars( $style ) ?></option>
 				<?php endforeach; ?>
 			</select>
 
-			<div class="fw-inner"><?php _e( 'Weight', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Weight', 'slz' ); ?></div>
 		</div>
-		<?php endif; ?>
-
-		<div class="fw-option-typography-v2-option fw-option-typography-v2-option-subset fw-border-box-sizing fw-col-sm-2"
+		<?php if ( !empty($components['subset']) ) : ?>
+		<div class="slz-option-typography-v2-option slz-option-typography-v2-option-subset slz-border-box-sizing slz-col-sm-2"
 		     style="display: <?php echo ( $google_font ) ? 'inline-block' : 'none'; ?>;">
 			<select data-type="subset" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[subset]"
-			        class="fw-option-typography-v2-option-subset">
+			        class="slz-option-typography-v2-option-subset">
 				<?php if ( $google_font ) {
 					foreach ( $google_font['subsets'] as $subset ) { ?>
 						<option value="<?php echo esc_attr( $subset ) ?>"
-						        <?php if ($data['value']['subset'] === $subset): ?>selected="selected"<?php endif; ?>><?php echo fw_htmlspecialchars( $subset ); ?></option>
+						        <?php if ($data['value']['subset'] === $subset): ?>selected="selected"<?php endif; ?>><?php echo slz_htmlspecialchars( $subset ); ?></option>
 					<?php }
 				}
 				?>
 			</select>
 
-			<div class="fw-inner"><?php _e( 'Script', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Script', 'slz' ); ?></div>
 		</div>
-
-
-		<?php if ( $components['variation'] ) : ?>
+		<?php endif;?>
 		<div
-			class="fw-option-typography-v2-option fw-option-typography-v2-option-variation fw-border-box-sizing fw-col-sm-2"
+			class="slz-option-typography-v2-option slz-option-typography-v2-option-variation slz-border-box-sizing slz-col-sm-2"
 			style="display: <?php echo ( $google_font ) ? 'inline-block' : 'none'; ?>;">
 			<select data-type="variation" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[variation]"
-			        class="fw-option-typography-v2-option-variation">
+			        class="slz-option-typography-v2-option-variation">
 				<?php if ( $google_font ) {
 					foreach ( $google_font['variants'] as $variant ) { ?>
 						<option value="<?php echo esc_attr( $variant ) ?>"
-						        <?php if ($data['value']['variation'] == $variant): ?>selected="selected"<?php endif; ?>><?php echo fw_htmlspecialchars( $variant ); ?></option>
+						        <?php if ($data['value']['variation'] == $variant): ?>selected="selected"<?php endif; ?>><?php echo slz_htmlspecialchars( $variant ); ?></option>
 					<?php }
 				}
 				?>
 			</select>
 
-			<div class="fw-inner"><?php esc_html_e( 'Style', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Style', 'slz' ); ?></div>
 		</div>
-		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if ( $components['size'] ) : ?>
-		<div class="fw-option-typography-v2-option fw-option-typography-v2-option-size fw-border-box-sizing fw-col-sm-2">
+		<div class="slz-option-typography-v2-option slz-option-typography-v2-option-size slz-border-box-sizing slz-col-sm-2">
 			<input data-type="size" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[size]"
-			       class="fw-option-typography-v2-option-size-input" type="text"
+			       class="slz-option-typography-v2-option-size-input" type="text"
 			       value="<?php echo esc_attr($data['value']['size']); ?>">
 
-			<div class="fw-inner"><?php esc_html_e( 'Size', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Size', 'slz' ); ?></div>
 		</div>
 	<?php endif; ?>
 
 	<?php if ( $components['line-height'] ) : ?>
 		<div
-			class="fw-option-typography-v2-option fw-option-typography-v2-option-line-height fw-border-box-sizing fw-col-sm-2">
+			class="slz-option-typography-v2-option slz-option-typography-v2-option-line-height slz-border-box-sizing slz-col-sm-2">
 			<input data-type="line-height" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[line-height]"
 			       value="<?php echo esc_attr($data['value']['line-height']); ?>"
-			       class="fw-option-typography-v2-option-line-height-input" type="text">
+			       class="slz-option-typography-v2-option-line-height-input" type="text">
 
-			<div class="fw-inner"><?php esc_html_e( 'Line height', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Line height', 'slz' ); ?></div>
 		</div>
 	<?php endif; ?>
 
 	<?php if ( $components['letter-spacing'] ) : ?>
 		<div
-			class="fw-option-typography-v2-option fw-option-typography-v2-option-letter-spacing fw-border-box-sizing fw-col-sm-2">
+			class="slz-option-typography-v2-option slz-option-typography-v2-option-letter-spacing slz-border-box-sizing slz-col-sm-2">
 			<input data-type="letter-spacing" name="<?php echo esc_attr( $option['attr']['name'] ) ?>[letter-spacing]"
 			       value="<?php echo esc_attr($data['value']['letter-spacing']); ?>"
-			       class="fw-option-typography-v2-option-letter-spacing-input" type="text">
+			       class="slz-option-typography-v2-option-letter-spacing-input" type="text">
 
-			<div class="fw-inner"><?php esc_html_e( 'Spacing', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Letter spacing', 'slz' ); ?></div>
 		</div>
 	<?php endif; ?>
 
 	<?php if ( $components['color'] ) : ?>
-		<div class="fw-option-typography-v2-option fw-option-typography-v2-option-color fw-border-box-sizing fw-col-sm-2"
+		<div class="slz-option-typography-v2-option slz-option-typography-v2-option-color slz-border-box-sizing slz-col-sm-2"
 		     data-type="color">
 			<?php
-			echo fw()->backend->option_type( 'color-picker' )->render(
+			echo slz()->backend->option_type( 'color-picker' )->render(
 				'color',
 				array(
 					'label' => false,
@@ -173,12 +164,12 @@ $components = (isset($option['components']) && is_array($option['components']))
 				),
 				array(
 					'value'       => $data['value']['color'],
-					'id_prefix'   => 'fw-option-' . $id . '-typography-v2-option-',
+					'id_prefix'   => 'slz-option-' . $id . '-typography-v2-option-',
 					'name_prefix' => $data['name_prefix'] . '[' . $id . ']',
 				)
 			)
 			?>
-			<div class="fw-inner"><?php esc_html_e( 'Color', 'fw' ); ?></div>
+			<div class="slz-inner"><?php _e( 'Color', 'slz' ); ?></div>
 		</div>
 	<?php endif; ?>
 

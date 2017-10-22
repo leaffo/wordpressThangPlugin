@@ -1,5 +1,5 @@
 jQuery(function ($) {
-	fw.qtip( $('.fw-extensions-list .fw-extensions-list-item .fw-extension-tip') );
+	slz.qtip( $('.slz-extensions-list .slz-extensions-list-item .slz-extension-tip') );
 });
 
 /**
@@ -8,13 +8,13 @@ jQuery(function ($) {
 jQuery(function($){
 	var inst = {
 		isBusy: false,
-		eventNamespace: '.fw-extension',
+		eventNamespace: '.slz-extension',
 		$wrapper: $('.wrap'),
 		listenSubmit: function() {
-			this.$wrapper.on('submit'+ this.eventNamespace, 'form.fw-extension-ajax-form', this.onSubmit);
+			this.$wrapper.on('submit'+ this.eventNamespace, 'form.slz-extension-ajax-form', this.onSubmit);
 		},
 		stopListeningSubmit: function() {
-			this.$wrapper.off('submit'+ this.eventNamespace, 'form.fw-extension-ajax-form');
+			this.$wrapper.off('submit'+ this.eventNamespace, 'form.slz-extension-ajax-form');
 		},
 		onSubmit: function(e) {
 			e.preventDefault();
@@ -35,7 +35,7 @@ jQuery(function($){
 				url: ajaxurl,
 				type: 'POST',
 				data: {
-					action: 'fw_extensions_check_direct_fs_access'
+					action: 'slz_extensions_check_direct_fs_access'
 				},
 				dataType: 'json'
 			}).done(function(data){
@@ -51,7 +51,7 @@ jQuery(function($){
 						url: ajaxurl,
 						type: 'POST',
 						data: {
-							action: 'fw_extensions_'+ $form.attr('data-extension-action'),
+							action: 'slz_extensions_'+ $form.attr('data-extension-action'),
 							extension: $form.attr('data-extension-name')
 						},
 						dataType: 'json'
@@ -61,15 +61,15 @@ jQuery(function($){
 						} else {
 							var error = r.data ? r.data.pop().message : 'Error';
 
-							fw.soleModal.show(
-								'fw-extension-install-error',
-								'<p class="fw-text-danger">'+ error +'</p>'
+							slz.soleModal.show(
+								'slz-extension-install-error',
+								'<p class="slz-text-danger">'+ error +'</p>'
 							);
 						}
 					}).fail(function(jqXHR, textStatus, errorThrown){
-						fw.soleModal.show(
-							'fw-extension-install-error',
-							'<p class="fw-text-danger">'+ String(errorThrown) +'</p>'
+						slz.soleModal.show(
+							'slz-extension-install-error',
+							'<p class="slz-text-danger">'+ String(errorThrown) +'</p>'
 						);
 						inst.isBusy = false;
 						inst.loading($form, false);
@@ -84,22 +84,22 @@ jQuery(function($){
 			});
 		},
 		loading: function($form, show) {
-			var $loadingContainer = $form.closest('.fw-extensions-list-item').find('.fw-extensions-list-item-title').first();
+			var $loadingContainer = $form.closest('.slz-extensions-list-item').find('.slz-extensions-list-item-title').first();
 			var $loading = $loadingContainer.find('.ajax-form-loading');
 
 			if (!$loading.length) {
 				$loadingContainer.append(
-					'<span class="ajax-form-loading fw-text-center fw-hidden">'+
-						'<img src="'+ fw.img.loadingSpinner +'" />'+
+					'<span class="ajax-form-loading slz-text-center slz-hidden">'+
+						'<img src="'+ slz.img.loadingSpinner +'" />'+
 					'</span>'
 				);
 				$loading = $loadingContainer.find('.ajax-form-loading');
 			}
 
 			if (show) {
-				$loading.removeClass('fw-hidden');
+				$loading.removeClass('slz-hidden');
 			} else {
-				$loading.addClass('fw-hidden');
+				$loading.addClass('slz-hidden');
 			}
 		}
 	};

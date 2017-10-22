@@ -1,4 +1,4 @@
-<?php if (!defined('FW')) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die('Forbidden');
 }
 /**
@@ -28,25 +28,26 @@
 	$data['value'] = array_merge($option['value'], is_array($data['value']) ? $data['value'] : array());
 }
 ?>
-<div <?php echo fw_attr_to_html($wrapper_attr) ?>>
+<div <?php echo slz_attr_to_html($wrapper_attr) ?>>
 
-	<div class="fw-option-typography-option fw-option-typography-option-size fw-border-box-sizing fw-col-sm-2" style="display: <?php echo (!isset($option['components']['size']) || $option['components']['size'] != false) ? 'block' : 'none' ?>;">
-		<select data-type="size" name="<?php echo esc_attr($option['attr']['name']) ?>[size]" class="fw-option-typography-option-size-input">
+	<div class="slz-option-typography-option slz-option-typography-option-size slz-border-box-sizing slz-col-sm-2" style="display: <?php echo (!isset($option['components']['size']) || $option['components']['size'] != false) ? 'block' : 'none' ?>;">
+		<select data-type="size" name="<?php echo esc_attr($option['attr']['name']) ?>[size]" class="slz-option-typography-option-size-input">
+			<option value="inherit" <?php echo $data['value']['size'] == 'inherit' ? ' selected="selected" ' : ''; ?>><?php esc_html_e('Inherit', 'slz')?></option>
 		<?php for ($i = 9; $i <= 70; $i++): ?>
 			<option value="<?php echo esc_attr($i) ?>" <?php echo $data['value']['size'] === $i ? ' selected="selected" ' : ''; ?>><?php echo $i ?>px</option>
 		<?php endfor; ?>
 		</select>
 	</div>
 
-	<div class="fw-option-typography-option fw-option-typography-option-family fw-border-box-sizing fw-col-sm-5"
+	<div class="slz-option-typography-option slz-option-typography-option-family slz-border-box-sizing slz-col-sm-5"
 	     style="display: <?php echo ( ! isset( $option['components']['family'] ) || $option['components']['family'] != false ) ? 'block' : 'none'; ?>;">
 		<select data-type="family" data-value="<?php echo esc_attr($data['value']['family']); ?>"
 		        name="<?php echo esc_attr( $option['attr']['name'] ) ?>[family]"
-		        class="fw-option-typography-option-family-input"></select>
+		        class="slz-option-typography-option-family-input"></select>
 	</div>
 
-	<div class="fw-option-typography-option fw-option-typography-option-style fw-border-box-sizing fw-col-sm-3" style="display: <?php echo (!isset($option['components']['family']) || $option['components']['family'] != false) ? 'block' : 'none'; ?>;">
-		<select data-type="style" name="<?php echo esc_attr($option['attr']['name']) ?>[style]" class="fw-option-typography-option-style-input">
+	<div class="slz-option-typography-option slz-option-typography-option-style slz-border-box-sizing slz-col-sm-3" style="display: <?php echo (!isset($option['components']['family']) || $option['components']['family'] != false) ? 'block' : 'none'; ?>;">
+		<select data-type="style" name="<?php echo esc_attr($option['attr']['name']) ?>[style]" class="slz-option-typography-option-style-input">
 		<?php if (in_array($data['value']['family'], $fonts['standard'])): ?>
 		<?php foreach (
 			array(
@@ -58,19 +59,21 @@
 				'700italic' => 'Bold/Italic',
 			)
 			as $key => $style): ?>
-				<option value="<?php echo esc_attr($key) ?>" <?php if ($data['value']['style'] === $key): ?>selected="selected"<?php endif; ?>><?php echo fw_htmlspecialchars($style) ?></option>
+				<option value="<?php echo esc_attr($key) ?>" <?php if ($data['value']['style'] === $key): ?>selected="selected"<?php endif; ?>><?php echo slz_htmlspecialchars($style) ?></option>
 		<?php endforeach; ?>
 		<?php else: ?>
-		<?php foreach ($fonts['google'][$data['value']['family']]['variants'] as $variant): ?>
-			<option value="<?php echo esc_attr($variant) ?>" <?php if ($data['value']['style'] === $variant): ?>selected="selected"<?php endif; ?>><?php echo fw_htmlspecialchars(ucfirst($variant)) ?></option>
-		<?php endforeach; ?>
+			<?php if (!empty($fonts['google'][$data['value']['family']]['variants'])):?>
+			<?php foreach ($fonts['google'][$data['value']['family']]['variants'] as $variant): ?>
+				<option value="<?php echo esc_attr($variant) ?>" <?php if ($data['value']['style'] === $variant): ?>selected="selected"<?php endif; ?>><?php echo slz_htmlspecialchars(ucfirst($variant)) ?></option>
+			<?php endforeach; ?>
+			<?php endif;?>
 		<?php endif; ?>
 		</select>
 	</div>
 
-	<div class="fw-option-typography-option fw-option-typography-option-color fw-border-box-sizing fw-col-sm-2" data-type="color" style="display: <?php echo (!isset($option['components']['color']) || $option['components']['color'] != false) ? 'block' : 'none' ?>;">
+	<div class="slz-option-typography-option slz-option-typography-option-color slz-border-box-sizing slz-col-sm-2" data-type="color" style="display: <?php echo (!isset($option['components']['color']) || $option['components']['color'] != false) ? 'block' : 'none' ?>;">
 	<?php
-	echo fw()->backend->option_type('color-picker')->render(
+	echo slz()->backend->option_type('color-picker')->render(
 		'color',
 		array(
 			'label' => false,
@@ -80,7 +83,7 @@
 		),
 		array(
 			'value' => $data['value']['color'],
-			'id_prefix' => 'fw-option-' . $id . '-typography-option-',
+			'id_prefix' => 'slz-option-' . $id . '-typography-option-',
 			'name_prefix' => $data['name_prefix'] . '[' . $id . ']',
 		)
 	)

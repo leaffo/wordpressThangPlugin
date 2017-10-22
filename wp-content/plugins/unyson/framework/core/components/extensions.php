@@ -1,13 +1,15 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Extensions component
  */
-final class _FW_Component_Extensions
+final class _SLZ_Component_Extensions
 {
 	/**
 	 * All existing extensions
-	 * @var FW_Extension[] { 'extension_name' => instance }
+	 * @var SLZ_Extension[] { 'extension_name' => instance }
 	 */
 	private static $all_extensions = array();
 
@@ -28,7 +30,7 @@ final class _FW_Component_Extensions
 	 * wp_enqueue_script( 'ext-A-script', 'script.js', array( 'ext-B-script' ) );
 	 * so 'ext-B-script' must be registered before 'ext-A-script'
 	 *
-	 * @var FW_Extension[] { 'extension_name' => instance }
+	 * @var SLZ_Extension[] { 'extension_name' => instance }
 	 */
 	private static $active_extensions = array();
 
@@ -54,15 +56,12 @@ final class _FW_Component_Extensions
 	private static $extension_to_active_tree = array();
 
 	/**
-	 * @var FW_Access_Key
+	 * @var SLZ_Access_Key
 	 */
 	private static $access_key;
 
-	/** @var FW_Extension_Manifest[] All extensions manifests */
-	private static $manifests = array();
-
 	/**
-	 * @var null|_FW_Extensions_Manager
+	 * @var null|_SLZ_Extensions_Manager
 	 */
 	public $manager;
 
@@ -72,7 +71,7 @@ final class _FW_Component_Extensions
 	 */
 	public function _get_active_extensions_db_option_name()
 	{
-		return 'fw_active_extensions';
+		return 'slz_active_extensions';
 	}
 
 	/**
@@ -91,40 +90,12 @@ final class _FW_Component_Extensions
 		}
 	}
 
-	public function __construct() {
-		$this->manager = new _FW_Extensions_Manager();
-	}
+	public function __construct()
+	{
+		require dirname(__FILE__) .'/extensions/class-slz-extension-default.php';
 
-	/**
-	 * @param string $extension_name
-	 * @param FW_Access_Key $access_key
-	 * @return FW_Extension_Manifest|null
-	 * @internal
-	 * @since 2.6.9
-	 */
-	public static function _get_manifest($extension_name, FW_Access_Key $access_key) {
-		if (!in_array($access_key->get_key(), array('extension', self::$access_key->get_key()), true)) {
-			trigger_error('Method call denied', E_USER_ERROR);
-		}
-
-		if (isset(self::$all_extensions[$extension_name])) {
-			if (!isset(self::$manifests[$extension_name])) {
-				$manifest = fw_get_variables_from_file(
-					self::$all_extensions[$extension_name]['path'] .'/manifest.php', array('manifest' => array())
-				);
-				$manifest = $manifest['manifest'];
-
-				if (empty($manifest['name'])) {
-					$manifest['name'] = fw_id_to_title($extension_name);
-				}
-
-				self::$manifests[$extension_name] = new FW_Extension_Manifest($manifest);
-			}
-
-			return self::$manifests[$extension_name];
-		} else {
-			return null;
-		}
+		require dirname(__FILE__) .'/extensions/manager/class--slz-extensions-manager.php';
+		$this->manager = new _SLZ_Extensions_Manager();
 	}
 
 	/**
@@ -134,6 +105,22 @@ final class _FW_Component_Extensions
 	 */
 	private static function load_extensions($data)
 	{
+		if (false) {
+			$data = array(
+				'rel_path' => '/extension',
+				'path' => '/path/to/extension',
+				'uri' => 'https://uri.to/extension',
+				'customizations_locations' => array(
+					'/path/to/parent/theme/customizations/extensions/ext/rel/path' => 'https://uri.to/customization/path',
+					'/path/to/child/theme/customizations/extensions/ext/rel/path'  => 'https://uri.to/customization/path',
+				),
+
+				'all_extensions_tree' => array(),
+				'all_extensions' => array(),
+				'current_depth' => 1,
+				'parent' => '&$parent_extension_instance',
+			);
+		}
 		/**
 		 * Do not check all keys
 		 * if one not set, then sure others are not set (this is a private method)
@@ -146,7 +133,13 @@ final class _FW_Component_Extensions
 			$data['parent'] = null;
 		}
 
-		$dirs = glob($data['path'] .'/*', GLOB_ONLYDIR);
+		try {
+			$dirs = SLZ_File_Cache::get($cache_key = 'core:ext:load:glob:'. $data['path']);
+		} catch (SLZ_File_Cache_Not_Found_Exception $e) {
+			$dirs = glob($data['path'] .'/*', GLOB_ONLYDIR);
+
+			SLZ_File_Cache::set($cache_key, $dirs);
+		}
 
 		if (empty($dirs)) {
 			return;
@@ -174,11 +167,11 @@ final class _FW_Component_Extensions
 			}
 
 			if (isset($data['all_extensions'][$extension_name])) {
-				if ($data['all_extensions'][$extension_name]['parent'] !== $data['parent']) {
+				if ($data['all_extensions'][$extension_name]->get_parent() !== $data['parent']) {
 					// extension with the same name exists in another tree
 					trigger_error(
 						'Extension "'. $extension_name .'" is already defined '.
-						'in "'. $data['all_extensions'][$extension_name]['path'] .'" '.
+						'in "'. $data['all_extensions'][$extension_name]->get_declared_path() .'" '.
 						'found again in "'. $extension_dir .'"',
 						E_USER_ERROR
 					);
@@ -195,23 +188,40 @@ final class _FW_Component_Extensions
 					'all_extensions_tree' => &$data['all_extensions_tree'][$extension_name],
 					'all_extensions' => &$data['all_extensions'],
 					'current_depth' => $data['current_depth'] + 1,
-					'parent' => $extension_name,
+					'parent' => &$data['all_extensions'][$extension_name],
 				));
 			} else {
+				$class_file_name = 'class-slz-extension-'. $extension_name .'.php';
+
 				if (file_exists($extension_dir .'/manifest.php')) {
 					$data['all_extensions_tree'][$extension_name] = array();
 
 					self::$extension_to_all_tree[$extension_name] = &$data['all_extensions_tree'][$extension_name];
 
-					$data['all_extensions'][$extension_name] = array(
+					if (slz_include_file_isolated($extension_dir .'/'. $class_file_name)) {
+						$class_name = 'SLZ_Extension_'. slz_dirname_to_classname($extension_name);
+					} else {
+						$parent_class_name = get_class($data['parent']);
+						// check if parent extension has been defined custom Default class for its child extensions
+						if (class_exists($parent_class_name .'_Default')) {
+							$class_name = $parent_class_name .'_Default';
+						} else {
+							$class_name = 'SLZ_Extension_Default';
+						}
+					}
+
+					if (!is_subclass_of($class_name, 'SLZ_Extension')) {
+						trigger_error('Extension "'. $extension_name .'" must extend SLZ_Extension class', E_USER_ERROR);
+					}
+
+					$data['all_extensions'][$extension_name] = new $class_name(array(
 						'rel_path' => $data['rel_path'] .'/'. $extension_name,
 						'path' => $data['path'] .'/'. $extension_name,
 						'uri' => $data['uri'] .'/'. $extension_name,
 						'parent' => $data['parent'],
 						'depth' => $data['current_depth'],
 						'customizations_locations' => $customizations_locations,
-						'instance' => null, // created on activation
-					);
+					));
 				} else {
 					/**
 					 * The manifest file does not exist, do not load this extension.
@@ -221,12 +231,12 @@ final class _FW_Component_Extensions
 				}
 
 				self::load_extensions(array(
-					'rel_path' => $data['all_extensions'][$extension_name]['rel_path'] .'/extensions',
-					'path' => $data['all_extensions'][$extension_name]['path'] .'/extensions',
-					'uri' => $data['all_extensions'][$extension_name]['uri'] .'/extensions',
+					'rel_path' => $data['all_extensions'][$extension_name]->get_rel_path() .'/extensions',
+					'path' => $data['all_extensions'][$extension_name]->get_path() .'/extensions',
+					'uri' => $data['all_extensions'][$extension_name]->get_uri() .'/extensions',
 					'customizations_locations' => $customizations_locations,
 
-					'parent' => $extension_name,
+					'parent' => &$data['all_extensions'][$extension_name],
 					'all_extensions_tree' => &$data['all_extensions_tree'][$extension_name],
 					'all_extensions' => &$data['all_extensions'],
 					'current_depth' => $data['current_depth'] + 1,
@@ -237,7 +247,7 @@ final class _FW_Component_Extensions
 
 	/**
 	 * Include file from all extension's locations: framework, parent, child
-	 * @param string|FW_Extension $extension
+	 * @param string|SLZ_Extension $extension
 	 * @param string $file_rel_path
 	 * @param bool $themeFirst
 	 *        false - [framework, parent, child]
@@ -247,7 +257,7 @@ final class _FW_Component_Extensions
 	private static function include_extension_file_all_locations($extension, $file_rel_path, $themeFirst = false, $onlyFirstFound = false)
 	{
 		if (is_string($extension)) {
-			$extension = fw()->extensions->get($extension);
+			$extension = slz()->extensions->get($extension);
 		}
 
 		$paths = $extension->get_customizations_locations();
@@ -258,7 +268,7 @@ final class _FW_Component_Extensions
 		}
 
 		foreach ($paths as $path => $uri) {
-			if (fw_include_file_isolated($path . $file_rel_path)) {
+			if (slz_include_file_isolated($path . $file_rel_path)) {
 				if ($onlyFirstFound) {
 					return;
 				}
@@ -268,7 +278,7 @@ final class _FW_Component_Extensions
 
 	/**
 	 * Include all files from directory, from all extension's locations: framework, child, parent
-	 * @param string|FW_Extension $extension
+	 * @param string|SLZ_Extension $extension
 	 * @param string $dir_rel_path
 	 * @param bool $themeFirst
 	 *        false - [framework, parent, child]
@@ -277,7 +287,7 @@ final class _FW_Component_Extensions
 	private static function include_extension_directory_all_locations($extension, $dir_rel_path, $themeFirst = false)
 	{
 		if (is_string($extension)) {
-			$extension = fw()->extensions->get($extension);
+			$extension = slz()->extensions->get($extension);
 		}
 
 		$paths = $extension->get_customizations_locations();
@@ -288,11 +298,17 @@ final class _FW_Component_Extensions
 		}
 
 		foreach ($paths as $path => $uri) {
-			$files = glob($path . $dir_rel_path .'/*.php');
+			try {
+				$files = SLZ_File_Cache::get($cache_key = 'core:ext:glob:inc-all-php:'. $extension->get_name() .':'. $path);
+			} catch (SLZ_File_Cache_Not_Found_Exception $e) {
+				$files = glob($path . $dir_rel_path .'/*.php');
+
+				SLZ_File_Cache::set($cache_key, $files);
+			}
 
 			if ($files) {
 				foreach ($files as $dir_file_path) {
-					fw_include_file_isolated($dir_file_path);
+					slz_include_file_isolated($dir_file_path);
 				}
 			}
 		}
@@ -300,35 +316,35 @@ final class _FW_Component_Extensions
 
 	public function get_locations()
 	{
-		$cache_key = 'fw_extensions_locations';
+		$cache_key = 'slz_extensions_locations';
 
 		try {
-			return FW_Cache::get($cache_key);
-		} catch (FW_Cache_Not_Found_Exception $e) {
+			return SLZ_Cache::get($cache_key);
+		} catch (SLZ_Cache_Not_Found_Exception $e) {
 			/**
 			 * { '/hello/world/extensions' => 'https://hello.com/world/extensions' }
 			 */
-			$custom_locations = apply_filters('fw_extensions_locations', array());
+			$custom_locations = apply_filters('slz_extensions_locations', array());
 
 			{
 				$customizations_locations = array();
 
 				if (is_child_theme()) {
-					$customizations_locations[fw_get_stylesheet_customizations_directory('/extensions')]
-						= fw_get_stylesheet_customizations_directory_uri('/extensions');
+					$customizations_locations[slz_get_stylesheet_customizations_directory('/extensions')]
+						= slz_get_stylesheet_customizations_directory_uri('/extensions');
 				}
 
-				$customizations_locations[fw_get_template_customizations_directory('/extensions')]
-					= fw_get_template_customizations_directory_uri('/extensions');
+				$customizations_locations[slz_get_template_customizations_directory('/extensions')]
+					= slz_get_template_customizations_directory_uri('/extensions');
 
 				$customizations_locations += $custom_locations;
 			}
 
 			$locations = array();
 
-			$locations[ fw_get_framework_directory('/extensions') ] = array(
-				'path' => fw_get_framework_directory('/extensions'),
-				'uri' => fw_get_framework_directory_uri('/extensions'),
+			$locations[ slz_get_framework_directory('/extensions') ] = array(
+				'path' => slz_get_framework_directory('/extensions'),
+				'uri' => slz_get_framework_directory_uri('/extensions'),
 				'customizations_locations' => $customizations_locations,
 				'is' => array(
 					'framework' => true,
@@ -352,9 +368,9 @@ final class _FW_Component_Extensions
 			}
 
 			array_pop($customizations_locations);
-			$locations[ fw_get_template_customizations_directory('/extensions') ] = array(
-				'path' => fw_get_template_customizations_directory('/extensions'),
-				'uri' => fw_get_template_customizations_directory_uri('/extensions'),
+			$locations[ slz_get_template_customizations_directory('/extensions') ] = array(
+				'path' => slz_get_template_customizations_directory('/extensions'),
+				'uri' => slz_get_template_customizations_directory_uri('/extensions'),
 				'customizations_locations' => $customizations_locations,
 				'is' => array(
 					'framework' => false,
@@ -365,9 +381,9 @@ final class _FW_Component_Extensions
 
 			if (is_child_theme()) {
 				array_pop($customizations_locations);
-				$locations[ fw_get_stylesheet_customizations_directory('/extensions') ] = array(
-					'path' => fw_get_stylesheet_customizations_directory('/extensions'),
-					'uri' => fw_get_stylesheet_customizations_directory_uri('/extensions'),
+				$locations[ slz_get_stylesheet_customizations_directory('/extensions') ] = array(
+					'path' => slz_get_stylesheet_customizations_directory('/extensions'),
+					'uri' => slz_get_stylesheet_customizations_directory_uri('/extensions'),
 					'customizations_locations' => $customizations_locations,
 					'is' => array(
 						'framework' => false,
@@ -377,12 +393,7 @@ final class _FW_Component_Extensions
 				);
 			}
 
-			/**
-			 * @since 2.6.9
-			 */
-			$locations = apply_filters('fw_extensions_locations_after', $locations);
-
-			FW_Cache::set($cache_key, $locations);
+			SLZ_Cache::set($cache_key, $locations);
 
 			return $locations;
 		}
@@ -397,6 +408,7 @@ final class _FW_Component_Extensions
 				'customizations_locations' => $location['customizations_locations'],
 			));
 		}
+		return [];
 	}
 
 	/**
@@ -407,54 +419,21 @@ final class _FW_Component_Extensions
 	private function activate_extensions($parent_extension_name = null)
 	{
 		if ($parent_extension_name === null) {
-			$all_tree = &self::$all_extensions_tree;
+			$all_tree =& self::$all_extensions_tree;
 		} else {
-			$all_tree = &self::$extension_to_all_tree[$parent_extension_name];
+			$all_tree =& self::$extension_to_all_tree[$parent_extension_name];
 		}
 
 		foreach ($all_tree as $extension_name => &$sub_extensions) {
-			if (fw()->extensions->get($extension_name)) {
-				continue; // already active
+			if (slz()->extensions->get($extension_name)) {
+				// extension already active
+				continue;
 			}
 
-			$manifest = self::_get_manifest($extension_name, self::$access_key);
+			$extension =& self::$all_extensions[$extension_name];
 
-			{
-				$class_file_name = 'class-fw-extension-'. $extension_name .'.php';
-
-				if (fw_include_file_isolated(self::$all_extensions[$extension_name]['path'] .'/'. $class_file_name)) {
-					$class_name = 'FW_Extension_'. fw_dirname_to_classname($extension_name);
-				} else {
-					$parent_class_name = get_class(
-						fw()->extensions->get(self::$all_extensions[$extension_name]['parent'])
-					);
-
-					// check if parent extension has been defined custom Default class for its child extensions
-					if (class_exists($parent_class_name .'_Default')) {
-						$class_name = $parent_class_name .'_Default';
-					} else {
-						$class_name = 'FW_Extension_Default';
-					}
-				}
-
-				if (!is_subclass_of($class_name, 'FW_Extension')) {
-					trigger_error('Extension "'. $extension_name .'" must extend FW_Extension class', E_USER_ERROR);
-				}
-
-				self::$all_extensions[$extension_name]['instance'] = new $class_name(array(
-					'rel_path' => self::$all_extensions[$extension_name]['rel_path'],
-					'path' => self::$all_extensions[$extension_name]['path'],
-					'uri' => self::$all_extensions[$extension_name]['uri'],
-					'parent' => fw()->extensions->get(self::$all_extensions[$extension_name]['parent']),
-					'depth' => self::$all_extensions[$extension_name]['depth'],
-					'customizations_locations' => self::$all_extensions[$extension_name]['customizations_locations'],
-				));
-			}
-
-			$extension = &self::$all_extensions[$extension_name]['instance'];
-
-			if ($manifest->check_requirements()) {
-				if (!$this->_get_db_active_extensions($extension_name)) {
+			if ($extension->manifest->check_requirements()) {
+				if (!$this->_get_db_active_extensions($extension_name) && !$extension->manifest->get_autoload()) {
 					// extension is not set as active
 				} elseif (
 					$extension->get_parent()
@@ -464,9 +443,9 @@ final class _FW_Component_Extensions
 					// extension does not pass parent extension rules
 					if (is_admin()) {
 						// show warning only in admin side
-						FW_Flash_Messages::add(
-							'fw-invalid-extension',
-							sprintf(__('Extension %s is invalid.', 'fw'), $extension->get_name()),
+						SLZ_Flash_Messages::add(
+							'slz-invalid-extension',
+							sprintf(__('Extension %s is invalid.', 'slz'), $extension->get_name()),
 							'warning'
 						);
 					}
@@ -477,7 +456,7 @@ final class _FW_Component_Extensions
 			} else {
 				// requirements not met, tell required extensions that this extension is waiting for them
 
-				foreach ($manifest->get_required_extensions() as $required_extension_name => $requirements) {
+				foreach ($extension->manifest->get_required_extensions() as $required_extension_name => $requirements) {
 					if (!isset(self::$extensions_required_by_extensions[$required_extension_name])) {
 						self::$extensions_required_by_extensions[$required_extension_name] = array();
 					}
@@ -495,44 +474,42 @@ final class _FW_Component_Extensions
 	 */
 	private function activate_extension($extension_name)
 	{
-		if (fw()->extensions->get($extension_name)) {
-			return false; // already active
+		if (slz()->extensions->get($extension_name)) {
+			// already active
+			return false;
 		}
 
-		if (!self::_get_manifest($extension_name, self::$access_key)->requirements_met()) {
+		if (!self::$all_extensions[$extension_name]->manifest->requirements_met()) {
 			trigger_error('Wrong '. __METHOD__ .' call', E_USER_WARNING);
 			return false;
 		}
 
-		/**
-		 * Add to active extensions so inside includes/ and extension it will be accessible from fw()->extensions->get(...)
-		 * self::$all_extensions[$extension_name]['instance'] is created in $this->activate_extensions()
-		 */
-		self::$active_extensions[$extension_name] = &self::$all_extensions[$extension_name]['instance'];
+		// add to active extensions so inside includes/ and extension it will be accessible from slz()->extensions->get(...)
+		self::$active_extensions[$extension_name] =& self::$all_extensions[$extension_name];
 
-		$parent = self::$all_extensions[$extension_name]['instance']->get_parent();
+		$parent = self::$all_extensions[$extension_name]->get_parent();
 
 		if ($parent) {
 			self::$extension_to_active_tree[ $parent->get_name() ][$extension_name] = array();
-			self::$extension_to_active_tree[$extension_name] = &self::$extension_to_active_tree[ $parent->get_name() ][$extension_name];
+			self::$extension_to_active_tree[$extension_name] =& self::$extension_to_active_tree[ $parent->get_name() ][$extension_name];
 		} else {
 			self::$active_extensions_tree[$extension_name] = array();
-			self::$extension_to_active_tree[$extension_name] = &self::$active_extensions_tree[$extension_name];
+			self::$extension_to_active_tree[$extension_name] =& self::$active_extensions_tree[$extension_name];
 		}
 
 		self::include_extension_directory_all_locations($extension_name, '/includes');
 		self::include_extension_file_all_locations($extension_name, '/helpers.php');
 		self::include_extension_file_all_locations($extension_name, '/hooks.php');
 
-		if (self::$all_extensions[$extension_name]['instance']->_call_init(self::$access_key) !== false) {
+		if (self::$all_extensions[$extension_name]->_call_init(self::$access_key) !== false) {
 			$this->activate_extensions($extension_name);
 		}
 
 		// check if other extensions are waiting for this extension and try to activate them
 		if (isset(self::$extensions_required_by_extensions[$extension_name])) {
 			foreach (self::$extensions_required_by_extensions[$extension_name] as $waiting_extension_name) {
-				if (self::_get_manifest($waiting_extension_name, self::$access_key)->check_requirements()) {
-					$waiting_extension = self::$all_extensions[$waiting_extension_name]['instance'];
+				if (self::$all_extensions[$waiting_extension_name]->manifest->check_requirements()) {
+					$waiting_extension = self::$all_extensions[$waiting_extension_name];
 
 					if (!$this->_get_db_active_extensions($waiting_extension_name)) {
 						// extension is set as active
@@ -544,9 +521,9 @@ final class _FW_Component_Extensions
 						// extension does not pass parent extension rules
 						if (is_admin()) {
 							// show warning only in admin side
-							FW_Flash_Messages::add(
-								'fw-invalid-extension',
-								sprintf(__('Extension %s is invalid.', 'fw'), $waiting_extension_name),
+							SLZ_Flash_Messages::add(
+								'slz-invalid-extension',
+								sprintf(__('Extension %s is invalid.', 'slz'), $waiting_extension_name),
 								'warning'
 							);
 						}
@@ -573,12 +550,12 @@ final class _FW_Component_Extensions
 	 * Give extensions possibility to access their active_tree
 	 * @internal
 	 *
-	 * @param FW_Access_Key $access_key
+	 * @param SLZ_Access_Key $access_key
 	 * @param $extension_name
 	 *
 	 * @return array
 	 */
-	public function _get_extension_tree(FW_Access_Key $access_key, $extension_name)
+	public function _get_extension_tree(SLZ_Access_Key $access_key, $extension_name)
 	{
 		if ($access_key->get_key() !== 'extension') {
 			trigger_error('Call denied', E_USER_ERROR);
@@ -592,13 +569,13 @@ final class _FW_Component_Extensions
 	 */
 	public function _init()
 	{
-		self::$access_key = new FW_Access_Key('fw_extensions');
+		self::$access_key = new SLZ_Access_Key('slz_extensions');
 
 		/**
 		 * Extensions are about to activate.
-		 * You can add subclasses to FW_Extension at this point.
+		 * You can add subclasses to SLZ_Extension at this point.
 		 */
-		do_action('fw_extensions_before_init');
+		do_action('slz_extensions_before_init');
 
 		$this->load_all_extensions();
 		$this->add_actions();
@@ -615,7 +592,7 @@ final class _FW_Component_Extensions
 		 * Extensions are activated
 		 * Now $this->get_children() inside extensions is available
 		 */
-		do_action('fw_extensions_init');
+		do_action('slz_extensions_init');
 	}
 
 	public function _action_init()
@@ -631,12 +608,13 @@ final class _FW_Component_Extensions
 		foreach (self::$active_extensions as &$extension) {
 			/** js and css */
 			self::include_extension_file_all_locations($extension, '/static.php', true, true);
+			self::include_extension_file_all_locations($extension, '/theme-static.php', true, true);
 		}
 	}
 
 	/**
-	 * @param string $extension_name returned by FW_Extension::get_name()
-	 * @return FW_Extension|null
+	 * @param string $extension_name returned by SLZ_Extension::get_name()
+	 * @return SLZ_Extension|null
 	 */
 	public function get($extension_name)
 	{
@@ -649,7 +627,7 @@ final class _FW_Component_Extensions
 
 	/**
 	 * Get all active extensions
-	 * @return FW_Extension[]
+	 * @return SLZ_Extension[]
 	 */
 	public function get_all()
 	{

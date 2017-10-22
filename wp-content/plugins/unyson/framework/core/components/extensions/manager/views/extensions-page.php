@@ -1,4 +1,6 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * @var array $lists
  * @var string $link
@@ -38,12 +40,55 @@ $extension_view_path = $dir .'/extension.php';
 $displayed = array();
 ?>
 
-<h3><?php _e('Active Extensions', 'fw') ?></h3>
+<div class="uns-featured-section">
+	<h2 class="heading-title"><?php echo esc_html__('Welcome to', 'slz'); ?> <?php echo esc_html( slz()->theme->manifest->get('name') ); ?></h2>
+	<div class="description">
+		<?php echo esc_html( slz()->theme->manifest->get('description') ); ?>
+	</div>
+	<ul class="nav nav-tabs nav-justified">
+		<li>
+			<a href="<?php echo esc_url ( admin_url( 'admin.php?page=' . slz()->theme->manifest->get('id') ) ); ?>">
+				<span><?php echo esc_html__('Plugins', 'slz'); ?></span>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo esc_url ( admin_url( 'admin.php?page=' . slz()->theme->manifest->get('log_page_id') ) ); ?>">
+				<span><?php echo esc_html__('Changes Log', 'slz'); ?></span>
+			</a>
+		</li>
+		<li class="active">
+			<a href="<?php echo esc_url ( admin_url( 'admin.php?page=' . slz()->extensions->manager->get_page_slug() ) ); ?>">
+				<span><?php echo esc_html__('Extension Manager', 'slz'); ?></span>
+			</a>
+		</li>
+		<li>
+			<a href="<?php echo esc_url ( admin_url( 'admin.php?page=' . slz()->backend->_get_settings_page_slug() ) ); ?>">
+				<span><?php echo esc_html__('Theme Settings', 'slz'); ?></span>
+			</a>
+		</li>
+		<?php if ( slz()->extensions->_get_db_active_extensions('backups') ) : ?>
+			<li>
+				<a href="<?php echo esc_url ( admin_url( 'admin.php?page=' . slz_ext('backups')->get_page_slug() ) ); ?>">
+					<span><?php echo esc_html__('Backup Data', 'slz'); ?></span>
+				</a>
+			</li>
+		<?php endif; ?>
+		<?php if ( slz()->extensions->_get_db_active_extensions('backups-demo') ) : ?>
+			<li>
+				<a href="<?php echo esc_url ( admin_url( 'admin.php?page=' . slz_ext('backups-demo')->get_page_slug() ) ); ?>">
+					<span><?php echo esc_html__('Demo Install', 'slz'); ?></span>
+				</a>
+			</li>
+		<?php endif; ?>
+	</ul>
+</div>
+
+<h3 class="tab-heading"><?php _e('Active Extensions', 'slz') ?></h3>
 <?php
 $display_active_extensions = array();
 
 foreach ($lists['active'] as $name => &$data) {
-	if (true !== fw_akg('display', $data['manifest'], $display_default_value)) {
+	if (true !== slz_akg('display', $data['manifest'], $display_default_value)) {
 		continue;
 	}
 
@@ -51,19 +96,20 @@ foreach ($lists['active'] as $name => &$data) {
 }
 unset($data);
 ?>
+
 <?php if (empty($display_active_extensions)): ?>
-	<div class="fw-extensions-no-active">
-		<div class="fw-text-center fw-extensions-title-icon"><span class="dashicons dashicons-screenoptions"></span></div>
-		<p class="fw-text-center fw-text-muted"><em><?php _e('No extensions activated yet', 'fw'); ?><br/><?php _e('Check the available extensions below', 'fw'); ?></em></p>
+	<div class="slz-extensions-no-active">
+		<div class="slz-text-center slz-extensions-title-icon"><span class="dashicons dashicons-screenoptions"></span></div>
+		<p class="slz-text-center slz-text-muted"><em><?php _e('No extensions activated yet', 'slz'); ?><br/><?php _e('Check the available extensions below', 'slz'); ?></em></p>
 	</div>
 <?php else: ?>
-	<div class="fw-row fw-extensions-list">
+	<div class="slz-row slz-extensions-list">
 		<?php
 		foreach ($display_active_extensions as $name => &$data) {
-			fw_render_view($extension_view_path, array(
+			slz_render_view($extension_view_path, array(
 				'name' => $name,
-				'title' => fw_ext($name)->manifest->get_name(),
-				'description' => fw_ext($name)->manifest->get('description'),
+				'title' => slz_ext($name)->manifest->get_name(),
+				'description' => slz_ext($name)->manifest->get('description'),
 				'link' => $link,
 				'lists' => &$lists,
 				'nonces' => $nonces,
@@ -78,10 +124,10 @@ unset($data);
 	</div>
 <?php endif; ?>
 
-<div id="fw-extensions-list-available">
-	<hr class="fw-extensions-lists-separator"/>
-	<h3><?php _e('Available Extensions', 'fw') ?></h3><!-- This "available" differs from technical "available" -->
-	<div class="fw-row fw-extensions-list">
+<div id="slz-extensions-list-available">
+	<hr class="slz-extensions-lists-separator"/>
+	<h3><?php _e('Available Extensions', 'slz') ?></h3><!-- This "available" differs from technical "available" -->
+	<div class="slz-row slz-extensions-list">
 		<?php $something_displayed = false; ?>
 		<?php
 		{
@@ -93,8 +139,8 @@ unset($data);
 				}
 
 				$theme_extensions[$name] = array(
-					'name' => fw_akg('name', $data['manifest'], fw_id_to_title($name)),
-					'description' => fw_akg('description', $data['manifest'], '')
+					'name' => slz_akg('name', $data['manifest'], slz_id_to_title($name)),
+					'description' => slz_akg('description', $data['manifest'], '')
 				);
 			}
 			unset($data);
@@ -103,7 +149,7 @@ unset($data);
 				if (isset($displayed[$name])) {
 					continue;
 				} elseif (isset($lists['installed'][$name])) {
-					if (true !== fw_akg('display', $lists['installed'][$name]['manifest'], $display_default_value)) {
+					if (true !== slz_akg('display', $lists['installed'][$name]['manifest'], $display_default_value)) {
 						continue;
 					}
 				} else {
@@ -112,12 +158,12 @@ unset($data);
 							continue;
 						}
 					} else {
-						//trigger_error(sprintf(__('Supported extension "%s" is not available.', 'fw'), $name));
+						//trigger_error(sprintf(__('Supported extension "%s" is not available.', 'slz'), $name));
 						continue;
 					}
 				}
 
-				fw_render_view($extension_view_path, array(
+				slz_render_view($extension_view_path, array(
 					'name' => $name,
 					'title' => $data['name'],
 					'description' => $data['description'],
@@ -137,14 +183,14 @@ unset($data);
 		foreach ($lists['disabled'] as $name => &$data) {
 			if (isset($displayed[$name])) {
 				continue;
-			} elseif (true !== fw_akg('display', $data['manifest'], $display_default_value)) {
+			} elseif (true !== slz_akg('display', $data['manifest'], $display_default_value)) {
 				continue;
 			}
 
-			fw_render_view($extension_view_path, array(
+			slz_render_view($extension_view_path, array(
 				'name' => $name,
-				'title' => fw_akg('name', $data['manifest'], fw_id_to_title($name)),
-				'description' => fw_akg('description', $data['manifest'], ''),
+				'title' => slz_akg('name', $data['manifest'], slz_id_to_title($name)),
+				'description' => slz_akg('description', $data['manifest'], ''),
 				'link' => $link,
 				'lists' => &$lists,
 				'nonces' => $nonces,
@@ -176,7 +222,7 @@ unset($data);
 					}
 				}
 
-				fw_render_view( $extension_view_path, array(
+				slz_render_view( $extension_view_path, array(
 					'name'              => $name,
 					'title'             => $data['name'],
 					'description'       => $data['description'],
@@ -194,10 +240,10 @@ unset($data);
 		?>
 	</div>
 
-	<?php if ($something_displayed && apply_filters('fw_extensions_page_show_other_extensions', true)): ?>
+	<?php if ($something_displayed && apply_filters('slz_extensions_page_show_other_extensions', true)): ?>
 		<!-- show/hide not compatible extensions -->
-		<p class="fw-text-center toggle-not-compat-ext-btn-wrapper"><?php
-			echo fw_html_tag(
+		<p class="slz-text-center toggle-not-compat-ext-btn-wrapper"><?php
+			echo slz_html_tag(
 				'a',
 				array(
 					'href' => '#',
@@ -205,28 +251,28 @@ unset($data);
 					'class' => 'button toggle-not-compat-ext-btn',
 					'style' => 'box-shadow:none;'
 				),
-				'<span class="the-show-text">'. __('Show other extensions', 'fw') .'</span>'.
-				'<span class="the-hide-text fw-hidden">'. __('Hide other extensions', 'fw') .'</span>'
+				'<span class="the-show-text">'. __('Show other extensions', 'slz') .'</span>'.
+				'<span class="the-hide-text slz-hidden">'. __('Hide other extensions', 'slz') .'</span>'
 			);
 			?></p>
 		<script type="text/javascript">
 			jQuery(function($){
 				if (
-					!$('.fw-extensions-list .fw-extensions-list-item.not-compatible').length
+					!$('.slz-extensions-list .slz-extensions-list-item.not-compatible').length
 					||
 					<?php echo empty($lists['supported']) ? 'true' : 'false' ?>
 				) {
 					// disable the show/hide feature
-					$('#fw-extensions-list-wrapper .toggle-not-compat-ext-btn-wrapper').addClass('fw-hidden');
+					$('#slz-extensions-list-wrapper .toggle-not-compat-ext-btn-wrapper').addClass('slz-hidden');
 				} else {
-					$('#fw-extensions-list-wrapper .fw-extensions-list .fw-extensions-list-item.not-compatible').fadeOut('fast');
+					$('#slz-extensions-list-wrapper .slz-extensions-list .slz-extensions-list-item.not-compatible').fadeOut('fast');
 
-					$('#fw-extensions-list-wrapper .toggle-not-compat-ext-btn-wrapper').on('click', function(){
-						$('#fw-extensions-list-wrapper .fw-extensions-list .fw-extensions-list-item.not-compatible')[
-							$(this).find('.the-hide-text').hasClass('fw-hidden') ? 'fadeIn' : 'fadeOut'
+					$('#slz-extensions-list-wrapper .toggle-not-compat-ext-btn-wrapper').on('click', function(){
+						$('#slz-extensions-list-wrapper .slz-extensions-list .slz-extensions-list-item.not-compatible')[
+							$(this).find('.the-hide-text').hasClass('slz-hidden') ? 'fadeIn' : 'fadeOut'
 							]();
 
-						$(this).find('.the-show-text, .the-hide-text').toggleClass('fw-hidden');
+						$(this).find('.the-show-text, .the-hide-text').toggleClass('slz-hidden');
 					});
 				}
 			});
@@ -235,7 +281,7 @@ unset($data);
 	<?php else: ?>
 		<script type="text/javascript">
 			jQuery(function($){
-				$('#fw-extensions-list-available').remove();
+				$('#slz-extensions-list-available').remove();
 			});
 		</script>
 	<?php endif; ?>

@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 /**
@@ -18,10 +18,10 @@
 }
 
 ?>
-<div <?php echo fw_attr_to_html($wrapper_attr) ?>>
+<div <?php echo slz_attr_to_html($wrapper_attr) ?>>
 	<div class="predefined">
 		<?php
-		echo fw()->backend->option_type( 'radio' )->render(
+		echo slz()->backend->option_type( 'radio' )->render(
 			'predefined',
 			array(
 				'value'   => '',
@@ -38,7 +38,7 @@
 
 	<div class="custom">
 		<?php
-		echo fw()->backend->option_type( 'text' )->render(
+		echo slz()->backend->option_type( 'text' )->render(
 			'custom',
 			array(),
 			array(

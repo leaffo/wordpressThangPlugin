@@ -1,25 +1,20 @@
-<?php if ( ! defined( 'FW' ) ) {
+<?php if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Forbidden' );
 }
 
-if ( !is_admin() ) {
-	$ext_instance = fw()->extensions->get( 'events' );
-
-	if ( is_singular($ext_instance->get_post_type_name()) ) {
-		wp_enqueue_style(
-			'fw-extension-'. $ext_instance->get_name() .'-single-styles',
-			$ext_instance->locate_css_URI( 'single-styles' ),
-			array(),
-			$ext_instance->manifest->get_version()
-		);
-
-		wp_enqueue_script(
-			'fw-extension-'. $ext_instance->get_name() .'-single-scripts',
-			$ext_instance->locate_js_URI( 'single-scripts' ),
-			array( 'jquery'),
-			$ext_instance->manifest->get_version(),
-			true
-		);
-
-	}
+$ext_instance = slz()->extensions->get( 'events' );
+if( is_admin() ) {
+	wp_enqueue_script(
+		'slz-extension-'. $ext_instance->get_name() .'-donation-admin-scripts',
+		$ext_instance->locate_js_URI( 'donation-admin' ),
+		array( 'jquery'),
+		$ext_instance->manifest->get_version(),
+		true
+	);
+	wp_enqueue_style(
+		'slz-extension-'. $ext_instance->get_name() .'-donation-admin-styles',
+		$ext_instance->locate_css_URI( 'donation-admin' ),
+		array(),
+		$ext_instance->manifest->get_version()
+	);
 }

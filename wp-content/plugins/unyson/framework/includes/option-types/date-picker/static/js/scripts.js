@@ -4,7 +4,7 @@
 
 "use strict";
 
-function fw_option_type_date_picker_initialize(object) {
+function slz_option_type_date_picker_initialize(object) {
 	var defaults = {
 		autoclose: true,
 		format: "dd-mm-yyyy",
@@ -13,7 +13,7 @@ function fw_option_type_date_picker_initialize(object) {
 		endDate: null,
 		language: jQuery('html').attr('lang').split('-').shift()
 	};
-	var options = JSON.parse(object.attr('data-fw-option-date-picker-opts'));
+	var options = JSON.parse(object.attr('data-slz-option-date-picker-opts'));
 
 	var date = null;
 
@@ -35,15 +35,15 @@ function fw_option_type_date_picker_initialize(object) {
 }
 
 jQuery(document).ready(function ($) {
-	fwEvents.on('fw:options:init', function (data) {
-		var obj = data.$elements.find('.fw-option-type-date-picker:not(.initialized)');
+	slzEvents.on('slz:options:init', function (data) {
+		var obj = data.$elements.find('.slz-option-type-date-picker:not(.initialized)');
 
 		if (!obj.length) {
 			return;
 		}
 
 		for (var i = 0; i < obj.length; i++) {
-			fw_option_type_date_picker_initialize(jQuery(obj[i]));
+			slz_option_type_date_picker_initialize(jQuery(obj[i]));
 		}
 
 		obj.addClass('initialized');

@@ -1,29 +1,31 @@
 <?php
 
-if (! defined('FW')) { die('Forbidden'); }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /*
 echo 'ID';
-fw_print($id);
+slz_print($id);
 echo 'OPTION';
-fw_print($option);
+slz_print($option);
 echo 'DATA';
-fw_print($data);
+slz_print($data);
 echo 'JSON';
-fw_print($json);
+slz_print($json);
  */
 
 $wrapper_attr = array(
-	'class' => $option['attr']['class'] . ' fw-icon-v2-preview-' . $option['preview_size'],
-	'id' => $option['attr']['id'],
-	'data-fw-modal-size' => $option['popup_size']
+	'class' => $option['attr']['class'] . ' slz-icon-v2-preview-' . $option['preview_size'],
+	'id'    => $option['attr']['id'],
+	'data-slz-modal-size' => $option['popup_size']
 );
 
 unset($option['attr']['class'], $option['attr']['id']);
 
 ?>
 
-<div <?php echo fw_attr_to_html($wrapper_attr) ?>>
-	<input <?php echo fw_attr_to_html($option['attr']) ?> type="hidden" />
+<div <?php echo slz_attr_to_html($wrapper_attr) ?>>
+	<input <?php echo slz_attr_to_html($option['attr']) ?> type="hidden" />
 </div>
 

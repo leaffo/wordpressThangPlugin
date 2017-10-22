@@ -1,16 +1,16 @@
-.fw-option-type-range-slider.short-slider {
+.slz-option-type-range-slider.short-slider {
 	max-width: 280px;
 }
 
-.fw-option-type-range-slider .irs {
+.slz-option-type-range-slider .irs {
 	height: 30px;
 }
 
-.fw-option-type-range-slider .irs-with-grid {
+.slz-option-type-range-slider .irs-with-grid {
 	height: 40px;
 }
 
-.fw-option-type-range-slider .irs-line {
+.slz-option-type-range-slider .irs-line {
 	height: 5px;
 	top: 5px;
 	background: #ffffff;
@@ -22,19 +22,19 @@
 	-webkit-border-radius: 16px;
 }
 
-.fw-option-type-range-slider .irs-line-left {
+.slz-option-type-range-slider .irs-line-left {
 	height: 8px;
 }
 
-.fw-option-type-range-slider .irs-line-mid {
+.slz-option-type-range-slider .irs-line-mid {
 	height: 8px;
 }
 
-.fw-option-type-range-slider .irs-line-right {
+.slz-option-type-range-slider .irs-line-right {
 	height: 8px;
 }
 
-.fw-option-type-range-slider .irs-bar {
+.slz-option-type-range-slider .irs-bar {
 	height: 7px;
 	top: 5px;
 	background: #d9ecf4;
@@ -46,11 +46,11 @@
 	-webkit-border-radius: 16px 0 0 16px;
 }
 
-.fw-option-type-range-slider .irs-bar-edge {
+.slz-option-type-range-slider .irs-bar-edge {
 	visibility: hidden;
 }
 
-.fw-option-type-range-slider .irs-shadow {
+.slz-option-type-range-slider .irs-shadow {
 	height: 2px;
 	top: 38px;
 	background: #000;
@@ -60,23 +60,23 @@
 	-webkit-border-radius: 5px;
 }
 
-.fw-option-type-range-slider .lt-ie9 .irs-shadow {
+.slz-option-type-range-slider .lt-ie9 .irs-shadow {
 	filter: alpha(opacity=30);
 }
 
-.fw-option-type-range-slider #irs-active-slider, .fw-option-type-range-slider .irs-slider:hover {
+.slz-option-type-range-slider #irs-active-slider, .slz-option-type-range-slider .irs-slider:hover {
 	background: #00709f;
 }
 
-.fw-option-type-range-slider .irs-min, .fw-option-type-range-slider .irs-max {
+.slz-option-type-range-slider .irs-min, .slz-option-type-range-slider .irs-max {
 	display: none;
 }
 
-.fw-option-type-range-slider .lt-ie9 .irs-min, .fw-option-type-range-slider .lt-ie9 .irs-max {
+.slz-option-type-range-slider .lt-ie9 .irs-min, .slz-option-type-range-slider .lt-ie9 .irs-max {
 	background: #ccc;
 }
 
-.fw-option-type-range-slider .irs-from, .fw-option-type-range-slider .irs-to, .fw-option-type-range-slider .irs-single {
+.slz-option-type-range-slider .irs-from, .slz-option-type-range-slider .irs-to, .slz-option-type-range-slider .irs-single {
 	top: 0;
 	border: none;
 	border-radius: 10px;
@@ -94,26 +94,26 @@
 	z-index: 2;
 }
 
-.fw-option-type-range-slider .lt-ie9 .irs-from, .fw-option-type-range-slider .lt-ie9 .irs-to, .fw-option-type-range-slider .lt-ie9 .irs-single {
+.slz-option-type-range-slider .lt-ie9 .irs-from, .slz-option-type-range-slider .lt-ie9 .irs-to, .slz-option-type-range-slider .lt-ie9 .irs-single {
 	background: #999;
 }
 
-.fw-option-type-range-slider .irs-grid {
+.slz-option-type-range-slider .irs-grid {
 	height: 19px;
 }
 
-.fw-option-type-range-slider .irs-grid-pol {
+.slz-option-type-range-slider .irs-grid-pol {
 	opacity: 0.5;
 	background: #428bca;
 }
 
-.fw-option-type-range-slider .irs-grid-pol.small {
+.slz-option-type-range-slider .irs-grid-pol.small {
 	background: #999;
 }
 
-.fw-option-type-range-slider .irs-grid-text {
+.slz-option-type-range-slider .irs-grid-text {
 	color: #99a4ac;
 }
 
-.fw-option-type-range-slider .irs-disabled {
+.slz-option-type-range-slider .irs-disabled {
 }

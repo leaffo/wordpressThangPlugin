@@ -1,4 +1,4 @@
-(function($, fwe) {
+(function($, slze) {
 
 	var init = function() {
 		var $this = $(this),
@@ -55,7 +55,7 @@
 			}
 
 				frame.on('ready', function() {
-					frame.modal.$el.addClass('fw-option-type-upload');
+					frame.modal.$el.addClass('slz-option-type-upload');
 				});
 
 				// opens the modal with the correct attachment already selected
@@ -73,11 +73,9 @@
 
 				frame.on('select', function() {
 					var attachment = frame.state().get('selection').first();
-
 					elements.$input
 						.val(attachment.id)
 						.trigger('change'); // trigger Customizer update
-
 					performSelection(attachment);
 				});
 			};
@@ -124,16 +122,8 @@
 			elements.$uploadButton.text(l10n.buttonAdd);
 			elements.$container.addClass('empty');
 
-			fwe.trigger('fw:option-type:upload:clear', {$element: elements.$container});
-			elements.$container.trigger('fw:option-type:upload:clear');
-
-			fw.options.trigger.changeForEl(elements.$container, {
-				value: {}
-			});
-
-			fw.options.trigger.scopedByType('clear', elements.$container, {
-				value: {}
-			});
+			slze.trigger('slz:option-type:upload:clear', {$element: elements.$container});
+			elements.$container.trigger('slz:option-type:upload:clear');
 		}
 
 		function performSelection (attachment) {
@@ -142,28 +132,21 @@
 
 			elements.$container.removeClass('empty');
 
-			fwe.trigger('fw:option-type:upload:change', {
+			slze.trigger('slz:option-type:upload:change', {
 				$element: elements.$container,
 				attachment: attachment
 			});
 
-			elements.$container.trigger('fw:option-type:upload:change', {
+			elements.$container.trigger('slz:option-type:upload:change', {
 				attachment: attachment
-			});
-
-			fw.options.trigger.changeForEl(elements.$container, {
-				value: {
-					attachment_id: attachment.get('id'),
-					url: attachment.get('url')
-				}
 			});
 		}
 	};
 
-	fwe.on('fw:options:init', function(data) {
+	slze.on('slz:options:init', function(data) {
 		data.$elements
-			.find('.fw-option-type-upload.any-files:not(.fw-option-initialized)').each(init)
-			.addClass('fw-option-initialized');
+			.find('.slz-option-type-upload.any-files:not(.slz-option-initialized)').each(init)
+			.addClass('slz-option-initialized');
 	});
 
-})(jQuery, fwEvents);
+})(jQuery, slzEvents);

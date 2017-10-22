@@ -2,7 +2,771 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66639474-ef5f-4366-a882-fbc81d485ae4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/plugins/unyson/framework/bin/load-latest-fonts.php" afterPath="$PROJECT_DIR$/wp-content/plugins/unyson/framework/bin/load-latest-fonts.php" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\autoload.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\bin\load-latest-fonts.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\bootstrap.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\Fw.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\class-fw-manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\backend.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\backend\class-fw-settings-form-theme.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\class-fw-extension-default.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\available-extensions.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\class--fw-extensions-manager.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\available-ext\class--fw-available-extensions-register.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\available-ext\class-fw-available-extension.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\class--fw-extensions-delete-upgrader-skin.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\class--fw-extensions-install-upgrader-skin.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\download-source\class--fw-ext-download-source-register.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\download-source\class--fw-ext-download-source.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\download-source\types\class-fw-download-source-github.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\download-source\types\init.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\parsedown\LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\includes\parsedown\Parsedown.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\extension-page.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\extension-page.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\extensions-page.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\extensions-page.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\disabled-bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnail-bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\analytics.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\backup.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\backups.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\breadcrumbs.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\events.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\feedback.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\forms.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\learning.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\mailer.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\mega-menu.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\page-builder.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\portfolio.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\seo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\sidebars.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\sliders.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\social.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\styling.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\translation.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\img\thumbnails\wp-shortcodes.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\unyson-font-icon\fonts\icomoon.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\unyson-font-icon\fonts\icomoon.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\unyson-font-icon\fonts\icomoon.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\unyson-font-icon\fonts\icomoon.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\static\unyson-font-icon\style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\views\delete-form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\views\extension-page-header.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\views\extension.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\views\extensions-page.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\extensions\manager\views\install-form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\components\theme.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\exceptions\class-fw-option-type-exception.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\extends\class-fw-container-type.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\extends\class-fw-extension.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\extends\class-fw-option-type.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\core\extends\interface-fw-option-handler.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\blog\class-fw-extension-blog.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\blog\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\class-fw-extension-builder.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\helpers.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\autoload.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\builder.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\extends\class-fw-option-type-builder-item.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\extends\class-fw-option-type-builder.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\fullscreen.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\class-fw-ext-builder-templates-component.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\class-fw-ext-builder-templates.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\components\full\class-fw-ext-builder-templates-component-full.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\components\full\init.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\components\full\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\components\full\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\init.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\static\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\includes\templates\static\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\css\builder.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\css\fullscreen.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\css\helpers.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\css\history.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\fullscreen\fullscreen-off.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\fullscreen\fullscreen-on.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\gradient-slash.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\history\redo.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\history\redo_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\history\undo.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\img\history\undo_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\js\builder.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\js\fullscreen.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\js\helpers.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\js\history.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\js\initialize-builder.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\js\qtips.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\static\lib\jszip.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\includes\option-types\builder\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\builder\static\css\frontend-grid.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\class-fw-extension-events.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\extensions\events-tags\class-fw-extension-events-tags.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\extensions\events-tags\hooks.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\extensions\events-tags\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\helpers.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\hooks.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\includes\option-types\event\class-fw-option-type-event.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\includes\option-types\event\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\includes\option-types\event\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\includes\option-types\event\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\settings-options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\static\css\backend-events-style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\static\css\single-styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\static\js\single-scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\events\views\content.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\class-fw-extension-forms.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\class-fw-extension-contact-forms.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\helpers.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\includes\helper\class--fw-ext-contact-form-db-data.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\class-fw-shortcode-contact-form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\includes\item\class-page-builder-contact-form-item.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\includes\item\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\includes\item\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\shortcodes\contact-form\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\views\email.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\views\form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\extensions\contact-forms\views\submit.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\hooks.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\extends\class-fw-extension-forms-form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\class-fw-option-type-form-builder.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\extends\class-fw-option-type-form-builder-item.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\checkboxes\class-fw-option-type-form-builder-item-checkboxes.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\checkboxes\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\checkboxes\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\checkboxes\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\checkboxes\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\email\class-fw-option-type-form-builder-item-email.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\email\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\email\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\email\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\email\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\form-builder-items.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\form-header-title\class-fw-option-type-form-builder-item-form-header-title.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\form-header-title\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\form-header-title\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\number\class-fw-option-type-form-builder-item-number.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\number\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\number\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\number\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\number\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\radio\class-fw-option-type-form-builder-item-radio.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\radio\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\radio\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\radio\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\radio\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\class-fw-option-type-form-builder-item-recaptcha.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\ReCaptcha.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\RequestMethod.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\RequestMethod\Post.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\RequestMethod\Socket.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\RequestMethod\SocketPost.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\RequestParameters.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\ReCaptcha\Response.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\includes.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\option-type-recaptcha\class-fw-option-type-recaptcha.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\includes\option-type-recaptcha\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\static\js\frontend-recaptcha.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\recaptcha\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\select\class-fw-option-type-form-builder-item-select.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\select\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\select\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\select\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\select\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\text\class-fw-option-type-form-builder-item-text.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\text\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\text\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\text\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\text\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\textarea\class-fw-option-type-form-builder-item-textarea.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\textarea\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\textarea\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\textarea\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\textarea\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\website\class-fw-option-type-form-builder-item-website.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\website\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\website\static\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\website\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\items\website\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\static\js\helpers.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\includes\option-types\form-builder\views\items.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\s.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\static\css\frontend.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\views\backend\submit-box-add.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\forms\views\backend\submit-box-edit.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\class-fw-extension-mailer.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\helpers.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\hooks.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\class-mailer-sender.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\classes\class-fw-ext-mailer-email.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\classes\class-fw-ext-mailer-send-method.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\option-type-mailer\class-fw-option-type-mailer.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\option-type-mailer\static\css\style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\option-type-mailer\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\send-methods\class-fw-ext-mailer-send-method-smtp.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\includes\send-methods\class-fw-ext-mailer-send-method-wpmail.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\mailer\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\class-fw-extension-shortcodes.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\helpers.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\class-fw-shortcode.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\class-fw-shortcodes-loader.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\coder\class-fw-ext-shortcodes-attr-coder-aggressive.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\coder\class-fw-ext-shortcodes-attr-coder-json.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\coder\class-fw-ext-shortcodes-attr-coder-post-meta.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\coder\interface-fw-ext-shortcodes-attr-coder.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\includes\shortcode-template-components.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\static\img\minus-accordion.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\static\img\plus-accordion.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\accordion\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\button\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\button\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\button\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\button\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\button\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\button\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\class-fw-shortcode-calendar.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\css\calendar.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\img\tick.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\js\calendar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\libs\bootstrap3\css\bootstrap-grid.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\libs\bootstrap3\js\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\libs\bootstrap3\js\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\libs\jstimezonedetect\jstz.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\static\libs\jstimezonedetect\jstz.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\day.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\events-list.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\month-day.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\month.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\week-days.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\calendar\views\week.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\call-to-action\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\call-to-action\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\call-to-action\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\call-to-action\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\call-to-action\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\call-to-action\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\class-fw-shortcode-column.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\page-builder-column-item\class-page-builder-column-item.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\page-builder-column-item\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\page-builder-column-item\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\template-component\class-fw-ext-builder-templates-component-column.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\template-component\init.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\template-component\save-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\template-component\save-icon.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\template-component\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\includes\template-component\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\1_1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\1_2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\1_3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\1_4.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\1_5.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\1_6.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\2_3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\thumbnails\3_4.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\column\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\divider\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\divider\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\divider\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\divider\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\divider\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\divider\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon-box\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon-box\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon-box\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon-box\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon-box\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon-box\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\icon\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\class-fw-shortcode-map.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\map\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-image\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-image\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-image\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-image\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-video\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-video\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-video\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\media-video\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\notification\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\notification\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\notification\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\notification\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\notification\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\notification\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\row\class-fw-shortcode-row.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\row\includes\page-builder-row-item\class-page-builder-row-item.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\row\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\row\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\class-fw-shortcode-section.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\page-builder-section-item\class-page-builder-section-item.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\page-builder-section-item\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\page-builder-section-item\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\template-component\class-fw-ext-builder-templates-component-section.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\template-component\init.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\template-component\save-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\template-component\save-icon.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\template-component\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\includes\template-component\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\css\background.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\css\jquery.fs.wallpaper.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\background.init.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\background.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\core.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\jquery.fs.wallpaper.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\jquery.fs.wallpaper.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\static\js\transition.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\section\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\special-heading\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\special-heading\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\special-heading\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\special-heading\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\special-heading\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\special-heading\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\class-fw-shortcode-table.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\class-fw-option-type-table.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\static\css\default-styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\static\css\extended-styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\views\cell-head-template.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\views\cell-worksheet-template.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-table\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-textarea-cell\class-fw-option-type-textarea-cell.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-textarea-cell\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-textarea-cell\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\includes\fw-option-type-textarea-cell\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\views\pricing.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\table\views\tabular.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\tabs\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\team-member\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\team-member\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\team-member\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\team-member\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\team-member\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\team-member\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\static\js\jquery.carouFredSel-6.2.1-packed.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\testimonials\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\text-block\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\text-block\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\text-block\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\text-block\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\thang-shortcode\class-fw-thang-shortcode.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\thang-shortcode\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\thang-shortcode\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\thang-shortcode\vc_options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\widget-area\class-fw-shortcode-widget-area.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\widget-area\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\widget-area\options.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\widget-area\static\img\page_builder.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\shortcodes\widget-area\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\static\js\aggressive-coder.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\shortcodes\static\js\load-shortcodes-data.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\class-fw-extension-update.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\config.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\extensions\github-update\class-fw-extension-github-update.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\extensions\github-update\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\includes\classes\class--fw-ext-update-extensions-list-table.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\includes\classes\class--fw-ext-update-extensions-upgrader-skin.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\includes\classes\class--fw-ext-update-framework-upgrader-skin.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\includes\classes\class--fw-ext-update-theme-upgrader-skin.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\includes\extends\class-fw-ext-update-service.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\static.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\static\css\admin-update-page.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\extensions\update\views\updates-list.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-access-key.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-cache.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-callback.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-db-options-model.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-dumper.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-flash-messages.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-request.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-resize.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-session.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-settings-form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-wp-filesystem.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-wp-list-table.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-wp-meta.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\class-fw-wp-option.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\database.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\exceptions\class-fw-form-invalid-submission-exception.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\exceptions\class-fw-form-not-found-exception.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\fw-google-fonts.json.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\fw-storage.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\general.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\meta.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\type\class-fw-type-register.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\helpers\type\class-fw-type.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\box\class-fw-container-type-box.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\class-fw-container-type-undefined.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\popup\class-fw-container-type-popup.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\popup\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\popup\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\simple.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\tab\class-fw-container-type-tab.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\container-types\tab\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\customizer\class--fw-customizer-control-option-wrapper.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\customizer\class--fw-customizer-setting-option.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\hooks.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-storage\class--fw-option-storage-type-register.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-storage\class-fw-option-storage-type.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-storage\type\class-fw-option-storage-type-post-meta.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-storage\type\class-fw-option-storage-type-term-meta.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-storage\type\class-fw-option-storage-type-wp-option.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-box\class-fw-option-type-addable-box.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-box\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-box\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-box\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-option\class-fw-option-type-addable-option.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-option\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-option\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-option\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-popup\class-fw-option-type-addable-popup.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-popup\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-popup\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\addable-popup\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\background-image\class-fw-option-type-background-image.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\background-image\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\background-image\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\background-image\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\class-fw-option-type-undefined.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\color-picker\class-fw-option-type-color-picker.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\color-picker\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\color-picker\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\class-fw-option-type-wp-date-picker.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\css\datepicker.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\bootstrap-datepicker.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.az.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.bg.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.bs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ca.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.cs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.cy.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.da.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.de.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.el.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.en-AU.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.en-GB.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.eo.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.es.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.et.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.eu.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.fa.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.fi.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.fo.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.fr-CH.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.fr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.gl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.he.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.hr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.hu.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.hy.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.id.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.is.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.it-CH.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.it.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ja.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ka.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.kh.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.kk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ko.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.kr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.lt.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.lv.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.me.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.mk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.mn.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ms.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.nb.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.nl-BE.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.nl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.no.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.pl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.pt-BR.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.pt.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ro.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.rs-latin.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.rs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.ru.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sq.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sr-latin.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sv.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.sw.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.th.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.tr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.uk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.vi.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.zh-CN.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\locales\bootstrap-datepicker.zh-TW.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\date-picker\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-picker\class-fw-option-type-datetime-picker.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-picker\static\css\jquery.datetimepicker.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-picker\static\css\style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-picker\static\js\jquery.datetimepicker.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-picker\static\js\script.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-range\class-fw-option-type-datetime-range.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-range\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-range\static\js\script.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\datetime-range\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\gradient\class-fw-option-type-gradient.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\gradient\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\gradient\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\gradient\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\class-fw-option-type-icon-v2.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\includes\class-fw-icon-v2-favorites.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\includes\class-fw-icon-v2-packs-loader.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\static\css\picker.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\static\img\no-image.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\static\img\sauron.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\static\img\transparent_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\static\js\icon-picker-v2.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\static\js\render-icon-previews.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\views\templates.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon-v2\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon\class-fw-option-type-icon.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon\static\css\backend.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon\static\js\backend.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\icon\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\image-picker\class-fw-option-type-image-picker.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\image-picker\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\image-picker\static\js\image-picker\image-picker.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\image-picker\static\js\image-picker\image-picker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\image-picker\static\js\image-picker\imagesloaded.pkg.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\image-picker\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\map\class-fw-option-type-map.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\map\static\css\style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\map\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\map\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-picker\class-fw-option-type-multi-picker.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-picker\static\css\multi-picker.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-picker\static\js\multi-picker.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-select\class-fw-option-type-multi-select.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-select\static\css\style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-select\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\class-fw-option-type-multi-upload.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\static\css\any-files.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\static\css\images-only.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\static\css\modal.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\static\js\any-files.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\static\js\images-only.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\views\any-files.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi-upload\views\images-only.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi\class-fw-option-type-multi.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\multi\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\oembed\class-fw-option-type-oembed.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\oembed\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\oembed\static\js\oembed.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\oembed\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\popup\class-fw-option-type-popup.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\popup\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\popup\static\js\popup.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\popup\views\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\radio-text\class-fw-option-type-radio-text.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\radio-text\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\radio-text\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\radio-text\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\range-slider\class-fw-option-type-range-slider.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\range-slider\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\range-slider\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\range-slider\static\libs\ion-range-slider\ion.rangeSlider.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\range-slider\static\libs\ion-range-slider\ion.rangeSlider.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\range-slider\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\rgba-color-picker\class-fw-option-type-rgba-color-picker.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\rgba-color-picker\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\rgba-color-picker\static\images\transparency-grid.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\rgba-color-picker\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\simple.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\class-fw-option-type-short-slider.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\class-fw-option-type-slider.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\static\libs\ion-range-slider\ion.rangeSlider.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\static\libs\ion-range-slider\ion.rangeSlider.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\slider\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\switch\class-fw-option-type-switch.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\switch\static\adaptive-switch\jquery.adaptive-switch.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\switch\static\adaptive-switch\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\switch\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\switch\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography-v2\class-fw-option-type-typography-v2.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography-v2\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography-v2\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography-v2\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography\class-fw-option-type-typography.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography\static\css\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography\static\images\google-fonts.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography\static\js\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\typography\view.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\class-fw-option-type-upload.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\static\css\any-files.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\static\css\images-only.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\static\css\modal.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\static\js\any-files.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\static\js\images-only.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\views\any-files.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\upload\views\images-only.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\wp-editor\class-fw-option-type-wp-editor.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\wp-editor\includes\class-fw-wp-editor-settings.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\wp-editor\static\scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\includes\option-types\wp-editor\static\styles.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-es_ES.mo" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-es_ES.po" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-fr_FR.mo" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-fr_FR.po" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-he_IL.mo" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-he_IL.po" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-nl_NL.mo" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-nl_NL.po" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-ru_RU.mo" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw-ru_RU.po" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\fw.pot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\languages\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\manifest.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\css\backend-options.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\css\fw.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\css\option-types.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\css\selectize.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\img\logo-100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\img\logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\img\no-image.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\img\sort-vertically.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\backend-customizer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\backend-options.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw-events.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw-form-helpers.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw-reactive-options-registry.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw-reactive-options-simple-options.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw-reactive-options-undefined-option.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw-reactive-options.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\fw.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\ie-fixes.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\js\option-types.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\backbone-relational\backbone-relational.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\entypo\css\entypo.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\entypo\fonts\entypo.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\entypo\fonts\entypo.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\entypo\fonts\entypo.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\entypo\fonts\entypo.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\css\font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\fonts\FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\fonts\fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\font-awesome\fonts\fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\jscrollpane\jquery.jscrollpane.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\jscrollpane\jquery.jscrollpane.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\linecons\css\linecons.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\linecons\fonts\linecons.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\lnr\css\lnr.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\moment\moment-with-locales.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\mousewheel\jquery.mousewheel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\qtip\css\jquery.qtip.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\qtip\css\jquery.qtip.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\qtip\jquery.qtip.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\qtip\jquery.qtip.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\selectize\selectize.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\selectize\selectize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\typcn\css\typcn.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\typcn\fonts\typicons.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\typcn\fonts\typicons.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\typcn\fonts\typicons.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\typcn\fonts\typicons.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\changelog.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\demo-files\demo.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\demo-files\demo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\demo.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\fonts\Unycon.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\fonts\Unycon.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\fonts\Unycon.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\fonts\Unycon.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\iconmoon-app-selection.json.zip" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\unycon\unycon.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\static\libs\uri\URI.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\views\backend-container-design-taxonomy.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\views\backend-option-design-customizer.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\views\backend-option-design-default.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\views\backend-option-design-taxonomy.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson\framework\views\backend-settings-form.php" afterPath="" />
     </list>
     <ignored path="wordpress.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,8 +837,8 @@
       <file leaf-file-name="load-latest-fonts.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/bin/load-latest-fonts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4621359">
+              <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -501,62 +1265,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="unyson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wordpress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wordpress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wp-content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unyson" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wordpress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wordpress" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wp-content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="tigiaNganHang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -577,6 +1285,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\wordpress\wp-content\plugins\unyson" />
       <recent name="C:\xampp\htdocs\wordpress\wp-content\plugins" />
       <recent name="C:\xampp\htdocs\wordpress\wp-content\plugins\contentPageTemplate\image" />
     </key>
@@ -624,9 +1333,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="683" height="728" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38230884" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38230884" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -663,69 +1372,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/class-fw-extension-shortcodes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/class-fw-thang-shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/text-block/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/vc_options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -736,69 +1382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/class-fw-extension-shortcodes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/class-fw-thang-shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/text-block/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/vc_options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -806,34 +1389,6 @@
           <folding>
             <element signature="e#6#190#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/class-fw-extension-shortcodes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -901,80 +1456,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/forms/s.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/tigiaNganHang/table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6420863">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3057554">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/accordion/options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42805755">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/class-fw-extension-shortcodes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/class-fw-thang-shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.091726616">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/text-block/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24460432">
-          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33633092">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/extensions/shortcodes/shortcodes/thang-shortcode/vc_options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.091726616">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1026,8 +1511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/unyson/framework/bin/load-latest-fonts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4621359">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding />
         </state>
       </provider>

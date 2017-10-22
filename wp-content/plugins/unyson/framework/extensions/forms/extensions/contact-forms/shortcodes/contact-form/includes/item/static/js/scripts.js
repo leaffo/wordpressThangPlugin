@@ -1,9 +1,9 @@
-(function (fwe) {
-	fwe.on('fw-builder:' + 'page-builder' + ':register-items', function (builder) {
+(function (slze, _, itemData) {
+	slze.on('slz-builder:' + 'page-builder' + ':register-items', function (builder) {
 		var PageBuilderContactFormItem,
 			PageBuilderContactFormItemView,
 			triggerEvent = function(itemModel, event, eventData) {
-				event = 'fw:builder-type:{builder-type}:item-type:{item-type}:'
+				event = 'slz:builder-type:{builder-type}:item-type:{item-type}:'
 					.replace('{builder-type}', builder.get('type'))
 					.replace('{item-type}', itemModel.get('type'))
 					+ event;
@@ -15,13 +15,13 @@
 					shortcode: itemModel.get('shortcode')
 				};
 
-				fwEvents.trigger(event, eventData
+				slzEvents.trigger(event, eventData
 					? _.extend(eventData, data)
 					: data
 				);
 			},
 			getEventName = function(itemModel, event) {
-				return 'fw:builder-type:{builder-type}:item-type:{item-type}:'
+				return 'slz:builder-type:{builder-type}:item-type:{item-type}:'
 					.replace('{builder-type}', builder.get('type'))
 					.replace('{item-type}', itemModel.get('type'))
 					+ event;
@@ -41,12 +41,11 @@
 					 */
 					triggerEvent(this.model, 'options-modal:settings', eventData);
 
-					this.modal = new fw.OptionsModal({
-						title: itemData().title,
+					this.modal = new slz.OptionsModal({
+						title: 'Contact Form', // TODO: make translatable
 						options: options.modalOptions,
 						values: this.model.get('atts'),
-						size: options.modalSize,
-						headerElements: itemData().header_elements
+						size: options.modalSize
 					}, eventData.modalSettings);
 
 					this.listenTo(this.modal, 'change:values', function (modal, values) {
@@ -55,28 +54,28 @@
 
 					this.listenTo(this.modal, {
 						'open': function(){
-							fwEvents.trigger(getEventName(this.model, 'options-modal:open'), {
+							slzEvents.trigger(getEventName(this.model, 'options-modal:open'), {
 								modal: this.modal,
 								item: this.model,
 								itemView: this
 							});
 						},
 						'render': function(){
-							fwEvents.trigger(getEventName(this.model, 'options-modal:render'), {
+							slzEvents.trigger(getEventName(this.model, 'options-modal:render'), {
 								modal: this.modal,
 								item: this.model,
 								itemView: this
 							});
 						},
 						'close': function(){
-							fwEvents.trigger(getEventName(this.model, 'options-modal:close'), {
+							slzEvents.trigger(getEventName(this.model, 'options-modal:close'), {
 								modal: this.modal,
 								item: this.model,
 								itemView: this
 							});
 						},
 						'change:values': function(){
-							fwEvents.trigger(getEventName(this.model, 'options-modal:change:values'), {
+							slzEvents.trigger(getEventName(this.model, 'options-modal:change:values'), {
 								modal: this.modal,
 								item: this.model,
 								itemView: this
@@ -87,14 +86,7 @@
 			},
 			template: _.template(
 				'<div class="pb-item-type-contact-form pb-item-type-simple pb-item <% if (hasOptions) { print(' + '"has-options"' + ')} %>">' +
-	        '<% if (icon) { %>' +
-		        '<% if (typeof FwBuilderComponents.ItemView.iconToHtml == "undefined") { %>' +
-		          '<img src="<%- icon %>" alt="Icon" />' +
-		        '<% } else { %>' +
-		          '<%= FwBuilderComponents.ItemView.iconToHtml(icon) %>' +
-		        '<% } %>' +
-	        '<% } %>' +
-					'<%- title %>' +
+					'<img alt="" src="<%- image %>"><%- title %>' +
 					'<div class="controls">' +
 						'<% if (!isMailer) { %>' +
 						'<i class="dashicons dashicons-info contact-form-item-mailer" data-hover-tip="<%- configureMailer %>"></i>' +
@@ -113,7 +105,7 @@
 				/**
 				 * Other scripts can append/prepend other control $elements
 				 */
-				fwEvents.trigger('fw:page-builder:shortcode:contact-form:controls', {
+				slzEvents.trigger('slz:page-builder:shortcode:contact-form:controls', {
 					$controls: this.$('.controls:first'),
 					model: this.model,
 					builder: builder
@@ -128,36 +120,18 @@
 			},
 			editOptions: function (e) {
 				e.stopPropagation();
-
 				if (!this.modal) {
 					return;
 				}
-
-				var flow = {cancelModalOpening: false};
-
-				/**
-				 * Trigger before-open model just like we do this for
-				 * item-simple shortcodes.
-				 *
-				 * http://bit.ly/1KY6tpP
-				 */
-				fwEvents.trigger('fw:page-builder:shortcode:contact-form:modal:before-open', {
-					modal: this.modal,
-					model: this.model,
-					builder: builder,
-					flow: flow
-				});
-
-				if (! flow.cancelModalOpening) {
-					this.modal.open();
-				}
+				this.modal.open();
+				return false;
 			},
 			configureMailer: function (e) {
 				this.editOptions(e);
 
-				fwe.on('fw:options:init', function (data) {
-					data.$elements.find('.fw-options-tabs-wrapper').find('a[href="#fw-options-tab-settings"]').trigger('click');
-					data.$elements.find('.fw-options-tabs-wrapper').find('#fw-options-tab-settings').find('a[href="#fw-options-tab-mailer-options"]').trigger('click');
+				slze.on('slz:options:init', function (data) {
+					data.$elements.find('.slz-options-tabs-wrapper').find('a[href="#slz-options-tab-settings"]').trigger('click');
+					data.$elements.find('.slz-options-tabs-wrapper').find('#slz-options-tab-settings').find('a[href="#slz-options-tab-mailer-options"]').trigger('click');
 				});
 				return false;
 			},
@@ -188,23 +162,23 @@
 			defaults: {
 				type: 'contact-form'
 			},
-			restrictedTypes: itemData().restrictedTypes,
+			restrictedTypes: itemData.restrictedTypes,
 			initialize: function (atts, opts) {
 
 				this.view = new PageBuilderContactFormItemView({
 					id: 'page-builder-item-' + this.cid,
 					model: this,
-					modalOptions: itemData().options,
-					modalSize: itemData().popup_size,
+					modalOptions: itemData.options,
+					modalSize: itemData.popup_size,
 					templateData: {
-						title: itemData().title,
-						icon: itemData().icon,
-						isMailer : itemData().mailer,
-						configureMailer : itemData().configureMailer,
-						edit : itemData().edit,
-						duplicate : itemData().duplicate,
-						remove : itemData().remove,
-						hasOptions: !!itemData().options
+						title: itemData.title,
+						image: itemData.image,
+						isMailer : itemData.mailer,
+						configureMailer : itemData.configureMailer,
+						edit : itemData.edit,
+						duplicate : itemData.duplicate,
+						remove : itemData.remove,
+						hasOptions: !!itemData.options
 					}
 				});
 
@@ -217,12 +191,4 @@
 
 		builder.registerItemClass(PageBuilderContactFormItem);
 	});
-
-	function itemData () {
-		// return fw.unysonShortcodesData()['contact_form'];
-		// return page_builder_item_type_contact_form_data;
-		return fw_form_builder_item_type_contact_form_data[
-			'contact_form'
-		];
-	}
-})(fwEvents);
+})(slzEvents, _, page_builder_item_type_contact_form_data);

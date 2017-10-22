@@ -1,14 +1,17 @@
-<?php if (!defined('FW')) die('Forbidden');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die( 'Forbidden' );
+}
 
-$shortcodes_extension = fw_ext('shortcodes');
-wp_enqueue_style(
-	'fw-shortcode-tabs',
-	$shortcodes_extension->get_uri('/shortcodes/tabs/static/css/styles.css')
-);
-wp_enqueue_script(
-	'fw-shortcode-tabs',
-	$shortcodes_extension->get_uri('/shortcodes/tabs/static/js/scripts.js'),
-	array('jquery-ui-tabs'),
-	false,
-	true
-);
+$ext = slz_ext( 'shortcodes' )->get_shortcode('tabs');
+$ext_instance = slz()->extensions->get( 'shortcodes' );
+
+if ( !is_admin() ) {
+
+    $ext->wp_enqueue_script(
+			'slz-extension-'. $ext_instance->get_name() .'-tabs',
+			$ext->locate_URI( '/static/js/tabs.js' ),
+			array( 'jquery' ),
+			slz()->manifest->get_version(),
+			true
+	);	
+}

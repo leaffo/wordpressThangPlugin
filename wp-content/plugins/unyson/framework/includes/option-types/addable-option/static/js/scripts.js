@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-	var optionClass = '.fw-option-type-addable-option';
+	var optionClass = '.slz-option-type-addable-option';
 
 	function initSortable ($options) {
 		try {
@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
 			// happens when sortable was not initialized before
 		}
 
-		if (! $options.first().closest(optionClass).hasClass('is-sortable')) {
+		if (!$options.first().closest(optionClass).hasClass('is-sortable')) {
 			return false;
 		}
 
@@ -34,7 +34,6 @@ jQuery(document).ready(function ($) {
 			},
 			update: function(){
 				$(this).closest(optionClass).trigger('change'); // for customizer
-				fw.options.trigger.changeForEl($(this).closest(optionClass));
 			}
 		});
 	}
@@ -42,30 +41,12 @@ jQuery(document).ready(function ($) {
 	var methods = {
 		/** Make full/prefixed event name from short name */
 		makeEventName: function (shortName) {
-			return 'fw:option-type:addable-option:' + shortName;
+			return 'slz:option-type:addable-option:' + shortName;
 		}
 	};
 
-	fwEvents.on('fw:options:init', function (data) {
-		var $elements = data.$elements.find(optionClass +':not(.fw-option-initialized)');
-
-		$elements.toArray().map(function (el) {
-			// Trigger change when one of the underlying contexts change
-			fw.options.on.change(function (data) {
-				if (! $(data.context).is(
-					'[data-fw-option-type="addable-option"] tr.fw-option-type-addable-option-option'
-				)) {
-					return;
-				}
-
-				// Listen to just its own virtual contexts
-				if (! el.contains(data.context)) {
-					return;
-				}
-
-				fw.options.trigger.changeForEl(el);
-			});
-		});
+	slzEvents.on('slz:options:init', function (data) {
+		var $elements = data.$elements.find(optionClass +':not(.slz-option-initialized)');
 
 		/** Init Add button */
 		$elements.on('click', optionClass +'-add', function(){
@@ -81,10 +62,10 @@ jQuery(document).ready(function ($) {
 
 			// animation
 			{
-				$newOption.addClass('fw-animation-zoom-in');
+				$newOption.addClass('slz-animation-zoom-in');
 
 				setTimeout(function(){
-					$newOption.removeClass('fw-animation-zoom-in');
+					$newOption.removeClass('slz-animation-zoom-in');
 				}, 300);
 			}
 
@@ -94,12 +75,12 @@ jQuery(document).ready(function ($) {
 
 			// Re-render wp-editor
 			if (
-				window.fwWpEditorRefreshIds
+				window.slzWpEditorRefreshIds
 				&&
-				$newOption.find('.fw-option-type-wp-editor:first').length
+				$newOption.find('.slz-option-type-wp-editor:first').length
 			) {
-				fwWpEditorRefreshIds(
-					$newOption.find('.fw-option-type-wp-editor textarea:first').attr('id'),
+				slzWpEditorRefreshIds(
+					$newOption.find('.slz-option-type-wp-editor textarea:first').attr('id'),
 					$newOption
 				);
 			}
@@ -107,18 +88,13 @@ jQuery(document).ready(function ($) {
 			// remove focus form "Add" button to prevent pressing space/enter to add easy many options
 			$newOption.find('input,select,textarea').first().focus();
 
-			fwEvents.trigger('fw:options:init', {$elements: $newOption});
+			slzEvents.trigger('slz:options:init', {$elements: $newOption});
 
 			$option.trigger(methods.makeEventName('option:init'), {$option: $newOption});
-			fw.options.trigger.changeForEl($option);
 		});
 
 		/** Init Remove button */
 		$elements.on('click', optionClass +'-remove', function(){
-			fw.options.trigger.changeForEl($(this).closest(
-				'[data-fw-option-type="addable-option"]'
-			));
-
 			$(this).closest(optionClass +'-option').remove();
 		});
 
@@ -126,31 +102,6 @@ jQuery(document).ready(function ($) {
 			initSortable($elements.find(optionClass +'-options:first'));
 		});
 
-		$elements.addClass('fw-option-initialized');
+		$elements.addClass('slz-option-initialized');
 	});
-
-	fw.options.register('addable-option', {
-		startListeningForChanges: $.noop,
-		getValue: function (optionDescriptor) {
-			var promise = $.Deferred();
-
-			fw.whenAll(
-				$(optionDescriptor.el).find(
-					'table.fw-option-type-addable-option-options'
-				).first().find(
-					'> tbody > .fw-backend-options-virtual-context'
-				).toArray().map(fw.options.getContextValue)
-			).then(function (valuesAsArray) {
-				promise.resolve({
-					value: valuesAsArray.map(function (singleContextValue) {
-						return _.values(singleContextValue.value)[0];
-					}),
-
-					optionDescriptor: optionDescriptor
-				})
-			});
-
-			return promise;
-		}
-	})
 });

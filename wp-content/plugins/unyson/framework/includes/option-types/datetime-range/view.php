@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'FW' ) ) { die( 'Forbidden' ); }
+<?php if ( ! defined( 'ABSPATH' ) ) { die( 'Forbidden' ); }
 
 /**
  * @var string $id
@@ -12,9 +12,9 @@ unset($wrapper_attr['value']);
 
 ?>
 
-<div <?php echo fw_attr_to_html($wrapper_attr) ?> >
+<div <?php echo slz_attr_to_html($wrapper_attr) ?> >
 
-	<?php echo fw()->backend->option_type( 'datetime-picker' )->render( 'from', array(
+	<?php echo slz()->backend->option_type( 'datetime-picker' )->render( 'from', array(
 			'type'  => 'datetime-picker',
 			'value' =>  isset( $option['value']['from'] )
 					? $option['value']['from']
@@ -38,9 +38,9 @@ unset($wrapper_attr['value']);
 			'name_prefix' => $data['name_prefix'] . '[' . $id . ']',
 		)); ?>
 
-	<div class="delimiter"><?php echo __('to', 'fw') ?></div>
+	<div class="delimiter"><?php echo __('to', 'slz') ?></div>
 
-	<?php echo fw()->backend->option_type( 'datetime-picker' )->render( 'to', array(
+	<?php echo slz()->backend->option_type( 'datetime-picker' )->render( 'to', array(
 		'type'  => 'datetime-picker',
 		'value' =>  isset( $option['value']['to'] )
 		? $option['value']['to']

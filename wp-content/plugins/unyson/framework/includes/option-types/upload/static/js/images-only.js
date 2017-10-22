@@ -1,11 +1,11 @@
-(function($, _, fwe) {
+(function($, _, slze) {
 
 	var init = function() {
 		var $this = $(this),
 			elements = {
 				$container: $this,
 				$input: $this.find('input[type="hidden"]:first'),
-				$urlInput: $this.find('input[type="hidden"].fw-option-type-upload-image-url'),
+				$urlInput: $this.find('input[type="hidden"].slz-option-type-upload-image-url'),
 				$uploadButton: $this.find('p a'),
 				$thumb: $this.find('.thumb')
 			},
@@ -66,7 +66,7 @@
 			}
 
 			frame.on('ready', function() {
-				frame.modal.$el.addClass('fw-option-type-upload');
+				frame.modal.$el.addClass('slz-option-type-upload');
 			});
 
 			// opens the modal with the correct attachment selected
@@ -141,25 +141,17 @@
 						.removeAttr('data-attid data-origsrc');
 			elements.$container.addClass('empty');
 
-			fwe.trigger('fw:option-type:upload:clear', {$element: elements.$container});
-			elements.$container.trigger('fw:option-type:upload:clear');
-
-			fw.options.trigger.changeForEl(elements.$container, {
-				value: {}
-			});
-
-			fw.options.trigger.scopedByType('clear', elements.$container, {
-				value: {}
-			});
+			slze.trigger('slz:option-type:upload:clear', {$element: elements.$container});
+			elements.$container.trigger('slz:option-type:upload:clear');
 		}
 
 		function performSelection (attachment) {
 			var url, filename, compiled;
 
 			if (attachment.get('sizes')) {
-				url = _.min(_.values(attachment.get('sizes')), function (size) {
-					return size.width;
-				}).url;
+				url = attachment.get('sizes').thumbnail
+						? attachment.get('sizes').thumbnail.url
+						: attachment.get('sizes').full.url;
 			} else {
 				url = attachment.get('url');
 			}
@@ -186,67 +178,21 @@
 				.trigger('change'); // trigger Customizer update
 			elements.$container.removeClass('empty');
 
-			fwe.trigger('fw:option-type:upload:change', {
+			slze.trigger('slz:option-type:upload:change', {
 				$element: elements.$container,
 				attachment: attachment
 			});
 
-			elements.$container.trigger('fw:option-type:upload:change', {
+			elements.$container.trigger('slz:option-type:upload:change', {
 				attachment: attachment
-			});
-
-			fw.options.trigger.changeForEl(elements.$container, {
-				value: {
-					attachment_id: attachment.get('id'),
-					url: attachment.get('url')
-				}
 			});
 		}
 	};
 
-	fwe.on('fw:options:init', function(data) {
+	slze.on('slz:options:init', function(data) {
 		data.$elements
-			.find('.fw-option-type-upload.images-only:not(.fw-option-initialized)').each(init)
-			.addClass('fw-option-initialized');
+			.find('.slz-option-type-upload.images-only:not(.slz-option-initialized)').each(init)
+			.addClass('slz-option-initialized');
 	});
 
-	fw.options.register('upload', {
-		startListeningForChanges: jQuery.noop,
-		getValue: function (optionDescriptor) {
-			var deferred = $.Deferred();
-
-			var attachmentId = $(optionDescriptor.el).find(
-				'[type="hidden"][name*="' + optionDescriptor.id + '"]'
-			).val()
-
-			if (! attachmentId) {
-				deferred.resolve({
-					value: {},
-					optionDescriptor: optionDescriptor
-				});
-			} else {
-				var attachment = wp.media.attachment(attachmentId);
-
-				if (! attachment.get('url')) {
-					attachment.fetch().then(function () {
-						resolveWithAttachment(attachment);
-					})
-				} else {
-					resolveWithAttachment(attachment)
-				}
-			}
-
-			return deferred;
-
-			function resolveWithAttachment (attachment) {
-				deferred.resolve({
-					value: {
-						attachment_id: attachmentId,
-						url: attachment.get('url')
-					}
-				});
-			}
-		}
-	});
-
-})(jQuery, _, fwEvents);
+})(jQuery, _, slzEvents);

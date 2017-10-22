@@ -3,7 +3,7 @@
  *
  * Usage:
  *
- * fw.shortcodesLoadData()
+ * slz.shortcodesLoadData()
  *   .then(function (response) {
  *     // actual data you want to use
  *     var shortcodes = response.data.shortcodes;
@@ -12,16 +12,12 @@
  * @return jQuery.deferred
  * @since 1.3.19
  */
-fw.shortcodesLoadData = (function ($) {
+slz.shortcodesLoadData = (function ($) {
 	var promise = null;
 
 	return load;
 
-	function load (forceRewrite) {
-		if (forceRewrite) {
-		    promise = null;
-		}
-
+	function load () {
 		if (promise) {
 			return promise;
 		}
@@ -32,7 +28,7 @@ fw.shortcodesLoadData = (function ($) {
 		 * Load it via AJAX request better.
 		 */
 		promise = jQuery.post(ajaxurl, {
-			action: 'fw_ext_wp_shortcodes_data'
+			action: 'slz_ext_wp_shortcodes_data'
 		});
 
 		return promise;
@@ -40,20 +36,20 @@ fw.shortcodesLoadData = (function ($) {
 })(jQuery);
 
 /**
- * Get underlying data from fw.shortcodesLoadData() promise.
+ * Get underlying data from slz.shortcodesLoadData() promise.
  * Should be used only when you are 100% sure that promise from the first
  * function is already resolved. It will return null if promise is pending.
  *
  * @return object | null
  * @since 1.3.19
  */
-fw.unysonShortcodesData = function fwUnysonShortcodesData (forceRewrite) {
-	var promise = fw.shortcodesLoadData(forceRewrite);
+slz.unysonShortcodesData = function slzUnysonShortcodesData () {
+	var promise = slz.shortcodesLoadData();
 	var data = null;
 
 	if (promise.state() === 'resolved') {
 		if (promise.responseJSON.success) {
-			return promise.responseJSON.data;
+			return promise.responseJSON.data.shortcodes;
 		}
 	}
 

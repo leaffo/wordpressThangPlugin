@@ -1,8 +1,8 @@
 /**
  * @since 1.3.18
  */
-fw.shortcodesAggressiveCoder = (function ($) {
-	var SYMBOL_TABLE = { // @see php class FW_Ext_Shortcodes_Attr_Coder_Aggressive
+slz.shortcodesAggressiveCoder = (function ($) {
+	var SYMBOL_TABLE = { // @see php class SLZ_Ext_Shortcodes_Attr_Coder_Aggressive
 		first: [
 			'‹', '[', ']', '"', "'", '&', '=', '\\', '<', '>'
 		],
@@ -21,9 +21,9 @@ fw.shortcodesAggressiveCoder = (function ($) {
 
 	/**
 	 * An implementation of encode from the attr coder json.
-	 * https://github.com/ThemeFuse/Unyson-Shortcodes-Extension/blob/v1.3.16/includes/coder/class-fw-ext-shortcodes-attr-coder-json.php#L17
+	 * https://github.com/ThemeFuse/Unyson-Shortcodes-Extension/blob/v1.3.16/includes/coder/class-slz-ext-shortcodes-attr-coder-json.php#L17
 	 *
-	 * Mainly used for dynamic encoding of values from fw.OptionsModal().
+	 * Mainly used for dynamic encoding of values from slz.OptionsModal().
 	 */
 	function encode (atts) {
 		var encoded = {},
@@ -46,7 +46,7 @@ fw.shortcodesAggressiveCoder = (function ($) {
 			);
 		}
 
-		encoded['_fw_coder'] = 'aggressive';
+		encoded['_slz_coder'] = 'aggressive';
 
 		return encoded;
 	}
@@ -64,7 +64,7 @@ fw.shortcodesAggressiveCoder = (function ($) {
 			return atts;
 		}
 
-		atts = _.omit(atts, '_fw_coder');
+		atts = _.omit(atts, '_slz_coder');
 
 		var array_keys = {};
 
@@ -104,7 +104,7 @@ fw.shortcodesAggressiveCoder = (function ($) {
 	}
 
     function can_decode (atts) {
-		return atts._fw_coder && atts._fw_coder == 'aggressive';
+		return atts._slz_coder && atts._slz_coder == 'aggressive';
     }
 
 	/////////////

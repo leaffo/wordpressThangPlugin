@@ -1,0 +1,62 @@
+//--------------  Libs  --------------
+@import '../../../../../../../library';
+//------------------------------------
+
+/*====================================
+=            SC Faq Block            =
+====================================*/
+
+	.sc-faq-block {
+		padding: 75px 0 0 0;
+		+ .sc-faq-block {
+			padding: 0 ;
+		}
+		.block-title,
+		.faq-list li,
+		.btn-readmore {
+			font-family: $ff-Monts;
+			font-weight: 700;
+			letter-spacing: 0.5px;
+			color: $title-color;
+		}
+		.block-title {
+			font-size: 28px;
+			padding: 0 0 10px 0;
+			border-bottom: 2px solid #dadfea;
+		}
+		.faq-list {
+			padding: 0;
+			margin: 0 0 20px 0;
+			li {
+				list-style-type: none;
+				line-height: 2;
+				a {
+					font-size: 14px;
+					.icon {
+						width: 20px;
+						height: 20px;
+						color: $des-color;
+						@include transition(all .3s ease);
+					}
+					&:hover,
+					&:focus {
+						color: $main-color;
+						.icon {
+							color: $main-color;
+						}
+					}
+				}
+			}
+		}
+		.btn-readmore {
+			color: $main-color;
+			font-weight: 500;
+			font-size: 14px;
+			&:hover,
+			&:focus {
+				border-bottom: 1px solid;
+			}
+		}
+	}
+	
+/*=====  End of SC Faq Block  ======*/

@@ -1,4 +1,4 @@
-.fw-container-type-popup {
+.slz-container-type-popup {
 	padding: 24px 27px 21px;
 
 	opacity: 0;
@@ -6,11 +6,11 @@
 	-webkit-transition: opacity ease 0.3s;
 }
 
-.fw-container-type-popup.initialized {
+.slz-container-type-popup.initialized {
 	opacity: 1;
 }
 
-.fw-container-type-popup > .popup-desc {
+.slz-container-type-popup > .popup-desc {
 	font-style: italic;
 	color: #666;
 }
