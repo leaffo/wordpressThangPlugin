@@ -149,8 +149,8 @@ function github_or_network_for($base_url, $pack) {
 	if (! isset($pack['github-repo'])) { return $base_url; }
 
 	return 'https://raw.githubusercontent.com/' .
-		$pack['github-repo'] .
-		'/master/' . $base_url;
+	       $pack['github-repo'] .
+	       '/master/' . $base_url;
 }
 
 function download_file($url, $destination) {
@@ -158,7 +158,7 @@ function download_file($url, $destination) {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt( $ch, CURLOPT_ENCODING, "UTF-8" );
 
 	$data = curl_exec ($ch);
