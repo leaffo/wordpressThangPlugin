@@ -6,7 +6,7 @@
  *
  * WARNING!
  * The uninstall.php file must not contain:
- * <?php if ( !defined( 'FW' ) ) die('Forbidden');
+ * <?php if ( !defined( 'SLZ' ) ) die('Forbidden');
  * because the framework is not loaded at this point, use:
  * <?php if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) die('Forbidden');
  */
@@ -15,7 +15,7 @@ function _include_file_isolated($path) {
 	include $path;
 }
 
-class FW_Plugin_Uninstall
+class SLZ_Plugin_Uninstall
 {
 	/**
 	 * All extensions with uninstall.php
@@ -88,4 +88,4 @@ class FW_Plugin_Uninstall
 	}
 }
 
-new FW_Plugin_Uninstall();
+new SLZ_Plugin_Uninstall();
